@@ -1,12 +1,14 @@
-import React, {Component} from 'react';
-import {Route, Routes, Link} from 'react-router-dom';
-import Users from './Users';
+import React, { FC } from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import "../styles/style.scss";
 import Posts from './Posts';
-import "../styles/style.scss"
+import Users from './Users';
+import Lang from '../components/lang';
     
-class Home extends Component {
+const Home: FC = () => {
     
-    render() {
+    const { t } = useTranslation();
         return (
            <div>
                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -20,6 +22,10 @@ class Home extends Component {
                            <li className="nav-item">
                                <Link className={"nav-link"} to={"/users"}> Users </Link>
                            </li>
+                           <li>
+                                <Lang/>
+                                <p>{t('nav.titre1')} {t('nav.titre2')}</p>
+                           </li>
                        </ul>
                    </div>
                </nav>
@@ -29,7 +35,6 @@ class Home extends Component {
                </Routes>
            </div>
         )
-    }
 }
     
 export default Home;

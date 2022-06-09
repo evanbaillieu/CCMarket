@@ -10,10 +10,13 @@ Encore
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
     .setPublicPath('/build')
-    
+
     .enableReactPreset()
+    
+    .enableTypeScriptLoader()
 
     .enableSassLoader()
+
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
     
@@ -26,7 +29,7 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
-    .addEntry('app', './assets/js/app.js')
+    .addEntry('app', './assets/js/app.tsx')
     
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
