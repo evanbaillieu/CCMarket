@@ -6,9 +6,16 @@
         "@symfony/webpack-encore": "^2.1.0",
         "@types/react": "^18.0.12",
         "@types/react-dom": "^18.0.5",
+        "@typescript-eslint/eslint-plugin": "^5.27.1",
+        "@typescript-eslint/parser": "^5.27.1",
         "core-js": "^3.0.0",
+        "eslint": "^8.17.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "prettier": "^2.6.2",
         "regenerator-runtime": "^0.13.2",
         "ts-loader": "^9.3.0",
+        "ttab": "^0.7.2",
         "typescript": "^4.7.3",
         "webpack-notifier": "^1.6.0"
     },
@@ -18,7 +25,16 @@
         "dev-server": "encore dev-server",
         "dev": "encore dev",
         "watch": "encore dev --watch",
-        "build": "encore production --progress"
+        "build": "encore production --progress",
+        "start": "ttab -a iterm2 yarn encore dev --watch && ttab -a iterm2 symfony server:start",
+        "start-code": "code . && yarn run start",
+        "start-PS": "open -na \"PhpStorm.app\" && yarn run start",
+        "all-install": "yarn install && composer install",
+        "remove-mod": "rm -rf node_modules && rm -rf vendor",
+        "remove-nodemod": "rm -rf node_modules",
+        "remove-vendormod": "rm -rf vendor",
+        "remove-all": "rm -rf node_modules && rm -rf vendor && rm -rf var",
+        "remove-cache": "rm -rf var"
     },
     "dependencies": {
         "@babel/plugin-proposal-class-properties": "^7.17.12",
@@ -31,6 +47,6 @@
         "react-dom": "^18.1.0",
         "react-i18next": "^11.17.0",
         "react-router-dom": "^6.3.0",
-        "sass-loader": "^13.0.0"
+        "sass-loader": "^12.0.0"
     }
 }

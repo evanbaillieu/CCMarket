@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import "../styles/style.scss";
-import Posts from './Posts';
-import Users from './Users';
-import Lang from '../components/lang';
+import "./styles/style.scss";
+import Posts from './view/Posts';
+import Users from './view/Users';
+import Home from './view/Home';
+
     
-const Home: FC = () => {
+const App: FC = () => {
     
     const { t } = useTranslation();
         return (
@@ -22,14 +23,11 @@ const Home: FC = () => {
                            <li className="nav-item">
                                <Link className={"nav-link"} to={"/users"}> Users </Link>
                            </li>
-                           <li>
-                                <Lang/>
-                                <p>{t('nav.titre1')} {t('nav.titre2')}</p>
-                           </li>
                        </ul>
                    </div>
                </nav>
                <Routes>
+                   <Route path='/' element={<Home/>}/>
                    <Route path="/users" element={<Users/>} />
                    <Route path="/posts" element={<Posts/>} />
                </Routes>
@@ -37,4 +35,4 @@ const Home: FC = () => {
         )
 }
     
-export default Home;
+export default App;
