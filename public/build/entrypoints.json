@@ -3,11 +3,7 @@
     "app": {
       "js": [
         "/build/runtime.js",
-        "/build/vendors-node_modules_core-js_modules_es_array_from_js-node_modules_core-js_modules_es_array_i-f2dcf2.js",
         "/build/app.js"
-      ],
-      "css": [
-        "/build/app.css"
       ]
     }
   }
