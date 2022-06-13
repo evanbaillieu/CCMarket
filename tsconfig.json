@@ -12,7 +12,8 @@
       "allowSyntheticDefaultImports": true
     },
     "compileOnSave": false,
+    "include": ["assets/js/", "globals.d.ts"],
     "exclude": [
       "node_modules"
-    ]
+    ],
 }

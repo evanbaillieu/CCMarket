@@ -1,14 +1,14 @@
-import React, { ChangeEvent, useState } from "react"
+import React, { ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Language } from '../constant/Type/lang';
- 
-const Lang = () => {
+
+const Lang = ({}) => {
     const { i18n } = useTranslation();
     const [lang, setLang] = useState<Language>(i18n.language as Language);
- 
-    let changeLanguage = (event: ChangeEvent<HTMLSelectElement>) => {
-        let language = event.target.value;
- 
+
+    const changeLanguage = (event: ChangeEvent<HTMLSelectElement>) => {
+        const language = event.target.value;
+
         switch (language) {
             case Language.EN:
                 setLang(Language.EN);
@@ -20,8 +20,8 @@ const Lang = () => {
                 i18n.changeLanguage(Language.FR);
                 break;
         }
-    }
- 
+    };
+
     return (
         <div>
             <div>
@@ -31,7 +31,7 @@ const Lang = () => {
                 </select>
             </div>
         </div>
-    )
-}
- 
+    );
+};
+
 export default Lang;

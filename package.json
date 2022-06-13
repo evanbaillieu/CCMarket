@@ -1,22 +1,25 @@
 {
     "devDependencies": {
-        "@babel/preset-react": "^7.17.12",
+        "@babel/preset-react": "^7.0.0",
         "@hotwired/stimulus": "^3.0.0",
         "@symfony/stimulus-bridge": "^3.0.0",
         "@symfony/webpack-encore": "^2.1.0",
         "@types/react": "^18.0.12",
         "@types/react-dom": "^18.0.5",
+        "@types/react-redux": "^7.1.24",
         "@typescript-eslint/eslint-plugin": "^5.27.1",
         "@typescript-eslint/parser": "^5.27.1",
+        "babel-plugin-inline-react-svg": "^2.0.1",
         "core-js": "^3.0.0",
         "eslint": "^8.17.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-react": "^7.30.0",
+        "node-sass": "^7.0.1",
         "prettier": "^2.6.2",
         "regenerator-runtime": "^0.13.2",
+        "sass-loader": "^12.0.0",
         "ts-loader": "^9.3.0",
-        "ttab": "^0.7.2",
         "typescript": "^4.7.3",
         "webpack-notifier": "^1.6.0"
     },
@@ -38,16 +41,15 @@
         "remove-cache": "rm -rf var"
     },
     "dependencies": {
-        "@babel/plugin-proposal-class-properties": "^7.17.12",
-        "@babel/plugin-transform-runtime": "^7.18.2",
+        "@reduxjs/toolkit": "^1.8.2",
         "i18next": "^21.8.9",
         "i18next-browser-languagedetector": "^6.1.4",
-        "node-sass": "^7.0.1",
         "prop-types": "^15.8.1",
         "react": "^18.1.0",
         "react-dom": "^18.1.0",
         "react-i18next": "^11.17.0",
-        "react-router-dom": "^6.3.0",
-        "sass-loader": "^12.0.0"
+        "react-query": "^3.39.1",
+        "react-redux": "^8.0.2",
+        "react-router-dom": "^6.3.0"
     }
 }

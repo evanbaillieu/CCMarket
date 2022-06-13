@@ -5,8 +5,9 @@ export enum Language {
 
 export type TranslationFormat = {
     nav: {
-        titre1: string;
-        titre2: string;
+        home: string;
+        projects: string;
+        jobs: string;
     };
     post: string;
     users: string;
