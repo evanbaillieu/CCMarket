@@ -2,8 +2,9 @@ import { TranslationFormat } from '../constant/Type/lang';
 
 const data: TranslationFormat = {
     nav: {
-        titre1: 'bonjour',
-        titre2: 'le monde',
+        home: 'Accuile',
+        projects: 'Projects',
+        jobs: 'Poste',
     },
     post: 'pas de nouveau post',
     users: 'bienvenue jeune utilisateur',
