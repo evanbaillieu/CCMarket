@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import Lang from '../components/lang';
 import Logo from '../svg/logo.svg';
 import test from '../img/test.png';
-//import { render } from 'react-dom';
 
 const Home: FC = () => {
     const { t } = useTranslation();
