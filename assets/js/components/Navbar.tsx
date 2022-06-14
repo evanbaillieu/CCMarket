@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, Route, Routes } from 'react-router-dom';
 import '../components/lang';
-import LogoHeader from './svg/logoHeader.svg';
-import Message from './svg/message.svg';
-import Search from './svg/search.svg';
-import Profil from './svg/profil.svg';
+import LogoHeader from '../svg/logoHeader.svg';
+import Message from '../svg/message.svg';
+import Search from '../svg/search.svg';
+import Profil from '../svg/profil.svg';
 
 const Navbar: FC = () => {
     const { t } = useTranslation();

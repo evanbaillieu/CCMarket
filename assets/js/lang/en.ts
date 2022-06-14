@@ -5,6 +5,11 @@ const data: TranslationFormat = {
         projects: 'Projects',
         jobs: 'Jobs',
     },
+    login: {
+        title: 'Login',
+        email: 'Email',
+        password: 'Password',
+    },
     post: 'no new post',
     users: 'welcomes young users',
 };

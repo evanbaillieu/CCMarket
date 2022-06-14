@@ -9,6 +9,11 @@ export type TranslationFormat = {
         projects: string;
         jobs: string;
     };
+    login: {
+        title: string;
+        email: string;
+        password: string;
+    };
     post: string;
     users: string;
 };

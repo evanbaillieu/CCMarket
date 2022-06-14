@@ -28,6 +28,7 @@ Encore
     .addEntry('app', './assets/js/index.tsx')
     .enableReactPreset()
     .enableTypeScriptLoader()
+
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
 
@@ -56,4 +57,5 @@ Encore
             corejs: 3,
         },
     );
+
 module.exports = Encore.getWebpackConfig();
