@@ -1,7 +1,9 @@
 {
   "build/app.js": "/build/app.js",
-  "build/app/css.css": "/build/app/css.css",
   "build/runtime.js": "/build/runtime.js",
   "build/vendors-node_modules_core-js_modules_es_array_from_js-node_modules_core-js_modules_es_array_i-029e38.js": "/build/vendors-node_modules_core-js_modules_es_array_from_js-node_modules_core-js_modules_es_array_i-029e38.js",
-  "build/images/test.png": "/build/images/test.a1950cc4.png"
+  "build/images/test.png": "/build/images/test.a1950cc4.png",
+  "build/vendors-node_modules_i18next-browser-languagedetector_dist_esm_i18nextBrowserLanguageDetector-591b7c.js": "/build/vendors-node_modules_i18next-browser-languagedetector_dist_esm_i18nextBrowserLanguageDetector-591b7c.js",
+  "build/vendors-node_modules_i18next-browser-languagedetector_dist_esm_i18nextBrowserLanguageDetector-9cf24c.js": "/build/vendors-node_modules_i18next-browser-languagedetector_dist_esm_i18nextBrowserLanguageDetector-9cf24c.js",
+  "build/app.css": "/build/app.css"
 }

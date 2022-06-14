@@ -6,11 +6,6 @@
         "/build/vendors-node_modules_core-js_modules_es_array_from_js-node_modules_core-js_modules_es_array_i-029e38.js",
         "/build/app.js"
       ]
-    },
-    "app/css": {
-      "js": [
-        "/build/runtime.js"
-      ]
     }
   }
 }

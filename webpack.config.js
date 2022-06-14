@@ -11,7 +11,6 @@ Encore
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
     .setPublicPath('/build')
-    .addStyleEntry('app/css', ['./assets/scss/main.scss', ',/assets/scss/components/_nav.scss'])
     .enableSassLoader()
 
     // only needed for CDN's or sub-directory deploy
