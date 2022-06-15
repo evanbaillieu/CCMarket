@@ -27,14 +27,10 @@ const Lang = ({}) => {
     };
 
     return (
-        <div>
-            <div>
-                <select value={lang} name="language" onChange={changeLanguage}>
-                    <option value={Language.FR}>FR</option>
-                    <option value={Language.EN}>EN</option>
-                </select>
-            </div>
-        </div>
+        <select value={lang} name="language" id="language" onChange={changeLanguage}>
+            <option value={Language.FR}>Français</option>
+            <option value={Language.EN}>English</option>
+        </select>
     );
 };
 

@@ -32,5 +32,25 @@ export type TranslationFormat = {
         tropcourt: string;
     };
     post: string;
-    users: string;
+    account: {
+        title: string;
+        settings: string;
+        logout: string;
+        firstName: string;
+        lastName: string;
+        email: string;
+        birth: string;
+        edit: string;
+        changePassword: string;
+        cancel: string;
+        save: string;
+        theme: string;
+        light: string;
+        dark: string;
+        language: string;
+        currentPassword: string;
+        newPassword: string;
+        confirmNewPassword: string;
+        profileImg: string;
+    };
 };

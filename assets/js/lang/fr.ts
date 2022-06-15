@@ -29,7 +29,27 @@ const data: TranslationFormat = {
         tropcourt: "il n'y a pas assez de caracter",
     },
     post: 'pas de nouveau post',
-    users: 'bienvenue jeune utilisateur',
+    account: {
+        title: 'Votre compte',
+        settings: 'Paramètre',
+        logout: 'Déconnexion',
+        firstName: 'Prénom',
+        lastName: 'Nom',
+        email: 'Email',
+        birth: 'Date de naissance',
+        edit: 'Modifier votre compte',
+        changePassword: 'Changer votre mot de passe',
+        cancel: 'Annuler',
+        save: 'Savegarder',
+        theme: 'Thème',
+        light: 'Clair',
+        dark: 'Sombre',
+        language: 'Langue',
+        currentPassword: 'Mot de passe actuel',
+        newPassword: 'Nouveau mot de passe',
+        confirmNewPassword: 'Confirmer le nouveau mot de passe',
+        profileImg: 'Image de profil',
+    },
 };
 
 export default data;

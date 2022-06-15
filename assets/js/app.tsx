@@ -8,7 +8,9 @@ import Home from './view/Home';
 import Login from './view/Login';
 import Posts from './view/Posts';
 import Register from './view/Registeur';
-import Users from './view/Users';
+import Account from './view/Account';
+import EditAccount from './view/Account/Edit';
+import ChangePassword from './view/Account/ChangePassword';
 import config from './config/default';
 const App: FC = () => {
     const { t, i18n } = useTranslation();
@@ -24,10 +26,12 @@ const App: FC = () => {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/users" element={<Users />} />
+                <Route path="/account" element={<Account />} />
                 <Route path="/posts" element={<Posts />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/account/edit" element={<EditAccount />} />
+                <Route path="/account/password" element={<ChangePassword />} />
             </Routes>
             <div className="footer">
                 <Footer />
