@@ -1,3 +1,5 @@
+import config from '../config/default';
+
 export const checkIsEmpty = (data: any): boolean => {
     let isEmpty = false;
 
@@ -22,4 +24,12 @@ export const checkIsNotEmpty = (data: any): boolean => {
     });
 
     return isEmpty;
+};
+
+export const setTokken = (tokken: string) => {
+    localStorage.setItem(config.tokken.key, tokken);
+};
+
+export const getTokken = (): string => {
+    return localStorage.getItem(config.tokken.key);
 };

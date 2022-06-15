@@ -15,7 +15,7 @@ export default function Account() {
                 </select>
             </div>
             <div>
-                <label htmlFor='language'>{t('account.language')}</label>
+                <label htmlFor="language">{t('account.language')}</label>
                 <Lang />
             </div>
         </div>

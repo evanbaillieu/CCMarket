@@ -19,9 +19,7 @@ export default function Users() {
                 <label htmlFor="confirmNewPassword">{t('account.confirmNewPassword')}</label>
                 <input type="password" name="confirmNewPassword" id="confirmNewPassword" />
             </div>
-            <Link to={'/account'}>
-                {t('account.cancel')}
-            </Link>
+            <Link to={'/account'}>{t('account.cancel')}</Link>
             <button type="submit">{t('account.save')}</button>
         </form>
     );

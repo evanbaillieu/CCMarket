@@ -27,9 +27,7 @@ export default function Users() {
                 <label htmlFor="profileImg">{t('account.profileImg')}</label>
                 <input type="file" name="profileImg" id="profileImg" />
             </div>
-            <Link to={'/account'}>
-                {t('account.cancel')}
-            </Link>
+            <Link to={'/account'}>{t('account.cancel')}</Link>
             <button type="submit">{t('account.save')}</button>
         </form>
     );

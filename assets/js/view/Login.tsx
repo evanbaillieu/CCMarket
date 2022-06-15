@@ -10,16 +10,15 @@ const Login: FC = ({}) => {
     const { data, errors, hangleChange } = useForm<IAuth>({ email: '', password: '' });
 
     const submit = () => {
-        console.log(!checkIsEmpty(data) && !checkIsNotEmpty(errors));
-        if (!checkIsEmpty(data) && !checkIsNotEmpty(errors)) {
+        console.log(checkIsEmpty(data) && !checkIsNotEmpty(errors));
+        if (checkIsEmpty(data) && !checkIsNotEmpty(errors)) {
             return;
         }
-
         login(data);
     };
 
     return (
-        <form>
+        <div>
             <div>
                 <h1>{t('login.title')}</h1>
             </div>
@@ -35,7 +34,7 @@ const Login: FC = ({}) => {
             </div>
             <button onClick={submit}>se connecter</button>
             <button>{"s'inscrire"}</button>
-        </form>
+        </div>
     );
 };
 

@@ -23,12 +23,8 @@ export default function Account() {
                 <p>{t('account.birth')}</p>
                 <p>08/09/22</p>
             </div>
-            <Link to={'/account/edit'}>
-                {t('account.edit')}
-            </Link>
-            <Link to={'/account/password'}>
-                {t('account.changePassword')}
-            </Link>
+            <Link to={'/account/edit'}>{t('account.edit')}</Link>
+            <Link to={'/account/password'}>{t('account.changePassword')}</Link>
         </div>
     );
 }

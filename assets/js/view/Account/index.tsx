@@ -18,16 +18,10 @@ export default function Users() {
                 <img src={profile} width={150} height={150} alt="Profile" />
                 <h3>Axel Huon</h3>
                 <ul>
-                    <li onClick={displayAccount}>
-                        {t('account.title')}
-                    </li>
-                    <li onClick={displaySettings}>
-                        {t('account.settings')}
-                    </li>
+                    <li onClick={displayAccount}>{t('account.title')}</li>
+                    <li onClick={displaySettings}>{t('account.settings')}</li>
                     <li>
-                        <Link to={'/logout'}>
-                            {t('account.logout')}
-                        </Link>
+                        <Link to={'/logout'}>{t('account.logout')}</Link>
                     </li>
                 </ul>
             </div>

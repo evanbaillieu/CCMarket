@@ -29,7 +29,7 @@ class ApiLoginController extends AbstractController
     {
         if (null === $user) {
             return $this->json([
-                'message' => 'missing credentials',
+                'message' => 'error mdp',
             ], Response::HTTP_UNAUTHORIZED);
         }
 
@@ -51,7 +51,7 @@ class ApiLoginController extends AbstractController
         if ($user){
             return $this->json([
                 'message' => 'error.emailempty'
-            ]);
+            ], Response::HTTP_BAD_REQUEST);
         }
 
         $user = new User();
