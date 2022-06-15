@@ -1,10 +1,10 @@
 export type IUser = {
-    id: string;
-    firstname: string;
-    lastname: string;
-    email: string;
-    password: string;
-    role: string[];
+    id?: string;
+    firstname?: string;
+    lastname?: string;
+    email?: string;
+    password?: string;
+    role?: string[];
     dateDeNaisance: string;
     project?: IProject[];
     source?: ISource[];

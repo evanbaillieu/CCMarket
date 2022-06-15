@@ -5,7 +5,7 @@ import { Language } from './constant/Type/lang';
 import translationEN from './lang/en';
 import translationFR from './lang/fr';
 
-const defaultLanguage = Language.FR;
+const defaultLanguage = Language.EN;
 
 // the translations
 const resources = {

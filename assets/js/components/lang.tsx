@@ -1,6 +1,8 @@
+import Cookies from 'js-cookie';
 import React, { ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Language } from '../constant/Type/lang';
+import config from '../config/default';
 
 const Lang = ({}) => {
     const { i18n } = useTranslation();
@@ -12,11 +14,13 @@ const Lang = ({}) => {
         switch (language) {
             case Language.EN:
                 setLang(Language.EN);
+                Cookies.set(config.lang.key, Language.EN);
                 i18n.changeLanguage(Language.EN);
                 break;
             case Language.FR:
             default:
                 setLang(Language.FR);
+                Cookies.set(config.lang.key, Language.FR);
                 i18n.changeLanguage(Language.FR);
                 break;
         }
