@@ -9,31 +9,52 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Doctrine\ORM\Id\AbstractIdGenerator;
+use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
+
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[
     ApiResource(
-        collectionOperations:[
+        //Operation sur des Collections
+        collectionOperations : [
             'get' => [
-                'normalization_context' => ['groups' => ['read:User:collection']]
+                //Propriété que l'ont perut lire lors d'une reqêute de collection
+                'normalization_context' => [
+                    'groups' => ['read:User:collection']
+                ],
             ],
-            'post' => [
-                'denormalization_context' => ['groups' => ['create:User:collection']]
+            'post' =>[
+                //Propriété que l'ont peut écrire lors de l'inscription
+                'denormalization_context' => [
+                    'groups' => ['write:User:collection']
+                ],
+            ]
+        ],
+        //Operation sur des items précis
+        itemOperations : [
+            'get' => [
+                'normalization_context' => [
+                    //Propriété que l'ont peut lire lors d'une requête d'un élément précis
+                    'groups' => ['read:User:collection', 'read:User:item']
+                ]
+            ],
+            'put' => [
+                //Possibilité d'éditer son compte uniquement si on est l'utilisateur lui même ou alors un Admin
+                "security" => "is_granted('ROLE_ADMIN') or id == user.getId() ",
+                //Paramètres possible d'edit
+                'denormalization_context' => ['groups' => ['edit:User:item']],
             ],
 
-        ],
-        itemOperations: [
-            'get' => [
-                'normalization_context' => ['groups' => ['read:User:item']]
+            'delete' => [
+                //Possibilité de delete un compte uniquement si on est Admin
+                'security' => 'is_granted("ROLE_ADMIN")'
             ],
-            'delete',
-            'put',
-            'patch'
-        ]
+        ],
     )
 ]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -42,58 +63,72 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
+    #[Groups(['read:User:collection', 'read:Project:item'])]
     private $id;
 
 
 
     #[
         Email(),
-        Groups(['read:User:collection', 'read:User:item', 'create:User:collection'])
+        Groups(['write:User:collection','read:User:collection','edit:User:item', 'read:Project:item'])
     ]
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $email;
 
+
     #[ORM\Column(type: 'json')]
     private $roles = [];
+
 
     #[ORM\Column(type: 'string')]
     #[
         Length(min:8),
-        Groups(['create:User:collection'])
+        Groups(['write:User:collection','edit:User:item']),
     ]
     private $password;
 
     #[
-        Groups(['read:User:collection', 'read:User:item', 'create:User:collection'])
+        Groups(['write:User:collection','edit:User:item', 'read:User:collection','read:Project:item'])
     ]
     #[ORM\Column(type: 'string', length: 50)]
     private $firstName;
 
     #[
-        Groups(['read:User:collection', 'read:User:item', 'create:User:collection'])
+        Groups(['write:User:collection','edit:User:item','read:User:collection','read:Project:item'])
     ]
     #[ORM\Column(type: 'string', length: 70)]
     private $lastName;
 
     #[
-        Groups(['read:User:collection', 'read:User:item', 'create:User:collection']),
+        Groups(['write:User:collection','edit:User:item','read:User:item'])
     ]
     #[ORM\Column(type: 'date')]
-
     private $dateOfBirth;
 
+    #[
+        Groups(['edit:User:item','read:User:item'])
+    ]
     #[ORM\OneToMany(mappedBy: 'leader', targetEntity: Project::class, orphanRemoval: true)]
     private $projects;
 
+    #[
+        Groups(['edit:User:item','read:User:item'])
+    ]
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: Experience::class)]
     private $experiences;
-
+    #[
+        Groups(['edit:User:item','read:User:item'])
+    ]
     #[ORM\ManyToOne(targetEntity: ProfilType::class, inversedBy: 'user')]
     private $profilType;
-
+    #[
+        Groups(['edit:User:item','read:User:item'])
+    ]
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: Language::class)]
     private $languages;
-
+    #[
+        Groups(['edit:User:item','read:User:item'])
+    ]
     #[ORM\ManyToOne(targetEntity: Contributor::class, inversedBy: 'user')]
     private $contributor;
 
@@ -149,7 +184,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
-
         return $this;
     }
 

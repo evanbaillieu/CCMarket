@@ -7,6 +7,7 @@ use App\Repository\SourceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SourceRepository::class)]
 #[ApiResource]
@@ -17,33 +18,49 @@ class Source
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
+    #[Groups([
+        'read:User:item',
+        'read:Project:collection'
+    ])]
     private $id;
 
+    #[Groups([
+        'read:User:item',
+        'read:Project:collection',
+        'read:Job:collection',
+        'write:Project:collection',
+        "write:Job:collection"
+    ])]
     #[ORM\Column(type: 'string', length: 255)]
     private $type;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $link;
+    #[Groups([
+        'read:User:item',
+        'read:Project:collection',
+        'read:Job:collection',
+        'write:Job:collection',
+        'write:Project:collection',
 
+    ])]
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\OneToMany(mappedBy: 'Source', targetEntity: Project::class)]
-    private $projects;
+    #[Groups([
+        'read:User:item',
+        'read:Project:collection',
+        'read:Job:collection',
+        'write:Job:collection',
+        'write:Project:collection',
 
-    #[ORM\OneToMany(mappedBy: 'Source', targetEntity: Job::class)]
-    private $jobs;
+    ])]
+    #[ORM\Column(type: 'string', length: 255)]
+    private $link;
 
-    public function __construct()
-    {
-        $this->projects = new ArrayCollection();
-        $this->jobs = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'sources')]
+    private $Project;
 
-    public function getId(): ?string
-    {
-        return $this->id;
-    }
+    #[ORM\ManyToOne(targetEntity: Job::class, inversedBy: 'sources')]
+    private $Job;
 
     public function getType(): ?string
     {
@@ -53,18 +70,6 @@ class Source
     public function setType(string $type): self
     {
         $this->type = $type;
-
-        return $this;
-    }
-
-    public function getLink(): ?string
-    {
-        return $this->link;
-    }
-
-    public function setLink(string $link): self
-    {
-        $this->link = $link;
 
         return $this;
     }
@@ -81,63 +86,41 @@ class Source
         return $this;
     }
 
-    /**
-     * @return Collection<int, Project>
-     */
-    public function getProjects(): Collection
+    public function getLink(): ?string
     {
-        return $this->projects;
+        return $this->link;
     }
 
-    public function addProject(Project $project): self
+    public function setLink(string $link): self
     {
-        if (!$this->projects->contains($project)) {
-            $this->projects[] = $project;
-            $project->setSource($this);
-        }
+        $this->link = $link;
 
         return $this;
     }
 
-    public function removeProject(Project $project): self
+    public function getProject(): ?Project
     {
-        if ($this->projects->removeElement($project)) {
-            // set the owning side to null (unless already changed)
-            if ($project->getSource() === $this) {
-                $project->setSource(null);
-            }
-        }
+        return $this->Project;
+    }
+
+    public function setProject(?Project $Project): self
+    {
+        $this->Project = $Project;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Job>
-     */
-    public function getJobs(): Collection
+    public function getJob(): ?Job
     {
-        return $this->jobs;
+        return $this->Job;
     }
 
-    public function addJob(Job $job): self
+    public function setJob(?Job $Job): self
     {
-        if (!$this->jobs->contains($job)) {
-            $this->jobs[] = $job;
-            $job->setSource($this);
-        }
+        $this->Job = $Job;
 
         return $this;
     }
 
-    public function removeJob(Job $job): self
-    {
-        if ($this->jobs->removeElement($job)) {
-            // set the owning side to null (unless already changed)
-            if ($job->getSource() === $this) {
-                $job->setSource(null);
-            }
-        }
 
-        return $this;
-    }
 }

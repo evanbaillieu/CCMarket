@@ -7,6 +7,7 @@ use App\Repository\ProfilTypeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ProfilTypeRepository::class)]
 #[ApiResource]
@@ -17,8 +18,10 @@ class ProfilType
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
+    #[Groups(['read:User:item', 'read:Job:item'])]
     private $id;
 
+    #[Groups(['read:User:item', 'read:Job:item'])]
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 

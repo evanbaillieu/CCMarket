@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ExperienceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ExperienceRepository::class)]
 #[ApiResource]
@@ -16,15 +17,27 @@ class Experience
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
     private $id;
 
+    #[Groups([
+        'read:User:item'
+    ])]
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
 
+    #[Groups([
+        'read:User:item'
+    ])]
     #[ORM\Column(type: 'string', length: 255)]
     private $abstract;
 
+    #[Groups([
+        'read:User:item'
+    ])]
     #[ORM\Column(type: 'date')]
     private $startDate;
 
+    #[Groups([
+        'read:User:item'
+    ])]
     #[ORM\Column(type: 'date', nullable: true)]
     private $endDate;
 

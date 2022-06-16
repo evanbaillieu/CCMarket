@@ -7,7 +7,39 @@ use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-#[ApiResource()]
+use Symfony\Component\Serializer\Annotation\Groups;
+
+#[ApiResource(
+
+    collectionOperations : [
+        'get' => [
+            //Get uniquement les paramètres de ce group lors d'un get collection
+            'normalization_context' => ['groups' => ['read:Project:collection']]
+        ],
+        'post' =>[
+            //Création de projet uniquement si il est connecté
+            "security" => "is_granted('ROLE_USER')",
+            //Lors d'un ajout de projet par un utilisateur il ne peut renseigné uniquement les infos de ce groupe
+            'denormalization_context' => ['groups' => ['write:Project:collection']]
+        ]
+
+    ],
+    itemOperations : [
+        'get' => [
+            //Get uniquement les paramètres de ce group lors d'un get d'item précis
+            'normalization_context' => ['groups' => ['read:Project:collection', 'read:Project:item']]
+        ],
+        // Delete uniquement disponible pour les utilisateur Admin
+        "delete" => ["security" => "is_granted('ROLE_ADMIN')"],
+        'put' => [
+            //Elements que l'ont peut edit
+            'denormalization_context' => ['groups' => ['edit:Project:item']],
+            //Peut edit uniquement si il est Admin ou leader du projet
+            "security" => "is_granted('ROLE_ADMIN') or (object.getLeader() == user)"
+        ]
+    ]
+
+)]
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
 {
@@ -15,48 +47,71 @@ class Project
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
+    #[Groups(['read:Project:collection',
+        'read:Job:item'])]
     private $id;
 
+    #[Groups(['read:Project:collection','write:Project:collection','edit:Project:item', 'read:User:item',
+        'read:Job:item', 'read:Cat:item'])]
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
 
+    #[Groups(['read:Project:collection','write:Project:collection','edit:Project:item', 'read:User:item',
+        'read:Job:item', 'read:Cat:item'])]
     #[ORM\Column(type: 'string', length: 255)]
     private $abstract;
 
+    #[Groups(['read:Project:item','write:Project:collection','edit:Project:item'])]
     #[ORM\Column(type: 'text')]
     private $description;
 
+    #[Groups(['read:Project:item'])]
     #[ORM\Column(type: 'integer', nullable: true)]
     private $nbStar;
 
-
+    #[Groups(['read:Project:item','read:Project:collection','write:Project:collection',
+        'read:Job:item'])]
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'projects')]
     #[ORM\JoinColumn(nullable: false)]
     private $leader;
 
+    #[Groups('read:Project:collection')]
     #[ORM\Column(type: 'boolean')]
     private $isBanned;
 
+    #[Groups(['read:Project:collection','write:Project:collection'])]
     #[ORM\OneToMany(mappedBy: 'Project', targetEntity: Job::class)]
     private $jobs;
 
+    #[Groups(['read:Project:collection','write:Project:collection'])]
     #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'projects')]
     private $category;
 
+    #[Groups('read:Project:collection')]
     #[ORM\ManyToMany(targetEntity: Favorite::class, mappedBy: 'project')]
     private $favorites;
 
-    #[ORM\ManyToOne(targetEntity: Source::class, inversedBy: 'projects')]
-    private $Source;
 
+    #[Groups(['read:Project:collection','write:Project:collection'])]
     #[ORM\OneToMany(mappedBy: 'Project', targetEntity: Contributor::class)]
     private $contributors;
+
+    #[Groups(['read:Project:collection','write:Project:collection', 'read:User:item'])]
+    #[ORM\OneToMany(mappedBy: 'Project', targetEntity: Source::class)]
+    private $sources;
+
+    #[ORM\Column(type: 'datetime')]
+    private $CreatedAt;
+
 
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
         $this->favorites = new ArrayCollection();
         $this->contributors = new ArrayCollection();
+        $this->setIsBanned(false);
+        $this->sources = new ArrayCollection();
+        $this->setCreatedAt(new \DateTime());
     }
 
     public function getId(): ?string
@@ -205,17 +260,8 @@ class Project
         return $this;
     }
 
-    public function getSource(): ?Source
-    {
-        return $this->Source;
-    }
 
-    public function setSource(?Source $Source): self
-    {
-        $this->Source = $Source;
 
-        return $this;
-    }
 
     /**
      * @return Collection<int, Contributor>
@@ -246,4 +292,47 @@ class Project
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Source>
+     */
+    public function getSources(): Collection
+    {
+        return $this->sources;
+    }
+
+    public function addSource(Source $source): self
+    {
+        if (!$this->sources->contains($source)) {
+            $this->sources[] = $source;
+            $source->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSource(Source $source): self
+    {
+        if ($this->sources->removeElement($source)) {
+            // set the owning side to null (unless already changed)
+            if ($source->getProject() === $this) {
+                $source->setProject(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->CreatedAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $CreatedAt): self
+    {
+        $this->CreatedAt = $CreatedAt;
+
+        return $this;
+    }
+
 }

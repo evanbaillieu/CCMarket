@@ -7,21 +7,46 @@ use App\Repository\CategoriesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CategoriesRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    collectionOperations : [
+        'get' =>[
+            "normalization_context" => ['groups' => ['read:Cat:collection']],
+        ],
+        'post' =>[
+            "security" => "is_granted('ROLE_ADMIN')",
+        ],
+    ],
+    itemOperations: [
+        'get' => [
+            "normalization_context" => ['groups' => ['read:Cat:item']],
+        ],
+        'delete' => [
+            "security" => "is_granted('ROLE_ADMIN')",
+        ],
+        'put' => [
+            "security" => "is_granted('ROLE_ADMIN')",
+        ],
 
+    ]
+
+)]
 class Categories
 {
     #[ORM\Id]
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
+    #[Groups(['read:Project:collection',"read:Cat:collection"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(['read:Project:collection', "read:Cat:collection"])]
     private $name;
 
+    #[Groups(["read:Cat:collection", 'read:Cat:item'])]
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Project::class)]
     private $projects;
 
@@ -30,7 +55,7 @@ class Categories
         $this->projects = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }

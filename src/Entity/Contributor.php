@@ -8,6 +8,7 @@ use App\Repository\ContributorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ContributorRepository::class)]
 #[ApiResource]
@@ -17,11 +18,14 @@ class Contributor
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
+    #[Groups(['read:Project:item'])]
     private $id;
 
+    #[Groups(['read:Project:item'])]
     #[ORM\OneToMany(mappedBy: 'contributor', targetEntity: User::class)]
     private $user;
 
+    #[Groups(['read:User:item'])]
     #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'contributors')]
     private $Project;
 
