@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Lang from '../../components/lang';
 
-export default function Account() {
+export default function AccountSettings() {
     const { t } = useTranslation();
     return (
         <div>

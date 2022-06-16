@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useOutlet } from 'react-router-dom';
 import profile from '../../img/test.png';
-import Settings from './Settings';
-import Account from './Account';
+import AccountInfos from './AccountInfos';
 
 export default function Users() {
     const { t } = useTranslation();
-    const [openSettings, setOpenSettings] = useState(false);
-
-    const displayAccount = () => setOpenSettings(false);
-    const displaySettings = () => setOpenSettings(true);
+    const outlet = useOutlet();
 
     return (
         <div>
@@ -18,14 +14,18 @@ export default function Users() {
                 <img src={profile} width={150} height={150} alt="Profile" />
                 <h3>Axel Huon</h3>
                 <ul>
-                    <li onClick={displayAccount}>{t('account.title')}</li>
-                    <li onClick={displaySettings}>{t('account.settings')}</li>
+                    <li>
+                        <Link to={'/account'}>{t('account.title')}</Link>
+                    </li>
+                    <li>
+                        <Link to={'/account/settings'}>{t('account.settings')}</Link>
+                    </li>
                     <li>
                         <Link to={'/logout'}>{t('account.logout')}</Link>
                     </li>
                 </ul>
             </div>
-            {openSettings ? <Settings /> : <Account />}
+            {outlet ?? <AccountInfos />}
         </div>
     );
 }

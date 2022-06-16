@@ -9,7 +9,8 @@ import Login from './view/Login';
 import Posts from './view/Posts';
 import Register from './view/Registeur';
 import Account from './view/Account';
-import EditAccount from './view/Account/Edit';
+import AccountSettings from './view/Account/AccountSettings';
+import EditAccount from './view/Account/EditAccount';
 import ChangePassword from './view/Account/ChangePassword';
 import './scss/main.scss';
 import config from './config/default';
@@ -28,7 +29,9 @@ const App: FC = () => {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/account" element={<Account />} />
+                <Route path="/account" element={<Account />}>
+                    <Route path="/account/settings" element={<AccountSettings />} />
+                </Route>
                 <Route path="/posts" element={<Posts />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />

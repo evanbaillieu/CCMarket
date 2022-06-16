@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-export default function Account() {
+export default function AccountInfos() {
     const { t } = useTranslation();
     return (
         <div>
