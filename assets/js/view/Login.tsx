@@ -5,12 +5,16 @@ import { IAuth } from '../constant/Type/auth';
 import { checkIsEmpty, checkIsNotEmpty } from '../helper/utilHelper';
 import { login } from '../service/authService';
 import Inpute from '../components/input';
+import Oeil from '../svg/oeil.svg';
+import OeilFermer from '../svg/oeilFermer.svg';
+import Arobase from '../svg/arobase.svg';
 
 const auth: IAuth = { email: '', password: '' };
 
 const Login: FC = ({}) => {
     const { t } = useTranslation();
     const { data, errors, hangleChange } = useForm<IAuth>(auth);
+    const [isActivate, setIsActivate] = useState(false);
 
     const submit = async () => {
         console.log(checkIsEmpty(data) && !checkIsNotEmpty(errors));
@@ -20,32 +24,43 @@ const Login: FC = ({}) => {
         login(data);
     };
 
+    const changeVisble = () => {
+        setIsActivate((current) => !current);
+    };
+
     return (
         <div className="login">
             <div>
                 <h3>{t('login.title')}</h3>
             </div>
             <div>
-                <Inpute
-                    name={'email'}
+                {/*<Inpute
+                    svg={<Arobase />}
+                    option={{
+                        name: 'email',
+                        title: `login.email`,
+                        error: errors.email,
+                    }}
                     handleChange={hangleChange}
-                    title={`login.email`}
-                    error={errors.email}
                     value={data.email}
                 />
                 <Inpute
-                    name={'password'}
+                    svg={isActivate ? <Oeil /> : <OeilFermer />}
+                    option={{
+                        name: isActivate ? 'text' : 'password',
+                        title: `login.password`,
+                        error: errors.password,
+                    }}
                     handleChange={hangleChange}
-                    title={`login.password`}
-                    error={errors.password}
                     value={data.password}
-                />
+                    onClick={changeVisble}
+                />*/}
             </div>
             <a>Forgot password ?</a>
             <button className="btn_primary" onClick={submit}>
-                se connecter
+                {t('login.btn-login')}
             </button>
-            <button className="btn_gey">{"s'inscrire"}</button>
+            <button className="btn_gey">{t('login.btn-register')}</button>
         </div>
     );
 };

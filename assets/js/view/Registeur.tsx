@@ -4,6 +4,7 @@ import { IUser } from '../constant/Type/entity';
 import useForm from '../hook/useForm';
 import { register } from '../service/authService';
 import { checkIsEmpty, checkIsNotEmpty } from '../helper/utilHelper';
+import Inpute from '../components/input';
 
 const Registeur: FC = ({}) => {
     const { t } = useTranslation();
@@ -38,36 +39,51 @@ const Registeur: FC = ({}) => {
         <div>
             <h1 className="">Register</h1>
             <div>
-                <div>
-                    <label className={`${errors?.firstname ? 'error' : ''}`}>{t('register.firstname')}</label>
-                    <input type="text" onChange={hangleChange} name="firstname" value={data.firstname} />
-                    {errors?.firstname ? <h6>{t(errors.firstname)}</h6> : <></>}
-                </div>
+                {/*     <Inpute
+                    option={{ name: 'fisrtname', title: 'register.lastname', error: errors.firstname }}
+                    handleChange={hangleChange}
+                    value={data.firstname}
+                />
 
-                <div>
-                    <label>{t('register.lastname')}</label>
-                    <input type="text" onChange={hangleChange} name="lastname" value={data.lastname} />
-                    {errors?.lastname && <h6>{errors.lastname}</h6>}
-                </div>
+                <Inpute
+                    option={{
+                        name: 'lastname',
+                        title: `register.lastname`,
+                        error: errors.lastname,
+                    }}
+                    handleChange={hangleChange}
+                    value={data.lastname}
+                />
 
-                <div>
-                    <label>{t('register.email')}</label>
-                    <input type="email" onChange={hangleChange} name="email" value={data.email} />
-                    {errors?.email && <h3>{errors.email}</h3>}
-                </div>
+                <Inpute
+                    option={{
+                        name: 'email',
+                        title: `register.email`,
+                        error: errors.email,
+                    }}
+                    handleChange={hangleChange}
+                    value={data.email}
+                />
+                <Inpute
+                    option={{
+                        name: 'dateDeNaisance',
+                        title: `register.dateDeNaisance`,
+                        error: errors.dateDeNaisance,
+                    }}
+                    handleChange={hangleChange}
+                    value={data.dateDeNaisance}
+                />
 
-                <div>
-                    <label>{t('register.dateDeNaisance')}</label>
-                    <input type="date" onChange={hangleChange} name="dateDeNaisance" value={data.dateDeNaisance} />
-                    {errors?.dateDeNaisance && <h3>{errors.dateDeNaisance}</h3>}
-                </div>
-
-                <div>
-                    <label>{t('register.password')}</label>
-                    <input type="password" onChange={hangleChange} name="password" value={data.password} />
-                    {errors?.password && <h3>{errors.password}</h3>}
-                </div>
-
+                <Inpute
+                    option={{
+                        name: 'password',
+                        title: `register.password`,
+                        error: errors.password,
+                    }}
+                    handleChange={hangleChange}
+                    value={data.password}
+                />
+                */}
                 <div>
                     <label>{t('register.veryfPassword')}</label>
                     <input type="password" onChange={handleChangePWD} name="veryfPassword" value={veryfPassword} />

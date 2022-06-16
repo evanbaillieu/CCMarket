@@ -21,6 +21,7 @@
         text-transform: capitalize;
         font-size: 20px;
         font-family: 'RedHatDisplay-Bold';
+        
         &[class="btn_primary"] {
             background-color: var(--primary-color);
             color: var(--white-color);
@@ -28,8 +29,8 @@
        }
               
        &[class="btn_grey"] {
-            background-color: var(--primary-color);
-            color: var(--white-color);
+            background-color: var(--grey-color);
+            color: var(--black-color);
         }
         
 

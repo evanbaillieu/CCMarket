@@ -1,6 +1,6 @@
 import { Language } from '../constant/Type/lang';
 const config = {
-    baseurl: 'http://localhost:8000/api',
+    baseUrl: 'http://localhost:8000/api',
     lang: {
         default: Language.EN,
         key: 'lang',

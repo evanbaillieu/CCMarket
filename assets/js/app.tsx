@@ -15,6 +15,7 @@ import EditAccount from './view/Account/EditAccount';
 import ChangePassword from './view/Account/ChangePassword';
 import './scss/main.scss';
 import config from './config/default';
+import ListDemo from './components/ListDemo';
 
 const App: FC = () => {
     const { i18n } = useTranslation();
@@ -34,6 +35,7 @@ const App: FC = () => {
                     <Route path="/account" element={<AccountInfos />} />
                     <Route path="/account/settings" element={<AccountSettings />} />
                 </Route>
+                <Route path="/list" element={<ListDemo />} />
                 <Route path="/posts" element={<Posts />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />

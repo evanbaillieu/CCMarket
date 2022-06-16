@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\ApiLoginController;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -27,6 +28,13 @@ use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
                 'normalization_context' => [
                     'groups' => ['read:User:collection']
                 ],
+            ],
+            'me'=>[
+                'pagination_enable' => false,
+                'path' => '/me',
+                'methode' => 'get',
+                'controller' => ApiLoginController::class,
+
             ],
             'post' =>[
                 //Propriété que l'ont peut écrire lors de l'inscription

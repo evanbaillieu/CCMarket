@@ -63,6 +63,7 @@ class ApiLoginController extends AbstractController
         $user->setPassword($passwordHasher->hashPassword($user, $data['password']));
         $entityManager->persist($user);
         $entityManager->flush();
+        
         return $this->json([
             'user' => $request,
             'TEST' => $data,

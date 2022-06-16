@@ -3,6 +3,7 @@
     width: 85vw;
     display: flex;
     flex-direction: column;
+    margin-bottom: 1.5rem;
     
     & label{
         font-size: 20px;
@@ -14,19 +15,42 @@
         }
     }
 
+    & h6{
+        color: var(--error-color);
+    }
+
     & input{
         height: 3rem;
+        width: 100%;
         border: none;
-        border-bottom: 2px solid var(--grey-color);
         outline: none;
         font-size: 20px;
         font-family: 'RedHatDisplay-Meduim';
-        margin-bottom: 1rem;
 
-        &:focus{
+        &[class='error'] {
+            border-color: var(--error-color);
+        }
+
+        & h6{
+            color: var(--error-color);
+        } 
+
+    }
+
+    &_content{
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid var(--grey-color);
+
+        & svg{
+            height: 44px;
+            width: 44px;
+        }
+
+        &:focus-within{
             border-color: var(--black-color);
         }
 
-
     }
+
 }
