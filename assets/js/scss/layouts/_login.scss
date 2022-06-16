@@ -1,0 +1,43 @@
+.login{
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+
+    & h3{
+        text-align: center;
+        font-size: 40px;
+        font-family: 'RedHatDisplay-Semibold';
+    }
+
+    & button{
+        width: 100%;
+        height: 50px;
+        border: none;
+        text-transform: capitalize;
+        font-size: 20px;
+        font-family: 'RedHatDisplay-Bold';
+        &[class="btn_primary"] {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            margin-bottom: 10px;
+       }
+              
+       &[class="btn_grey"] {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+        
+
+    }
+
+    & a{
+        text-decoration: none;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+}

@@ -11,9 +11,11 @@ import Register from './view/Registeur';
 import Account from './view/Account';
 import EditAccount from './view/Account/Edit';
 import ChangePassword from './view/Account/ChangePassword';
+import './scss/main.scss';
 import config from './config/default';
+
 const App: FC = () => {
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
     useEffect(() => {
         const lang = Cookies.get(config.lang.key);
         if (lang) {

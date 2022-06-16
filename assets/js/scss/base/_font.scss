@@ -1,0 +1,334 @@
+/**
+ * @license
+ *
+ * Font Family: Red Hat Display
+ * Designed by: MCKL, Jeremy Mickel
+ * URL: https://www.fontshare.com/fonts/red-hat-display
+ * © 2022 Indian Type Foundry
+ *
+ * Font Styles:
+ * Red Hat Display Variable(Variable font)
+ * Red Hat Display Variable Italic(Variable font)
+ * Red Hat Display Light
+ * Red Hat Display Light Italic
+ * Red Hat Display Regular
+ * Red Hat Display Italic
+ * Red Hat Display Medium
+ * Red Hat Display Medium Italic
+ * Red Hat Display Semi Bold
+ * Red Hat Display Semi Bold Italic
+ * Red Hat Display Bold
+ * Red Hat Display Bold Italic
+ * Red Hat Display Extra Bold
+ * Red Hat Display Extra Bold Italic
+ * Red Hat Display Black
+ * Red Hat Display Black Italic
+ *
+*/
+
+
+/**
+* This is a variable font
+* You can controll variable axes as shown below:
+* font-variation-settings: 'wght' 400.0;
+*
+* available axes:
+
+* 'wght' (range from 300.0 to 900.0)
+
+*/
+
+@font-face {
+    font-family: 'RedHatDisplay-Variable';
+    src: url('../fonts/RedHatDisplay-Variable.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-Variable.woff') format('woff'),
+         url('../fonts/RedHatDisplay-Variable.ttf') format('truetype');
+         font-weight: 300 900;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  /**
+  * This is a variable font
+  * You can controll variable axes as shown below:
+  * font-variation-settings: 'wght' 400.0;
+  *
+  * available axes:
+  
+  * 'wght' (range from 300.0 to 900.0)
+  
+  */
+  
+  @font-face {
+    font-family: 'RedHatDisplay-VariableItalic';
+    src: url('../fonts/RedHatDisplay-VariableItalic.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-VariableItalic.woff') format('woff'),
+         url('../fonts/RedHatDisplay-VariableItalic.ttf') format('truetype');
+         font-weight: 300 900;
+         font-display: swap;
+         font-style: italic;
+  }
+  
+  
+  @font-face {
+    font-family: 'RedHatDisplay-Light';
+    src: url('../fonts/RedHatDisplay-Light.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-Light.woff') format('woff'),
+         url('../fonts/RedHatDisplay-Light.ttf') format('truetype');
+         font-weight: 300;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'RedHatDisplay-LightItalic';
+    src: url('../fonts/RedHatDisplay-LightItalic.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-LightItalic.woff') format('woff'),
+         url('../fonts/RedHatDisplay-LightItalic.ttf') format('truetype');
+         font-weight: 300;
+         font-display: swap;
+         font-style: italic;
+  }
+  
+  
+  @font-face {
+    font-family: 'RedHatDisplay-Regular';
+    src: url('../fonts/RedHatDisplay-Regular.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-Regular.woff') format('woff'),
+         url('../fonts/RedHatDisplay-Regular.ttf') format('truetype');
+         font-weight: 400;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'RedHatDisplay-Italic';
+    src: url('../fonts/RedHatDisplay-Italic.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-Italic.woff') format('woff'),
+         url('../fonts/RedHatDisplay-Italic.ttf') format('truetype');
+         font-weight: 400;
+         font-display: swap;
+         font-style: italic;
+  }
+  
+  
+  @font-face {
+    font-family: 'RedHatDisplay-Medium';
+    src: url('../fonts/RedHatDisplay-Medium.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-Medium.woff') format('woff'),
+         url('../fonts/RedHatDisplay-Medium.ttf') format('truetype');
+         font-weight: 500;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'RedHatDisplay-MediumItalic';
+    src: url('../fonts/RedHatDisplay-MediumItalic.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-MediumItalic.woff') format('woff'),
+         url('../fonts/RedHatDisplay-MediumItalic.ttf') format('truetype');
+         font-weight: 500;
+         font-display: swap;
+         font-style: italic;
+  }
+  
+  
+  @font-face {
+    font-family: 'RedHatDisplay-SemiBold';
+    src: url('../fonts/RedHatDisplay-SemiBold.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-SemiBold.woff') format('woff'),
+         url('../fonts/RedHatDisplay-SemiBold.ttf') format('truetype');
+         font-weight: 600;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'RedHatDisplay-SemiBoldItalic';
+    src: url('../fonts/RedHatDisplay-SemiBoldItalic.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-SemiBoldItalic.woff') format('woff'),
+         url('../fonts/RedHatDisplay-SemiBoldItalic.ttf') format('truetype');
+         font-weight: 600;
+         font-display: swap;
+         font-style: italic;
+  }
+  
+  
+  @font-face {
+    font-family: 'RedHatDisplay-Bold';
+    src: url('../fonts/RedHatDisplay-Bold.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-Bold.woff') format('woff'),
+         url('../fonts/RedHatDisplay-Bold.ttf') format('truetype');
+         font-weight: 700;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'RedHatDisplay-BoldItalic';
+    src: url('../fonts/RedHatDisplay-BoldItalic.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-BoldItalic.woff') format('woff'),
+         url('../fonts/RedHatDisplay-BoldItalic.ttf') format('truetype');
+         font-weight: 700;
+         font-display: swap;
+         font-style: italic;
+  }
+  
+  
+  @font-face {
+    font-family: 'RedHatDisplay-ExtraBold';
+    src: url('../fonts/RedHatDisplay-ExtraBold.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-ExtraBold.woff') format('woff'),
+         url('../fonts/RedHatDisplay-ExtraBold.ttf') format('truetype');
+         font-weight: 800;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'RedHatDisplay-ExtraBoldItalic';
+    src: url('../fonts/RedHatDisplay-ExtraBoldItalic.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-ExtraBoldItalic.woff') format('woff'),
+         url('../fonts/RedHatDisplay-ExtraBoldItalic.ttf') format('truetype');
+         font-weight: 800;
+         font-display: swap;
+         font-style: italic;
+  }
+  
+  
+  @font-face {
+    font-family: 'RedHatDisplay-Black';
+    src: url('../fonts/RedHatDisplay-Black.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-Black.woff') format('woff'),
+         url('../fonts/RedHatDisplay-Black.ttf') format('truetype');
+         font-weight: 900;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'RedHatDisplay-BlackItalic';
+    src: url('../fonts/RedHatDisplay-BlackItalic.woff2') format('woff2'),
+         url('../fonts/RedHatDisplay-BlackItalic.woff') format('woff'),
+         url('../fonts/RedHatDisplay-BlackItalic.ttf') format('truetype');
+         font-weight: 900;
+         font-display: swap;
+         font-style: italic;
+  }
+  
+  /**
+ * @license
+ *
+ * Font Family: Clash Grotesk
+ * Designed by: Indian Type Foundry
+ * URL: https://www.fontshare.com/fonts/clash-grotesk
+ * © 2022 Indian Type Foundry
+ *
+ * Font Styles:
+ * Clash Grotesk Variable(Variable font)
+ * Clash Grotesk Extralight
+ * Clash Grotesk Light
+ * Clash Grotesk Regular
+ * Clash Grotesk Medium
+ * Clash Grotesk Semibold
+ * Clash Grotesk Bold
+ *
+*/
+
+
+/**
+* This is a variable font
+* You can controll variable axes as shown below:
+* font-variation-settings: 'wght' 700.0;
+*
+* available axes:
+
+* 'wght' (range from 200.0 to 700.0)
+
+*/
+
+@font-face {
+    font-family: 'ClashGrotesk-Variable';
+    src: url('../fonts/ClashGrotesk-Variable.woff2') format('woff2'),
+         url('../fonts/ClashGrotesk-Variable.woff') format('woff'),
+         url('../fonts/ClashGrotesk-Variable.ttf') format('truetype');
+         font-weight: 200 700;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'ClashGrotesk-Extralight';
+    src: url('../fonts/ClashGrotesk-Extralight.woff2') format('woff2'),
+         url('../fonts/ClashGrotesk-Extralight.woff') format('woff'),
+         url('../fonts/ClashGrotesk-Extralight.ttf') format('truetype');
+         font-weight: 200;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'ClashGrotesk-Light';
+    src: url('../fonts/ClashGrotesk-Light.woff2') format('woff2'),
+         url('../fonts/ClashGrotesk-Light.woff') format('woff'),
+         url('../fonts/ClashGrotesk-Light.ttf') format('truetype');
+         font-weight: 300;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'ClashGrotesk-Regular';
+    src: url('../fonts/ClashGrotesk-Regular.woff2') format('woff2'),
+         url('../fonts/ClashGrotesk-Regular.woff') format('woff'),
+         url('../fonts/ClashGrotesk-Regular.ttf') format('truetype');
+         font-weight: 400;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'ClashGrotesk-Medium';
+    src: url('../fonts/ClashGrotesk-Medium.woff2') format('woff2'),
+         url('../fonts/ClashGrotesk-Medium.woff') format('woff'),
+         url('../fonts/ClashGrotesk-Medium.ttf') format('truetype');
+         font-weight: 500;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'ClashGrotesk-Semibold';
+    src: url('../fonts/ClashGrotesk-Semibold.woff2') format('woff2'),
+         url('../fonts/ClashGrotesk-Semibold.woff') format('woff'),
+         url('../fonts/ClashGrotesk-Semibold.ttf') format('truetype');
+         font-weight: 600;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: 'ClashGrotesk-Bold';
+    src: url('../fonts/ClashGrotesk-Bold.woff2') format('woff2'),
+         url('../fonts/ClashGrotesk-Bold.woff') format('woff'),
+         url('../fonts/ClashGrotesk-Bold.ttf') format('truetype');
+         font-weight: 700;
+         font-display: swap;
+         font-style: normal;
+  }
+  
+  

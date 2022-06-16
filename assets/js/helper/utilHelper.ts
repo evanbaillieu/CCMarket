@@ -33,3 +33,16 @@ export const setTokken = (tokken: string) => {
 export const getTokken = (): string => {
     return localStorage.getItem(config.tokken.key);
 };
+
+export const getTypeInpute = (name: string): string => {
+    switch (name) {
+        case 'password':
+            return 'password';
+        case 'dateDeNaissance':
+            return 'date';
+        case 'email':
+            return 'email';
+        default:
+            return 'text';
+    }
+};

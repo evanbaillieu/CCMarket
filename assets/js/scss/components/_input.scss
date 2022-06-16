@@ -1,0 +1,32 @@
+.input{
+    max-width: 560px;
+    width: 85vw;
+    display: flex;
+    flex-direction: column;
+    
+    & label{
+        font-size: 20px;
+        font-family: 'RedHatDisplay-Meduim';
+        &::after{
+            content: '*';
+            margin-left: 4px;
+            color: var(--primary-color);
+        }
+    }
+
+    & input{
+        height: 3rem;
+        border: none;
+        border-bottom: 2px solid var(--grey-color);
+        outline: none;
+        font-size: 20px;
+        font-family: 'RedHatDisplay-Meduim';
+        margin-bottom: 1rem;
+
+        &:focus{
+            border-color: var(--black-color);
+        }
+
+
+    }
+}
