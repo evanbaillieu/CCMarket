@@ -1,10 +1,18 @@
 {
-    "user":{
-        "name": "",
-        "prenom": "",
-        "dateNaissance": "",
-        "email": "",
-        
-
+  "user": [
+    {
+      "name": "evan",
+      "prenom": "baillieu",
+      "dateNaissance": "2000-11-14",
+      "email": "baillieu@gmail.com",
+      "id": 1
+    },
+    {
+      "name": "evan",
+      "prenom": "baillieu",
+      "dateNaissance": "2000-11-14",
+      "email": "baillieu@gmail.com",
+      "id": 2
     }
+  ]
 }
