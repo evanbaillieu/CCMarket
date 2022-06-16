@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Uid\Uuid;
 
 #[ApiResource(
 
@@ -43,6 +44,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
 {
+
+
+
     #[ORM\Id]
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
@@ -114,10 +118,14 @@ class Project
         $this->setCreatedAt(new \DateTime());
     }
 
+
+
     public function getId(): ?string
     {
         return $this->id;
     }
+
+
 
     public function getTitle(): ?string
     {
@@ -334,5 +342,10 @@ class Project
 
         return $this;
     }
+
+    public function __toString(){
+        return $this->title;
+    }
+
 
 }

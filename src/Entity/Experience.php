@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ExperienceRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: ExperienceRepository::class)]
 #[ApiResource]
@@ -41,8 +42,12 @@ class Experience
     #[ORM\Column(type: 'date', nullable: true)]
     private $endDate;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'experiences')]
-    private $User;
+    #[Groups([
+        'read:User:item'
+    ])]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'experience')]
+    private $user;
+
 
     public function getId(): ?string
     {
@@ -99,13 +104,14 @@ class Experience
 
     public function getUser(): ?User
     {
-        return $this->User;
+        return $this->user;
     }
 
-    public function setUser(?User $User): self
+    public function setUser(?User $user): self
     {
-        $this->User = $User;
+        $this->user = $user;
 
         return $this;
     }
+
 }

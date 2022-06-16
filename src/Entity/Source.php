@@ -62,6 +62,11 @@ class Source
     #[ORM\ManyToOne(targetEntity: Job::class, inversedBy: 'sources')]
     private $Job;
 
+    public function getId():string{
+        return $this->id;
+    }
+
+
     public function getType(): ?string
     {
         return $this->type;

@@ -111,34 +111,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'leader', targetEntity: Project::class, orphanRemoval: true)]
     private $projects;
 
-    #[
-        Groups(['edit:User:item','read:User:item'])
-    ]
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Experience::class)]
-    private $experiences;
+
+
     #[
         Groups(['edit:User:item','read:User:item'])
     ]
     #[ORM\ManyToOne(targetEntity: ProfilType::class, inversedBy: 'user')]
     private $profilType;
-    #[
-        Groups(['edit:User:item','read:User:item'])
-    ]
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Language::class)]
-    private $languages;
+
+
+
+
+
+
     #[
         Groups(['edit:User:item','read:User:item'])
     ]
     #[ORM\ManyToOne(targetEntity: Contributor::class, inversedBy: 'user')]
     private $contributor;
 
+    #[
+        Groups(['edit:User:item','read:User:item'])
+    ]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Experience::class)]
+    private $experience;
+
+    #[ORM\ManyToMany(targetEntity: Langues::class, mappedBy: 'user')]
+    private $langues;
+
 
 
     public function __construct(){
         $this->setRoles(['ROLE_USER']);
         $this->projects = new ArrayCollection();
-        $this->experiences = new ArrayCollection();
-        $this->languages = new ArrayCollection();
+        $this->experience = new ArrayCollection();
+        $this->langues = new ArrayCollection();
     }
 
 
@@ -277,35 +284,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Experience>
-     */
-    public function getExperiences(): Collection
-    {
-        return $this->experiences;
-    }
 
-    public function addExperience(Experience $experience): self
-    {
-        if (!$this->experiences->contains($experience)) {
-            $this->experiences[] = $experience;
-            $experience->setUser($this);
-        }
 
-        return $this;
-    }
-
-    public function removeExperience(Experience $experience): self
-    {
-        if ($this->experiences->removeElement($experience)) {
-            // set the owning side to null (unless already changed)
-            if ($experience->getUser() === $this) {
-                $experience->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getProfilType(): ?ProfilType
     {
@@ -319,35 +299,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Language>
-     */
-    public function getLanguages(): Collection
-    {
-        return $this->languages;
-    }
-
-    public function addLanguage(Language $language): self
-    {
-        if (!$this->languages->contains($language)) {
-            $this->languages[] = $language;
-            $language->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLanguage(Language $language): self
-    {
-        if ($this->languages->removeElement($language)) {
-            // set the owning side to null (unless already changed)
-            if ($language->getUser() === $this) {
-                $language->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getContributor(): ?Contributor
     {
@@ -357,6 +308,67 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setContributor(?Contributor $contributor): self
     {
         $this->contributor = $contributor;
+
+        return $this;
+    }
+
+    public function __toString(){
+        return $this->firstName;
+    }
+
+    /**
+     * @return Collection<int, Experience>
+     */
+    public function getExperience(): Collection
+    {
+        return $this->experience;
+    }
+
+    public function addExperience(Experience $experience): self
+    {
+        if (!$this->experience->contains($experience)) {
+            $this->experience[] = $experience;
+            $experience->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExperience(Experience $experience): self
+    {
+        if ($this->experience->removeElement($experience)) {
+            // set the owning side to null (unless already changed)
+            if ($experience->getUser() === $this) {
+                $experience->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Langues>
+     */
+    public function getLangues(): Collection
+    {
+        return $this->langues;
+    }
+
+    public function addLangue(Langues $langue): self
+    {
+        if (!$this->langues->contains($langue)) {
+            $this->langues[] = $langue;
+            $langue->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLangue(Langues $langue): self
+    {
+        if ($this->langues->removeElement($langue)) {
+            $langue->removeUser($this);
+        }
 
         return $this;
     }

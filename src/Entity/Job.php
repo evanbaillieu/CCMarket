@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: JobRepository::class)]
 #[ApiResource(
@@ -70,13 +71,13 @@ class Job
     #[ORM\JoinColumn(nullable: false)]
     private $profilType;
 
-    #[Groups(['read:Job:item',"write:Job:collection"])]
-    #[ORM\ManyToOne(targetEntity: Language::class, inversedBy: 'Job')]
-    private $language;
 
     #[Groups(['read:Job:collection',"write:Job:collection"])]
     #[ORM\OneToMany(mappedBy: 'Job', targetEntity: Source::class)]
     private $sources;
+
+    #[ORM\Column(type: 'datetime')]
+    private $createdAt;
 
     public function __construct()
     {
@@ -162,17 +163,7 @@ class Job
         return $this;
     }
 
-    public function getLanguage(): ?Language
-    {
-        return $this->language;
-    }
 
-    public function setLanguage(?Language $language): self
-    {
-        $this->language = $language;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Source>
@@ -200,6 +191,18 @@ class Job
                 $source->setJob(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
