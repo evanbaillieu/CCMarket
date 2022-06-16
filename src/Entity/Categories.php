@@ -12,13 +12,25 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: CategoriesRepository::class)]
 #[ApiResource(
     collectionOperations : [
-        'get',
+        'get' =>[
+            "normalization_context" => ['groups' => ['read:Cat:collection']],
+        ],
         'post' =>[
             "security" => "is_granted('ROLE_ADMIN')",
-        ]
-
+        ],
     ],
+    itemOperations: [
+        'get' => [
+            "normalization_context" => ['groups' => ['read:Cat:item']],
+        ],
+        'delete' => [
+            "security" => "is_granted('ROLE_ADMIN')",
+        ],
+        'put' => [
+            "security" => "is_granted('ROLE_ADMIN')",
+        ],
 
+    ]
 
 )]
 class Categories
@@ -27,12 +39,14 @@ class Categories
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
+    #[Groups(['read:Project:collection',"read:Cat:collection"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups('read:Project:collection')]
+    #[Groups(['read:Project:collection', "read:Cat:collection"])]
     private $name;
 
+    #[Groups(["read:Cat:collection", 'read:Cat:item'])]
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Project::class)]
     private $projects;
 

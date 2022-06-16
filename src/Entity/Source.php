@@ -18,14 +18,41 @@ class Source
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
+    #[Groups([
+        'read:User:item',
+        'read:Project:collection'
+    ])]
     private $id;
 
+    #[Groups([
+        'read:User:item',
+        'read:Project:collection',
+        'read:Job:collection',
+        'write:Project:collection',
+        "write:Job:collection"
+    ])]
     #[ORM\Column(type: 'string', length: 255)]
     private $type;
 
+    #[Groups([
+        'read:User:item',
+        'read:Project:collection',
+        'read:Job:collection',
+        'write:Job:collection',
+        'write:Project:collection',
+
+    ])]
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
+    #[Groups([
+        'read:User:item',
+        'read:Project:collection',
+        'read:Job:collection',
+        'write:Job:collection',
+        'write:Project:collection',
+
+    ])]
     #[ORM\Column(type: 'string', length: 255)]
     private $link;
 

@@ -17,6 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
             'normalization_context' => ['groups' => ['read:Project:collection']]
         ],
         'post' =>[
+            //Création de projet uniquement si il est connecté
             "security" => "is_granted('ROLE_USER')",
             //Lors d'un ajout de projet par un utilisateur il ne peut renseigné uniquement les infos de ce groupe
             'denormalization_context' => ['groups' => ['write:Project:collection']]
@@ -31,6 +32,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
         // Delete uniquement disponible pour les utilisateur Admin
         "delete" => ["security" => "is_granted('ROLE_ADMIN')"],
         'put' => [
+            //Elements que l'ont peut edit
+            'denormalization_context' => ['groups' => ['edit:Project:item']],
             //Peut edit uniquement si il est Admin ou leader du projet
             "security" => "is_granted('ROLE_ADMIN') or (object.getLeader() == user)"
         ]
@@ -44,18 +47,21 @@ class Project
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
-    #[Groups('read:Project:collection')]
+    #[Groups(['read:Project:collection',
+        'read:Job:item'])]
     private $id;
 
-    #[Groups(['read:Project:collection','write:Project:collection'])]
+    #[Groups(['read:Project:collection','write:Project:collection','edit:Project:item', 'read:User:item',
+        'read:Job:item', 'read:Cat:item'])]
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
 
-    #[Groups(['read:Project:collection','write:Project:collection'])]
+    #[Groups(['read:Project:collection','write:Project:collection','edit:Project:item', 'read:User:item',
+        'read:Job:item', 'read:Cat:item'])]
     #[ORM\Column(type: 'string', length: 255)]
     private $abstract;
 
-    #[Groups(['read:Project:item','write:Project:collection'])]
+    #[Groups(['read:Project:item','write:Project:collection','edit:Project:item'])]
     #[ORM\Column(type: 'text')]
     private $description;
 
@@ -63,7 +69,8 @@ class Project
     #[ORM\Column(type: 'integer', nullable: true)]
     private $nbStar;
 
-    #[Groups(['read:Project:item','read:Project:collection','write:Project:collection'])]
+    #[Groups(['read:Project:item','read:Project:collection','write:Project:collection',
+        'read:Job:item'])]
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'projects')]
     #[ORM\JoinColumn(nullable: false)]
     private $leader;
@@ -85,12 +92,11 @@ class Project
     private $favorites;
 
 
-
     #[Groups(['read:Project:collection','write:Project:collection'])]
     #[ORM\OneToMany(mappedBy: 'Project', targetEntity: Contributor::class)]
     private $contributors;
 
-    #[Groups(['read:Project:collection','write:Project:collection'])]
+    #[Groups(['read:Project:collection','write:Project:collection', 'read:User:item'])]
     #[ORM\OneToMany(mappedBy: 'Project', targetEntity: Source::class)]
     private $sources;
 

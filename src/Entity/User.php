@@ -29,7 +29,7 @@ use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
                 ],
             ],
             'post' =>[
-                //Propriété que l'ont perut écrire lors de l'inscription
+                //Propriété que l'ont peut écrire lors de l'inscription
                 'denormalization_context' => [
                     'groups' => ['write:User:collection']
                 ],
@@ -63,14 +63,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
-    #[Groups(['read:User:collection'])]
+    #[Groups(['read:User:collection', 'read:Project:item'])]
     private $id;
 
 
 
     #[
         Email(),
-        Groups(['write:User:collection','read:User:collection','edit:User:item'])
+        Groups(['write:User:collection','read:User:collection','edit:User:item', 'read:Project:item'])
     ]
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $email;
@@ -88,13 +88,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     #[
-        Groups(['write:User:collection','edit:User:item', 'read:User:collection'])
+        Groups(['write:User:collection','edit:User:item', 'read:User:collection','read:Project:item'])
     ]
     #[ORM\Column(type: 'string', length: 50)]
     private $firstName;
 
     #[
-        Groups(['write:User:collection','edit:User:item','read:User:collection'])
+        Groups(['write:User:collection','edit:User:item','read:User:collection','read:Project:item'])
     ]
     #[ORM\Column(type: 'string', length: 70)]
     private $lastName;

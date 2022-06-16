@@ -7,9 +7,33 @@ use App\Repository\JobRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: JobRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    collectionOperations : [
+        'get' => [
+            //Get uniquement les paramètres de ce group lors d'un get collection
+            'normalization_context' => ['groups' => ['read:Job:collection']]
+        ],
+        'post'=> [
+            'denormalization_context' => ["groups" => ["write:Job:collection"]],
+            "security" => "is_granted('ROLE_USER')"
+        ]
+    ],
+    itemOperations: [
+        'get' => [
+            'normalization_context' => ['groups' => ['read:Job:item', 'read:Job:collection']]
+        ],
+        'put' =>[
+            "security" => "is_granted('ROLE_ADMIN') or (Project.leader == user)",
+            "denormalization_context" => ['groups' => ['write:Job:collection']]
+        ],
+        'delete' => [
+            "security" => "is_granted('ROLE_USER')",
+        ]
+    ]
+)]
 
 class Job
 {
@@ -17,30 +41,40 @@ class Job
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
+    #[Groups(['read:Job:collection'])]
     private $id;
 
+    #[Groups(['read:Project:item', 'read:Job:collection',"write:Job:collection"])]
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
 
+    #[Groups(['read:Project:item', 'read:Job:collection',"write:Job:collection"])]
     #[ORM\Column(type: 'string', length: 255)]
     private $abstract;
 
+    #[Groups(['read:Project:item', 'read:Job:collection',"write:Job:collection"])]
     #[ORM\Column(type: 'text')]
     private $description;
 
+    #[Groups(['read:Project:item', 'read:Job:collection'])]
     #[ORM\Column(type: 'boolean')]
     private $isBanned;
 
+
+    #[Groups(['read:Job:item',"write:Job:collection"])]
     #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'jobs')]
     private $Project;
 
+    #[Groups(['read:Job:item',"write:Job:collection"])]
     #[ORM\ManyToOne(targetEntity: ProfilType::class, inversedBy: 'Job')]
     #[ORM\JoinColumn(nullable: false)]
     private $profilType;
 
+    #[Groups(['read:Job:item',"write:Job:collection"])]
     #[ORM\ManyToOne(targetEntity: Language::class, inversedBy: 'Job')]
     private $language;
 
+    #[Groups(['read:Job:collection',"write:Job:collection"])]
     #[ORM\OneToMany(mappedBy: 'Job', targetEntity: Source::class)]
     private $sources;
 
