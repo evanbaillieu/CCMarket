@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Lang from '../../components/lang';
+import Lang from './lang';
 
 export default function AccountSettings() {
     const { t } = useTranslation();

@@ -2,9 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useOutlet } from 'react-router-dom';
 import profile from '../../img/test.png';
-import AccountInfos from './AccountInfos';
 
-export default function Users() {
+export default function Account() {
     const { t } = useTranslation();
     const outlet = useOutlet();
 
@@ -25,7 +24,7 @@ export default function Users() {
                     </li>
                 </ul>
             </div>
-            {outlet ?? <AccountInfos />}
+            {outlet}
         </div>
     );
 }

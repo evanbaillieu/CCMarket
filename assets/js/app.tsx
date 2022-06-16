@@ -9,7 +9,8 @@ import Login from './view/Login';
 import Posts from './view/Posts';
 import Register from './view/Registeur';
 import Account from './view/Account';
-import AccountSettings from './view/Account/AccountSettings';
+import AccountInfos from './components/AccountInfos';
+import AccountSettings from './components/AccountSettings';
 import EditAccount from './view/Account/EditAccount';
 import ChangePassword from './view/Account/ChangePassword';
 import './scss/main.scss';
@@ -30,6 +31,7 @@ const App: FC = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/account" element={<Account />}>
+                    <Route path="/account" element={<AccountInfos />} />
                     <Route path="/account/settings" element={<AccountSettings />} />
                 </Route>
                 <Route path="/posts" element={<Posts />} />
