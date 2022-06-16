@@ -1,8 +1,13 @@
 :root{
     --primary-color: #F05454;
+    --secondary-color: #FFAF82;
     --black-color: #333333;
     --white-color: #FAFAFA;
     --grey-color: #EBEBEB;
 }
 
 $primary: var(--primary-color);
+$secondary: var(--secondary-color);
+$black: var(--black-color);
+$white: var(--white-color);
+$grey: var(--grey-color);
