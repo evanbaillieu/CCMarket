@@ -65,9 +65,33 @@ class ApiLoginController extends AbstractController
         $entityManager->flush();
         
         return $this->json([
-            'user' => $request,
-            'TEST' => $data,
-            'useer' => $user
+            'user' => $user
         ]);
     }
+
+    /**
+     * @route("/me", methods="GET")
+     */
+    public function getME(#[CurrentUser] ?User $user, ManagerRegistry $doctrine){
+        $entityManager = $doctrine->getManager();
+
+        if($user){
+            $fullUser = $entityManager->getRepository(User::class)->find($user->getId());
+
+            return $this->json([
+                'user' => $fullUser
+            ]);
+        }
+
+        return $this->json([
+            'error' => 'error'
+        ], Response::HTTP_BAD_REQUEST);
+    }
+
+    /**
+     * @route("/logout", name="api_logout", methods="POST")
+     */
+    public function logout(){
+    }
+
 }

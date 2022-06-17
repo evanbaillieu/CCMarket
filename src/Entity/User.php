@@ -3,19 +3,18 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Controller\ApiLoginController;
+use App\Controller\MeController;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Lexik\Bundle\JWTAuthenticationBundle\Security\User\JWTUserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
-use Doctrine\ORM\Id\AbstractIdGenerator;
-use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -28,13 +27,6 @@ use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
                 'normalization_context' => [
                     'groups' => ['read:User:collection']
                 ],
-            ],
-            'me'=>[
-                'pagination_enable' => false,
-                'path' => '/me',
-                'methode' => 'get',
-                'controller' => ApiLoginController::class,
-
             ],
             'post' =>[
                 //Propriété que l'ont peut écrire lors de l'inscription
@@ -65,14 +57,14 @@ use Symfony\Component\Validator\Constraints\NotCompromisedPassword;
         ],
     )
 ]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUserInterface
 {
     #[ORM\Id]
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
     #[Groups(['read:User:collection', 'read:Project:item'])]
-    private $id;
+    public $id;
 
 
 
@@ -160,6 +152,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getId(): ?string
     {
         return $this->id;
+    }
+
+    public function setId(?string $id): self
+    {
+        $this->id = $id;
+        return $this;
     }
 
     public function getEmail(): ?string
@@ -379,5 +377,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public static function createFromPayload($id, array $payload){
+        $user = new User();
+        $user = $user->setId($id);
+        return $user;
+
     }
 }
