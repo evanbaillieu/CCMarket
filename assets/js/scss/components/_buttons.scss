@@ -1,0 +1,39 @@
+.btn {
+    display: inline-block;
+    font-family: 'RedHatDisplay-Bold';
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    padding: 10px 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    &-primary {
+        background-color: $primary;
+        color: $white;
+
+        &:hover {
+            background-color: $secondary;
+        }
+    }
+
+    &-cancel {
+        color: $black;
+
+        &::before {
+            content: url("../../svg/arrowLeft.svg");
+            width: 26px;
+            height: 16px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        &:hover {
+            background-color: $grey;
+        }
+    }
+}
