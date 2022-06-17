@@ -1,0 +1,183 @@
+#account {
+    h1 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    img {
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+
+    @include respond-to('sm') {
+        margin: 0 50px;
+        display: flex;
+    }
+}
+
+.sidebar {
+    img {
+        display: none;
+
+        @include respond-to('sm') {
+            display: inline;
+        }
+    }
+
+    h3 {
+        display: none;
+
+        @include respond-to('sm') {
+            display: block;
+            margin-bottom: 50px;
+            min-width: 250px;
+        }
+    }
+
+    ul {
+        text-align: center;
+        list-style-type: none;
+        padding: 0;
+        margin-bottom: 50px;
+        overflow-x: auto;
+        white-space: nowrap;
+
+        @include respond-to('sm') {
+            display: block;
+            margin-bottom: 0;
+            white-space: normal;
+            text-align: start;
+        }
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 20px;
+
+        a {
+            font-family: 'RedHatDisplay-SemiBold';
+            text-decoration: none;
+            color: $black;
+            font-size: 20px;
+
+            &:hover {
+                color: $secondary;
+            }
+        }
+
+
+        .active {
+            color: $primary;
+        }
+
+        @include respond-to('sm') {
+            display: block;
+            margin: 0;
+            margin-bottom: 50px;
+        }
+    }
+
+    @include respond-to('sm') {
+        margin-right: 50px;
+    }
+}
+
+.account-content {
+    width: 100%;
+
+    .btn {
+        display: block;
+        text-align: center;
+        margin-left: 20px;
+
+        @include respond-to('sm') {
+            display: inline-block;
+            margin-left: 0;
+        }
+    }
+
+    img {
+        display: block;
+        margin: auto;
+
+        @include respond-to('sm') {
+            display: none;
+        }
+    }
+}
+
+#account-infos,
+#account-settings {
+    margin-bottom: 40px;
+    
+    @include respond-to('sm') {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 40px;
+        grid-row-gap: 40px;
+    }
+
+    @include respond-to('md') {
+        grid-column-gap: 100px;
+    }
+}
+
+#account-infos { 
+    grid-template-rows: repeat(2, 1fr);
+
+    h6,
+    p {
+        text-align: center;
+
+        @include respond-to('sm') {
+            text-align: start;
+        }
+    }
+
+    @include respond-to('sm') {
+        :nth-child(1).grid-content { grid-area: 1 / 1 / 2 / 2; }
+        :nth-child(2).grid-content { grid-area: 1 / 2 / 2 / 3; }
+        :nth-child(3).grid-content { grid-area: 2 / 1 / 3 / 2; }
+        :nth-child(4).grid-content { grid-area: 2 / 2 / 3 / 3; }
+    }
+}
+
+#account-settings {
+    text-align: center;
+
+    label {
+        display: block;
+    }
+
+    select {
+        font-size: 20px;
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid $black;
+        width: 100%;
+        max-width: 200px;
+        outline: none;
+        margin: 20px 0;
+    }
+
+    @include respond-to('sm') {
+        text-align: start;
+        grid-template-rows: 1fr;
+
+        :nth-child(1).grid-content {
+            grid-area: 1 / 1 / 2 / 2;
+            margin-bottom: 40px;
+
+            @include respond-to('sm') {
+                margin-bottom: 0;
+            }
+        }
+        :nth-child(2).grid-content {
+            grid-area: 1 / 2 / 2 / 3;
+        }
+    }
+}
