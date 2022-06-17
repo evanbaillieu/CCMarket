@@ -31,7 +31,7 @@ const data: TranslationFormat = {
     post: 'pas de nouveau post',
     account: {
         title: 'Votre compte',
-        settings: 'Paramètre',
+        settings: 'Paramètres',
         logout: 'Déconnexion',
         firstName: 'Prénom',
         lastName: 'Nom',
