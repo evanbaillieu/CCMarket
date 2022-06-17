@@ -1,7 +1,5 @@
 import React, { FC, ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getTypeInpute } from '../helper/utilHelper';
-import OeilFermer from '../svg/oeilFermer.svg';
 
 export interface IOptionInput {
     validate: string;
@@ -27,11 +25,11 @@ const Inpute: FC<IInputeProps> = ({ option, value, handleChange, svg, onClick })
             <div className="input_content">
                 <input
                     className={option.error ? 'error' : option.validate ? 'validate' : ''}
-                    type={getTypeInpute(option.name)}
+                    type={option.type}
                     onChange={handleChange}
                     name={option.name}
                     value={value}
-                    placeholder={/*t(`placeholder.${name}`)*/ '••••••••••••'}
+                    placeholder={t(`placeholder.${option.name}`)}
                 />
                 {svg && <div onClick={onClick}>{svg}</div>}
             </div>

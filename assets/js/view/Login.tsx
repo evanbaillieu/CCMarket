@@ -34,12 +34,14 @@ const Login: FC = ({}) => {
                 <h3>{t('login.title')}</h3>
             </div>
             <div>
-                {/*<Inpute
+                <Inpute
                     svg={<Arobase />}
                     option={{
+                        type: 'email',
                         name: 'email',
                         title: `login.email`,
                         error: errors.email,
+                        validate: '',
                     }}
                     handleChange={hangleChange}
                     value={data.email}
@@ -47,14 +49,16 @@ const Login: FC = ({}) => {
                 <Inpute
                     svg={isActivate ? <Oeil /> : <OeilFermer />}
                     option={{
-                        name: isActivate ? 'text' : 'password',
+                        name: 'password',
                         title: `login.password`,
                         error: errors.password,
+                        validate: '',
+                        type: isActivate ? 'text' : 'password',
                     }}
                     handleChange={hangleChange}
                     value={data.password}
                     onClick={changeVisble}
-                />*/}
+                />
             </div>
             <a>Forgot password ?</a>
             <button className="btn_primary" onClick={submit}>
