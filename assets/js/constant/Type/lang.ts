@@ -9,6 +9,18 @@ export type TranslationFormat = {
         projects: string;
         jobs: string;
     };
+    home: {
+        title: string;
+        description: string;
+        getstarted: string;
+    };
+    footer: {
+        home: string;
+        projects: string;
+        jobs: string;
+        Myaccount: string;
+        Messaging: string;
+    };
     login: {
         title: string;
         email: string;

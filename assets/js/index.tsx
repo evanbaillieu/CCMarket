@@ -5,7 +5,8 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './app';
 import './i18n';
-//import './scss/main.scss';
+import './scss/main.scss';
+
 const queryClient = new QueryClient();
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement!);

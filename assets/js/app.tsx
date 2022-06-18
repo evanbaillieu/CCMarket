@@ -42,9 +42,7 @@ const App: FC = () => {
                 <Route path="/account/edit" element={<EditAccount />} />
                 <Route path="/account/password" element={<ChangePassword />} />
             </Routes>
-            <div className="footer">
-                <Footer />
-            </div>
+            <Footer />
         </div>
     );
 };

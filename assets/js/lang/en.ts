@@ -5,6 +5,19 @@ const data: TranslationFormat = {
         projects: 'Projects',
         jobs: 'Jobs',
     },
+    home: {
+        title: 'The platform that connects contributors and open source project owners',
+        description:
+            'Lorem Ipsum is simply dummy text used in typesetting and layout before printing. Lorem Ipsum has been the printing industry`s standard dummy text since the 1500s, when an anonymous printer pieced together chunks of text to make a specimen book of typefaces. He didn`t just survive five centuries',
+        getstarted: 'Get started',
+    },
+    footer: {
+        home: 'Home',
+        projects: 'Projects',
+        jobs: 'Jobs',
+        Myaccount: 'My account',
+        Messaging: 'Messaging',
+    },
     login: {
         title: 'Login',
         email: 'Email',

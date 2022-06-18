@@ -1,29 +1,138 @@
-/*.nav{
+.primary_header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0px;
+    padding: 0px 30px;
     gap: 10px;
-    position: absolute;
-    width: 1372px;
-    left: 35px;
-    right:35px;
-    top: 0px;
-    
-    &_link{
-        font-size: 10px;
-    }
 
-    &.nav_item{
-        font-size: 10px;
-        display: inline-block;
-        justify-content: space-between;
-        padding: 0 20px;
+    .nav_logoHeader{
+        display: none;
+    }
+    .mobileNavToggle{
+        display: none;
       }
-      
+    .nav_logoResponsive{
+        display: none;
+      }
+
+    .primary_navigition{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        margin: 0;
+
+        ul.liste{
+        list-style-type: none;
+        padding: 0px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        margin: 0;
+        
+        li.nav_item{
+            padding: 10px;
+            font-size: 18px;
+            z-index: 9999;
+            text-decoration: none;
+            .nav_link{
+                margin: 0 1.2rem;
+                font-size: 20px;
+                text-decoration: none; 
+                color: var(--black-color); 
+              }
+            .nav_link:hover{
+                color: var(--primary-color);
+                border-bottom: 1px solid var(--primary-color);
+  
+              }
+          }
+        }
+        ul.liste_iconsHome{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            list-style-type: none;
+            padding: 0px;
+            z-index: 9999;
+            & li.iconsHome{
+                padding: 10px;
+                font-size: 18px;
+                z-index: 9999;
+            }
+        }
+        ul.liste_iconsResponsive{
+            display: none;
+        }
+    }
 }
 
-.error{
-    color:red;
-}*/ 
+
+@media screen and (max-width: 768px){
+    .primary_header{
+        flex-direction: column;
+        
+        .nav_logoHeader{
+            display: block;
+            padding-top: 30px;
+            text-align: center;
+        }
+        .mobileNavToggle{
+            display: block;
+            position: absolute;
+            z-index: 9999;
+            //background: url("../img/iconHamburg.png");
+            background-repeat: no-repeat;
+            width: 2rem;
+            aspect-ratio: 1;
+            border: 0;
+            top: 3em;
+            right: 2.5em;
+          }
+        .nav_logoResponsive{
+            display: block;
+            z-index: 9999;
+            position: fixed;
+            left: 2em;
+            top: 2em;
+          }
+          .nav_logoHeaders{
+            display: none;
+        }
+        .primary_navigitions{
+            display: none;
+        }
+        .primary_navigition{
+            inset: 0 0 0 20%;
+            background: var(--white-color);
+            flex-direction: column;
+            justify-content: center;
+            z-index: 9999;
+            //padding: 5vh, 10em 2em;
+            position: absolute;
+            width: 80%;
+           
+            ul.liste_iconsHome{
+               display:none;
+            }
+
+            ul.liste_iconsResponsive{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                li.iconsResponsive{
+                    padding:  10px;
+                    font-size: 18px;
+                    z-index: 9999;
+                }
+            }
+        }
+    }
+}
