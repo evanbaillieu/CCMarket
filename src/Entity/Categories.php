@@ -15,8 +15,9 @@ use Symfony\Component\Uid\Uuid;
     collectionOperations : [
         'get' =>[
             "normalization_context" => ['groups' => ['read:Cat:collection']],
+            "security" => "is_granted('ROLE_ADMIN')",
             "openapi_context" =>[
-                'security' =>[['bearerAuth' => []]]
+                'security' => [['bearerAuth' => []]]
             ]
         ],
         'post' =>[

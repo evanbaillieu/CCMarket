@@ -381,7 +381,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
 
     public static function createFromPayload($id, array $payload){
         $user = new User();
-        $user = $user->setId($id);
+        $user = $user->setId($id)->setRoles($payload["roles"]);
         return $user;
 
     }

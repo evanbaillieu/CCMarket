@@ -6,10 +6,12 @@ import profile from '../../img/test.png';
 export default function Account() {
     const { t } = useTranslation();
     const outlet = useOutlet();
+
     const [user, setUser] = useState({
         firstName: 'John',
         lastName: 'Doe',
     });
+
     const getNavLinkClass = (path: string) => {
         return window.location.pathname === path ? 'active' : '';
     };
