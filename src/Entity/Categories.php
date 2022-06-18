@@ -15,6 +15,9 @@ use Symfony\Component\Uid\Uuid;
     collectionOperations : [
         'get' =>[
             "normalization_context" => ['groups' => ['read:Cat:collection']],
+            "openapi_context" =>[
+                'security' =>[['bearerAuth' => []]]
+            ]
         ],
         'post' =>[
             "security" => "is_granted('ROLE_ADMIN')",
@@ -23,6 +26,9 @@ use Symfony\Component\Uid\Uuid;
     itemOperations: [
         'get' => [
             "normalization_context" => ['groups' => ['read:Cat:item']],
+            "openapi_context" =>[
+                'security' =>[['bearerAuth' => []]]
+            ]
         ],
         'delete' => [
             "security" => "is_granted('ROLE_ADMIN')",
