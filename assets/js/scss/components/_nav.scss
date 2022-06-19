@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 30px;
+    padding: 10px 20px 0 30px;
     gap: 10px;
 
     .nav_logoHeader{
@@ -34,7 +34,7 @@
         justify-content: space-between;
         align-items: center;
         align-content: center;
-        margin: 0;
+        margin: auto;
         
         li.nav_item{
             padding: 10px;
@@ -42,7 +42,7 @@
             z-index: 9999;
             text-decoration: none;
             .nav_link{
-                margin: 0 1.2rem;
+                margin: 0;
                 font-size: 20px;
                 text-decoration: none; 
                 color: var(--black-color); 
@@ -50,9 +50,9 @@
             .nav_link:hover{
                 color: var(--primary-color);
                 border-bottom: 1px solid var(--primary-color);
-  
+                
               }
-          }
+            }
         }
         ul.liste_iconsHome{
             display: flex;
@@ -61,8 +61,10 @@
             align-items: center;
             list-style-type: none;
             padding: 0px;
+            margin: auto;
             z-index: 9999;
-            & li.iconsHome{
+
+            li.iconsHome{
                 padding: 10px;
                 font-size: 18px;
                 z-index: 9999;
@@ -78,7 +80,8 @@
 @media screen and (max-width: 768px){
     .primary_header{
         flex-direction: column;
-        
+        padding: 0;
+
         .nav_logoHeader{
             display: block;
             padding-top: 30px;
@@ -86,14 +89,13 @@
         }
         .mobileNavToggle{
             display: block;
-            position: absolute;
+            position: fixed;
             z-index: 9999;
-            //background: url("../img/iconHamburg.png");
-            background-repeat: no-repeat;
+
             width: 2rem;
-            aspect-ratio: 1;
+
             border: 0;
-            top: 3em;
+            top: 2.5em;
             right: 2.5em;
           }
         .nav_logoResponsive{
@@ -103,36 +105,56 @@
             left: 2em;
             top: 2em;
           }
-          .nav_logoHeaders{
+        .nav_logoHeaders{
             display: none;
         }
-        .primary_navigitions{
-            display: none;
-        }
+
         .primary_navigition{
+            flex-direction: column;
             inset: 0 0 0 20%;
             background: var(--white-color);
-            flex-direction: column;
+
             justify-content: center;
             z-index: 9999;
-            //padding: 5vh, 10em 2em;
+            
             position: absolute;
             width: 80%;
-           
+            margin: 0;
+            padding: 0;
+
+            ul.liste{
+            margin: 0;
+            
+            li.nav_item{
+                padding: 10px;
+                font-size: 18px;
+                z-index: 9999;
+                text-decoration: none;
+                .nav_link{
+                    margin: 0;
+                    font-size: 20px;
+                    text-decoration: none; 
+                    color: var(--black-color); 
+                  }
+                .nav_link:hover{
+                    color: var(--primary-color);
+                    border-bottom: 1px solid var(--primary-color);
+      
+                  }
+                }
+            }
+            
             ul.liste_iconsHome{
-               display:none;
+                display:none;
             }
 
             ul.liste_iconsResponsive{
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                li.iconsResponsive{
-                    padding:  10px;
-                    font-size: 18px;
-                    z-index: 9999;
-                }
+                    display: block;
+                    flex-direction: row;
+                    list-style-type: none;
+                    padding: 0px;
             }
         }
     }
+
 }

@@ -44,11 +44,9 @@ const Navbar: FC = () => {
                     <Logo />
                 </Link>
             </div>
-            <button onClick={toggleNavSmallScreen} aria-controls="primary_navigition" aria-expanded="false">
-                <span className="mobileNavToggle sr-only">
-                    <IconHamburg />
-                </span>
-            </button>
+            <span onClick={toggleNavSmallScreen} className="mobileNavToggle">
+                <IconHamburg />
+            </span>
             {(toggleMenu || largeur > 768) && (
                 <nav className="primary_navigition">
                     <div className="nav_logoHeader">
@@ -59,22 +57,35 @@ const Navbar: FC = () => {
                     <ul className="liste">
                         <li className="nav_item">
                             <Link className={'nav_link'} to={'/posts'}>
-                                {t('Home')}
+                                {t('nav.home')}
                             </Link>
                         </li>
 
                         <li className="nav_item">
                             <Link className={'nav_link'} to={'/users'}>
-                                {t('For you')}
+                                {t('nav.projects')}
                             </Link>
                         </li>
 
                         <li className="nav_item">
                             <Link className={'nav_link'} to={'/jobs'}>
-                                {t('About')}
+                                {t('nav.jobs')}
                             </Link>
                         </li>
                     </ul>
+                    <div>
+                        <ul className="liste_iconsResponsive">
+                            <li className="iconResponsive">
+                                <Profil />
+                            </li>
+                            <li className="iconResponsive">
+                                <Message />
+                            </li>
+                            <li className="iconResponsive">
+                                <Search />
+                            </li>
+                        </ul>
+                    </div>
 
                     <div>
                         <ul className="liste_iconsHome">
@@ -86,20 +97,6 @@ const Navbar: FC = () => {
                             </li>
                             <li className="iconsHome">
                                 <Searchs />
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <ul className="liste_iconsResponsive">
-                            <li className="iconResponsive">
-                                <Profil />
-                            </li>
-                            <li className="iconResponsive">
-                                <Message />
-                            </li>
-                            <li className="iconResponsive">
-                                <Search />
                             </li>
                         </ul>
                     </div>

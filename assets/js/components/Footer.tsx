@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import LogoWhite from '../svg/LogoWhite.svg';
+import LogoWhite from '../img/LogoWhite.png';
+//import LogoWhite from '../svg/LogoWhite.svg';
 
 const Footer: FC = () => {
     const { t } = useTranslation();
@@ -11,31 +12,35 @@ const Footer: FC = () => {
                 <ul>
                     <li className="nav_items">
                         <Link className={'nav_link'} to={'/posts'}>
-                            {t('Home')}
+                            {t('footer.home')}
                         </Link>
                     </li>
 
                     <li className="nav_items">
                         <Link className={'nav_link'} to={'/users'}>
-                            {t('Projects')}
+                            {t('footer.projects')}
                         </Link>
                     </li>
                     <li className="nav_items">
                         <Link className={'nav_link'} to={'/jobs'}>
-                            {t('Jobs')}
+                            {t('footer.jobs')}
                         </Link>
                     </li>
                     <li className="nav_items">
                         <Link className={'nav_link'} to={'/users'}>
-                            {t('My account')}
+                            {t('footer.myaccount')}
+                        </Link>
+                    </li>
+                    <li className="nav_items">
+                        <Link className={'nav_link'} to={'/users'}>
+                            {t('footer.messaging')}
                         </Link>
                     </li>
                 </ul>
+                <span>
+                    <img src={LogoWhite} className="logoWhiteFooter" alt="logoWhiteFooter" />
+                </span>
             </nav>
-
-            <span className="LogoWhite">
-                <LogoWhite />
-            </span>
         </div>
     );
 };

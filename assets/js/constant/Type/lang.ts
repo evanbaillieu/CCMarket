@@ -13,13 +13,31 @@ export type TranslationFormat = {
         title: string;
         description: string;
         getstarted: string;
+        complete: string;
+        secure: string;
+        community: string;
+        utilities: string;
+        system: string;
+        officeAutomation: string;
+        multimedia: string;
+        internet: string;
+        design: string;
+        game: string;
+        education: string;
+        developement: string;
+        happiness: string;
+        findYourOwn: string;
+        thePlatFormThat: string;
+        connectsContributors: string;
+        and: string;
+        openSourceProjectOwners: string;
     };
     footer: {
         home: string;
         projects: string;
         jobs: string;
-        Myaccount: string;
-        Messaging: string;
+        myaccount: string;
+        messaging: string;
     };
     login: {
         title: string;

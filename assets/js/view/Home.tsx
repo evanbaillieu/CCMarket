@@ -26,24 +26,19 @@ const Home: FC = () => {
                 <div>
                     <img src={SectionRightHome} className="imgSectionRightHome" />
                 </div>
-                <div>
-                    <img src={HomeResponsive} className="imgHomeResponsive" />
-                </div>
                 <div className="div_text">
+                    <img src={HomeResponsive} className="imgHomeResponsive" />
                     <h1 className="title">
-                        The platform that <span className="colorJ">connects contributors</span> and{' '}
-                        <span className="colorR">open source project owners</span>
+                        {t('home.thePlatFormThat')}
+                        <span className="colorJ">{t('home.connectsContributors')}</span>
+                        {t('home.and')}
+                        <span className="colorR">{t('home.openSourceProjectOwners')}</span>
                     </h1>
-                    <p>
-                        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant
-                        impression. Le Lorem Ipsum est le faux texte standard de l`imprimerie depuis les années 1500,
-                        quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre
-                        spécimen de polices de texte. Il n`a pas fait que survivre cinq siècles,
-                    </p>
+                    <p>{t('home.description')}</p>
 
                     <a href="/">
                         <button className="button">
-                            Get started
+                            {t('home.getstarted')}
                             <span className="arrow_button">
                                 <Arrow />
                             </span>
@@ -57,56 +52,57 @@ const Home: FC = () => {
                     <a href="/" className="icon">
                         <Layer />
                     </a>
-                    <h2>Complete</h2>
+                    <h2>{t('home.complete')}</h2>
                 </div>
                 <div className="items">
                     <a href="/" className="icon">
                         <Lock />
                     </a>
-                    <h2>Secure</h2>
+                    <h2>{t('home.secure')}</h2>
                 </div>
                 <div className="items">
                     <a href="/" className="icon">
                         <Internet />
                     </a>
-                    <h2>Community</h2>
+                    <h2>{t('home.community')}</h2>
                 </div>
             </div>
 
             <div className="div_container">
                 <h2>
-                    Find your own <span className="colorR">happiness</span>
+                    {t('home.findYourOwn')}
+                    <span className="colorR">{t('home.happiness')}</span>
                 </h2>
                 <div className="container">
                     <div className="item">
                         <a href="/" className="icons">
                             <Developement />
                         </a>
-                        <h3>Developement</h3>
+                        <h3>{t('home.developement')}</h3>
                     </div>
                     <div className="item">
                         <a href="/" className="icons">
                             <Education />
                         </a>
-                        <h3>Education</h3>
+                        <h3>{t('home.education')}</h3>
                     </div>
                     <div className="item">
                         <a href="/" className="icons">
                             <Game />
                         </a>
-                        <h3>Game</h3>
+                        <h3>{t('home.game')}</h3>
                     </div>
                     <div className="item">
                         <a href="/" className="icons">
                             <Design />
                         </a>
-                        <h3>Design</h3>
+                        <h3>{t('home.design')}</h3>
                     </div>
                     <div className="item">
                         <a href="/" className="icons">
                             <Internets />
                         </a>
-                        <h3>Internet</h3>
+                        <h3>{t('home.internet')}</h3>
                     </div>
                 </div>
                 <div className="container">
@@ -114,25 +110,25 @@ const Home: FC = () => {
                         <a href="/" className="icons">
                             <Multimedia />
                         </a>
-                        <h3>Multimedia</h3>
+                        <h3>{t('home.multimedia')}</h3>
                     </div>
                     <div className="item">
                         <a href="/" className="icons">
                             <OfficeAutomation />
                         </a>
-                        <h3>Office automation</h3>
+                        <h3>{t('home.officeAutomation')}</h3>
                     </div>
                     <div className="item">
                         <a href="/" className="icons">
                             <System />
                         </a>
-                        <h3>System</h3>
+                        <h3>{t('home.system')}</h3>
                     </div>
                     <div className="item">
                         <a href="/" className="icons">
                             <Utilities />
                         </a>
-                        <h3>Utilities</h3>
+                        <h3>{t('home.utilities')}</h3>
                     </div>
                 </div>
             </div>
