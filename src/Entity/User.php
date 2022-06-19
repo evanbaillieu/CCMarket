@@ -139,6 +139,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
     #[ORM\ManyToMany(targetEntity: Langues::class, mappedBy: 'user')]
     private $langues;
 
+    #[ORM\OneToOne(mappedBy: 'User', targetEntity: Messaging::class, cascade: ['persist', 'remove'])]
+    private $messaging;
+
+    #[ORM\OneToMany(mappedBy: 'blockedUser', targetEntity: Messaging::class)]
+    private $messagings;
+
+    #[ORM\ManyToOne(targetEntity: Message::class, inversedBy: 'sender')]
+    private $message;
+
+
 
 
     public function __construct(){
@@ -146,6 +156,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
         $this->projects = new ArrayCollection();
         $this->experience = new ArrayCollection();
         $this->langues = new ArrayCollection();
+        $this->messagings = new ArrayCollection();
     }
 
 
@@ -385,4 +396,60 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
         return $user;
 
     }
+
+    public function getMessaging(): ?Messaging
+    {
+        return $this->messaging;
+    }
+
+    public function setMessaging(Messaging $messaging): self
+    {
+        // set the owning side of the relation if necessary
+        if ($messaging->getUser() !== $this) {
+            $messaging->setUser($this);
+        }
+
+        $this->messaging = $messaging;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Messaging>
+     */
+    public function getMessagings(): Collection
+    {
+        return $this->messagings;
+    }
+
+    public function addMessaging(Messaging $messaging): self
+    {
+        if (!$this->messagings->contains($messaging)) {
+            $this->messagings[] = $messaging;
+        }
+
+        return $this;
+    }
+
+    public function removeMessaging(Messaging $messaging): self
+    {
+        if ($this->messagings->removeElement($messaging)) {
+            // set the owning side to null (unless already changed)
+        }
+
+        return $this;
+    }
+
+    public function getMessage(): ?Message
+    {
+        return $this->message;
+    }
+
+    public function setMessage(?Message $message): self
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
 }

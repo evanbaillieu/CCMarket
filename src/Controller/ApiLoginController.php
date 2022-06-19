@@ -45,6 +45,12 @@ class ApiLoginController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $data = json_decode($request->getContent(), true);
+
+        if (!$data){
+            return $this->json([
+                'message' => 'error.nomRemplie'
+            ], Response::HTTP_BAD_REQUEST);
+        }
         $user = $entityManager->getRepository(User::class)->findByEmail($data['email']);
         
         if ($user){
