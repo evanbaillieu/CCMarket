@@ -45,7 +45,6 @@ class ApiLoginController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $data = json_decode($request->getContent(), true);
-
         $user = $entityManager->getRepository(User::class)->findByEmail($data['email']);
         
         if ($user){
