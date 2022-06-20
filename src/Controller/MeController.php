@@ -18,9 +18,6 @@ class MeController extends AbstractController
         return $user;  
     }
 
-    /**
-    * @Route("/api/me", name="app_login")
-    */
     public function getMe()
     {
         $user = $this->getUser();

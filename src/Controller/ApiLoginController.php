@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Messaging;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,13 +61,16 @@ class ApiLoginController extends AbstractController
         }
 
         $user = new User();
+        $messaging  = new Messaging();
 
         $user->setFirstName($data['firstname']);
         $user->setLastName($data['lastname']);
         $user->setEmail($data['email']);
         $user->setDateOfBirth(new DateTime($data['dateDeNaisance']));
         $user->setPassword($passwordHasher->hashPassword($user, $data['password']));
+        $entityManager->persist($messaging);
         $entityManager->persist($user);
+        $user->setMessaging($messaging);
         $entityManager->flush();
         
         return $this->json([

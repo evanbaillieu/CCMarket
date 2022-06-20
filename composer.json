@@ -23,6 +23,7 @@
         "symfony/expression-language": "6.1.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "*",
+        "symfony/mailer": "6.1.*",
         "symfony/property-access": "6.1.*",
         "symfony/property-info": "6.1.*",
         "symfony/proxy-manager-bridge": "6.1.*",
@@ -33,7 +34,8 @@
         "symfony/uid": "6.1.*",
         "symfony/validator": "6.1.*",
         "symfony/webpack-encore-bundle": "^1.14",
-        "symfony/yaml": "*"
+        "symfony/yaml": "*",
+        "symfonycasts/reset-password-bundle": "^1.13"
     },
     "config": {
         "allow-plugins": {
