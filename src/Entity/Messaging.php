@@ -18,7 +18,7 @@ class Messaging
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
     private $id;
 
-    #[ORM\OneToOne(inversedBy: 'messaging', targetEntity: User::class, cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'messaging', targetEntity: User::class)]
     private $User;
 
     #[ORM\ManyToMany(targetEntity: Discussion::class, mappedBy: 'participant')]

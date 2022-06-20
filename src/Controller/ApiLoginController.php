@@ -68,9 +68,9 @@ class ApiLoginController extends AbstractController
         $user->setEmail($data['email']);
         $user->setDateOfBirth(new DateTime($data['dateDeNaisance']));
         $user->setPassword($passwordHasher->hashPassword($user, $data['password']));
+        $user->setMessaging($messaging);
         $entityManager->persist($messaging);
         $entityManager->persist($user);
-        $user->setMessaging($messaging);
         $entityManager->flush();
         
         return $this->json([

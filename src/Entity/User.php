@@ -138,16 +138,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
 
     #[ORM\ManyToMany(targetEntity: Langues::class, mappedBy: 'user')]
     private $langues;
-
-    #[ORM\OneToOne(mappedBy: 'User', targetEntity: Messaging::class, cascade: ['persist', 'remove'])]
+    
+    #[ORM\OneToOne(mappedBy: 'User', targetEntity: Messaging::class)]
     private $messaging;
 
-
-
-    #[ORM\ManyToOne(targetEntity: Message::class, inversedBy: 'sender')]
-    private $message;
-
-
+    #[ORM\OneToMany(mappedBy: 'sender', targetEntity: Message::class)]
+    private $messages;
 
 
     public function __construct(){
@@ -156,6 +152,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
         $this->experience = new ArrayCollection();
         $this->langues = new ArrayCollection();
         $this->messagings = new ArrayCollection();
+        $this->messages = new ArrayCollection();
     }
 
 
@@ -414,41 +411,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
     }
 
     /**
-     * @return Collection<int, Messaging>
+     * @return Collection<int, Message>
      */
-    public function getMessagings(): Collection
+    public function getMessages(): Collection
     {
-        return $this->messagings;
+        return $this->messages;
     }
 
-    public function addMessaging(Messaging $messaging): self
+    public function addMessage(Message $message): self
     {
-        if (!$this->messagings->contains($messaging)) {
-            $this->messagings[] = $messaging;
+        if (!$this->messages->contains($message)) {
+            $this->messages[] = $message;
+            $message->setSender($this);
         }
 
         return $this;
     }
 
-    public function removeMessaging(Messaging $messaging): self
+    public function removeMessage(Message $message): self
     {
-        if ($this->messagings->removeElement($messaging)) {
+        if ($this->messages->removeElement($message)) {
             // set the owning side to null (unless already changed)
+            if ($message->getSender() === $this) {
+                $message->setSender(null);
+            }
         }
 
         return $this;
     }
-
-    public function getMessage(): ?Message
-    {
-        return $this->message;
-    }
-
-    public function setMessage(?Message $message): self
-    {
-        $this->message = $message;
-
-        return $this;
-    }
-
 }

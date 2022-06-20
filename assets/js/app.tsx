@@ -16,6 +16,9 @@ import ChangePassword from './view/Account/ChangePassword';
 import './scss/main.scss';
 import config from './config/default';
 import ListDemo from './components/ListDemo';
+import Messenger from './view/Messenger';
+import Message from './view/Message';
+import DefaultZoneMessage from './view/DefaultZoneMessage';
 
 const App: FC = () => {
     const { i18n } = useTranslation();
@@ -34,6 +37,10 @@ const App: FC = () => {
                 <Route path="/account" element={<Account />}>
                     <Route path="/account" element={<AccountInfos />} />
                     <Route path="/account/settings" element={<AccountSettings />} />
+                </Route>
+                <Route path="/messenger" element={<Messenger />}>
+                    <Route path="/" element={<DefaultZoneMessage />} />
+                    <Route path=":id" element={<Message />} />
                 </Route>
                 <Route path="/list" element={<ListDemo />} />
                 <Route path="/posts" element={<Posts />} />

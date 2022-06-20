@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const settingReducer = createSlice({
-    name: 'counter',
+    name: 'setting',
     initialState,
     reducers: {
         setLogin: (state, action: PayloadAction<string>) => {

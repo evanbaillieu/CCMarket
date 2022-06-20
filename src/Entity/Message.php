@@ -18,9 +18,6 @@ class Message
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
     private $id;
 
-    #[ORM\OneToMany(mappedBy: 'message', targetEntity: User::class)]
-    private $sender;
-
     #[ORM\Column(type: 'text')]
     private $content;
 
@@ -30,9 +27,11 @@ class Message
     #[ORM\ManyToOne(targetEntity: Discussion::class, inversedBy: 'message')]
     private $discussion;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'messages')]
+    private $sender;
+
     public function __construct()
     {
-        $this->sender = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -40,35 +39,6 @@ class Message
         return $this->id;
     }
 
-    /**
-     * @return Collection<int, User>
-     */
-    public function getSender(): Collection
-    {
-        return $this->sender;
-    }
-
-    public function addSender(User $sender): self
-    {
-        if (!$this->sender->contains($sender)) {
-            $this->sender[] = $sender;
-            $sender->setMessage($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSender(User $sender): self
-    {
-        if ($this->sender->removeElement($sender)) {
-            // set the owning side to null (unless already changed)
-            if ($sender->getMessage() === $this) {
-                $sender->setMessage(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getContent(): ?string
     {
@@ -102,6 +72,18 @@ class Message
     public function setDiscussion(?Discussion $discussion): self
     {
         $this->discussion = $discussion;
+
+        return $this;
+    }
+
+    public function getSender(): ?User
+    {
+        return $this->sender;
+    }
+
+    public function setSender(?User $sender): self
+    {
+        $this->sender = $sender;
 
         return $this;
     }
