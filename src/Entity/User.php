@@ -143,6 +143,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
     private $messaging;
 
 
+
     #[ORM\ManyToOne(targetEntity: Message::class, inversedBy: 'sender')]
     private $message;
 
@@ -408,6 +409,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
         }
 
         $this->messaging = $messaging;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Messaging>
+     */
+    public function getMessagings(): Collection
+    {
+        return $this->messagings;
+    }
+
+    public function addMessaging(Messaging $messaging): self
+    {
+        if (!$this->messagings->contains($messaging)) {
+            $this->messagings[] = $messaging;
+        }
+
+        return $this;
+    }
+
+    public function removeMessaging(Messaging $messaging): self
+    {
+        if ($this->messagings->removeElement($messaging)) {
+            // set the owning side to null (unless already changed)
+        }
 
         return $this;
     }
