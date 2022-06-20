@@ -1,4 +1,6 @@
 import config from '../config/default';
+import { setLogin } from '../store/reducer/settingReducer';
+import { useAppDispatch } from '../store/store';
 
 export const checkIsEmpty = (data: any): boolean => {
     let isEmpty = false;
@@ -27,6 +29,8 @@ export const checkIsNotEmpty = (data: any): boolean => {
 };
 
 export const setTokken = (tokken: string) => {
+    const AppDispatch = useAppDispatch();
+    AppDispatch(setLogin(tokken));
     localStorage.setItem(config.tokken.key, tokken);
 };
 
