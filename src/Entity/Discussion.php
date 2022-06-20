@@ -2,17 +2,20 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\DiscussionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DiscussionRepository::class)]
+#[ApiResource()]
 class Discussion
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'uuid')]
+    #[ORM\GeneratedValue(strategy: "CUSTOM")]
+    #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
     private $id;
 
     #[ORM\ManyToMany(targetEntity: Messaging::class, inversedBy: 'discussions')]
@@ -20,6 +23,9 @@ class Discussion
 
     #[ORM\OneToMany(mappedBy: 'discussion', targetEntity: Message::class)]
     private $message;
+
+    #[ORM\Column(type: 'json')]
+    private $blocked = [];
 
     public function __construct()
     {
@@ -82,6 +88,18 @@ class Discussion
                 $message->setDiscussion(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBlocked(): ?array
+    {
+        return $this->blocked;
+    }
+
+    public function setBlocked(array $blocked): self
+    {
+        $this->blocked = $blocked;
 
         return $this;
     }

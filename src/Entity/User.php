@@ -142,8 +142,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
     #[ORM\OneToOne(mappedBy: 'User', targetEntity: Messaging::class, cascade: ['persist', 'remove'])]
     private $messaging;
 
-    #[ORM\OneToMany(mappedBy: 'blockedUser', targetEntity: Messaging::class)]
-    private $messagings;
 
     #[ORM\ManyToOne(targetEntity: Message::class, inversedBy: 'sender')]
     private $message;
@@ -410,32 +408,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
         }
 
         $this->messaging = $messaging;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Messaging>
-     */
-    public function getMessagings(): Collection
-    {
-        return $this->messagings;
-    }
-
-    public function addMessaging(Messaging $messaging): self
-    {
-        if (!$this->messagings->contains($messaging)) {
-            $this->messagings[] = $messaging;
-        }
-
-        return $this;
-    }
-
-    public function removeMessaging(Messaging $messaging): self
-    {
-        if ($this->messagings->removeElement($messaging)) {
-            // set the owning side to null (unless already changed)
-        }
 
         return $this;
     }

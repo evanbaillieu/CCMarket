@@ -2,21 +2,23 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\MessagingRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MessagingRepository::class)]
+#[ApiResource()]
 class Messaging
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'uuid')]
+    #[ORM\GeneratedValue(strategy: "CUSTOM")]
+    #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
     private $id;
 
     #[ORM\OneToOne(inversedBy: 'messaging', targetEntity: User::class, cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
     private $User;
 
     #[ORM\ManyToMany(targetEntity: Discussion::class, mappedBy: 'participant')]
@@ -25,13 +27,12 @@ class Messaging
 
     public function __construct()
     {
-        $this->blockedUser = new ArrayCollection();
         $this->discussions = new ArrayCollection();
     }
 
     
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -45,28 +46,6 @@ class Messaging
     {
         $this->User = $User;
 
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, User>
-     */
-    public function getBlockedUser(): Collection
-    {
-        return $this->blockedUser;
-    }
-
-    public function addBlockedUser(User $blockedUser): self
-    {
-        if (!$this->blockedUser->contains($blockedUser)) {
-            $this->blockedUser->add($blockedUser);
-        }
-        return $this;
-    }
-
-    public function removeBlockedUser(User $blockedUser): self
-    {
-        $this->blockedUser->removeElement($blockedUser);
         return $this;
     }
 
