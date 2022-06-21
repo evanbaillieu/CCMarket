@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Home from './view/Home';
+import SearchList from './view/SearchList';
 import Login from './view/Login';
 import Posts from './view/Posts';
 import Register from './view/Registeur';
@@ -31,6 +32,7 @@ const App: FC = () => {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/searchList" element={<SearchList />} />
                 <Route path="/account" element={<Account />}>
                     <Route path="/account" element={<AccountInfos />} />
                     <Route path="/account/settings" element={<AccountSettings />} />
