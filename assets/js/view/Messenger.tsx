@@ -1,20 +1,31 @@
 import React, { FC, useEffect } from 'react';
 import { useQuery } from 'react-query';
-import { getAll } from '../service/messengerService';
-import { useOutlet } from 'react-router-dom';
+import { getAll, findDiscution } from '../service/messengerService';
+import { useNavigate, useOutlet } from 'react-router-dom';
+import ListDiscution from '../components/ListDiscution';
+import Message from './Message';
+import { useTranslation } from 'react-i18next';
 
 const Messenger: FC = () => {
+    const { t } = useTranslation();
     const { isError, isLoading, data } = useQuery('List-message', getAll, {
         refetchInterval: 10000,
         refetchIntervalInBackground: true,
     });
+    const navigate = useNavigate();
     const outlet = useOutlet();
-    console.log(data);
-
+    if (data?.code === 401) {
+        navigate('/login');
+    }
     return (
         <div className="messenger">
             <div className="messenger_content">
-                <div className="messeger_content_left">{'test'}</div>
+                <div className="messenger_content_left">
+                    <div>
+                        <h2>{t('messenger.discution')}</h2>
+                    </div>
+                    <ListDiscution content={data?.messaging?.discution} />
+                </div>
                 <div className="messeger_content_right">{outlet}</div>
             </div>
         </div>

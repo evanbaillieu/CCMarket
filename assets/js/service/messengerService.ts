@@ -3,10 +3,12 @@ import { getTokken } from '../helper/utilHelper';
 
 export const getAll = async () => {
     const token = getTokken();
-    const data = await fetch(`${config.baseUrl}/messenger/`, {
+    console.log(token);
+    const data = await fetch(`${config.baseUrl}/messenger/me`, {
         headers: { Accept: 'application/json', Authorization: `bearer ${token}` },
         method: 'GET',
     });
+    console.log(data);
     const json = data.json();
     return json;
 };

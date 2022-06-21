@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Discussion;
 use App\Entity\Message;
+use App\Entity\Messaging;
 use App\Entity\User;
 use DateTime;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 use Exception;
+use PhpParser\Node\Expr\Cast\Array_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,9 +37,31 @@ class ApiMessegerController extends AbstractController
         }
 
         $user = $entityManager->getRepository(User::class)->find($tokkenUser->getId());
-        
+        $messaging = $user->getMessaging();
+        $discut = array();
+        foreach($messaging->getDiscussions() as $discution){
+            $userInvited = new User();
+            foreach($discution->getParticipant() as $participant){
+                if($participant->getId() != $user->getId()){
+                    $userInvited = $participant->getUser();
+                }
+            }
+            
+            array_push($discut, [ 
+                "id"=> $discution->getId(),
+                "sender" => [
+                    "id" => $userInvited->getId(),
+                    "firstName" => $userInvited->getFirstName(),
+                    "lastName" => $userInvited->getLastName(),
+                ]
+            ]);
+        }
+        $data = [
+            "id" => $messaging->getId(),
+            "discution" => $discut
+        ];
         return $this->json([
-            'messaging' => $user->getMessaging()
+            'messaging' => $data,
         ]);
     }
     /**
@@ -49,6 +73,7 @@ class ApiMessegerController extends AbstractController
         $entityManager = $doctrine->getManager();  
         $dicustion = $entityManager->getRepository(Discussion::class)->find($id);
 
+        
         foreach($dicustion->getParticipant() as $participant){
             if($participant->getId() == $user["id"]){
                 return $this->json(["discution" => $dicustion]);
