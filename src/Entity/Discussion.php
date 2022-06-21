@@ -33,7 +33,7 @@ class Discussion
         $this->message = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -90,6 +90,18 @@ class Discussion
         }
 
         return $this;
+    }
+
+    public function checkParticipant(Messaging $messaging): bool
+    {
+        $checkUser = false;
+        foreach($this->participant as $participant)
+        {   
+            if($participant->getId() == $messaging->getId()){
+                $checkUser = true;
+            }
+        }
+        return $checkUser;
     }
 
     public function getBlocked(): ?array

@@ -1,4 +1,4 @@
-import { string } from 'prop-types';
+/*import { string } from 'prop-types';
 import React, { FC, useState, useEffect } from 'react';
 
 export interface IProps<T> {
@@ -11,7 +11,7 @@ const useInfiniteQuery = <T, K>({ key, fetchCustom, PageParams }: IProps<T>) => 
     const [status, setStatus] = useState({ isError: false, error: string, er });
 
     useEffect(() => {
-        fetchCustom(PageParams)
+        fetchCustom({PageParams})
             .then((data) => {
                 setData(data);
             })
@@ -24,3 +24,4 @@ const useInfiniteQuery = <T, K>({ key, fetchCustom, PageParams }: IProps<T>) => 
 };
 
 export default useInfiniteQuery;
+*/

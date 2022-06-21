@@ -38,10 +38,6 @@ const App: FC = () => {
                     <Route path="/account" element={<AccountInfos />} />
                     <Route path="/account/settings" element={<AccountSettings />} />
                 </Route>
-                <Route path="/messenger" element={<Messenger />}>
-                    <Route path="/" element={<DefaultZoneMessage />} />
-                    <Route path=":id" element={<Message />} />
-                </Route>
                 <Route path="/list" element={<ListDemo />} />
                 <Route path="/posts" element={<Posts />} />
                 <Route path="/login" element={<Login />} />
