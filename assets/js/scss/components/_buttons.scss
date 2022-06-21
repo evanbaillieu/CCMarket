@@ -8,7 +8,6 @@
     font-size: 15px;
     line-height: 20px;
     padding: 10px 20px;
-    margin-right: 20px;
     margin-bottom: 20px;
     cursor: pointer;
 
@@ -17,7 +16,22 @@
         color: $white;
 
         &:hover {
-            background-color: $secondary;
+            background-color: #CC2F2F;
+        }
+    }
+    &-grey {
+        background-color: $grey;
+        color: $black;
+
+        &:hover {
+            background-color:#D5D5D5;
+        }
+    }
+
+    &-with-arrow{
+        &::after{
+            content: url("../../svg/Arrow.svg");
+            margin-left: 10px;
         }
     }
 

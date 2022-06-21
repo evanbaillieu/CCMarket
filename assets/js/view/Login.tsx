@@ -29,42 +29,48 @@ const Login: FC = ({}) => {
     };
 
     return (
-        <div className="login">
-            <div>
-                <h3>{t('login.title')}</h3>
+        <div className="container_login">
+            <div className="container_login_box">
+                <div className="container_login_box_title">
+                    <h3>{t('login.title')}</h3>
+                </div>
+                <div className="container_login_box_form">
+                    <Inpute
+                        svg={<Arobase />}
+                        option={{
+                            type: 'email',
+                            name: 'email',
+                            title: `login.email`,
+                            error: errors.email,
+                            validate: '',
+                        }}
+                        handleChange={hangleChange}
+                        value={data.email}
+                    />
+                    <Inpute
+                        svg={isActivate ? <Oeil /> : <OeilFermer />}
+                        option={{
+                            name: 'password',
+                            title: `login.password`,
+                            error: errors.password,
+                            validate: '',
+                            type: isActivate ? 'text' : 'password',
+                        }}
+                        handleChange={hangleChange}
+                        value={data.password}
+                        onClick={changeVisble}
+                    />
+                </div>
+                <div className="container_login_box_forgot_password">
+                    <a>Forgot password ?</a>
+                </div>
+                <div className="container_login_box_buttons">
+                    <button className="btn btn-primary" onClick={submit}>
+                        {t('login.btnlogin')}
+                    </button>
+                    <button className="btn btn-grey">{t('login.btnregister')}</button>
+                </div>
             </div>
-            <div>
-                <Inpute
-                    svg={<Arobase />}
-                    option={{
-                        type: 'email',
-                        name: 'email',
-                        title: `login.email`,
-                        error: errors.email,
-                        validate: '',
-                    }}
-                    handleChange={hangleChange}
-                    value={data.email}
-                />
-                <Inpute
-                    svg={isActivate ? <Oeil /> : <OeilFermer />}
-                    option={{
-                        name: 'password',
-                        title: `login.password`,
-                        error: errors.password,
-                        validate: '',
-                        type: isActivate ? 'text' : 'password',
-                    }}
-                    handleChange={hangleChange}
-                    value={data.password}
-                    onClick={changeVisble}
-                />
-            </div>
-            <a>Forgot password ?</a>
-            <button className="btn_primary" onClick={submit}>
-                {t('login.btn-login')}
-            </button>
-            <button className="btn_gey">{t('login.btn-register')}</button>
         </div>
     );
 };

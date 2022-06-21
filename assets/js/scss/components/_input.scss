@@ -1,56 +1,22 @@
-.input{
-    max-width: 560px;
-    width: 85vw;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.5rem;
-    
-    & label{
-        font-size: 20px;
-        font-family: 'RedHatDisplay-Meduim';
-        &::after{
-            content: '*';
-            margin-left: 4px;
-            color: var(--primary-color);
-        }
-    }
+input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid $black;
+    font-size: 20px;
+    @extend .fontRedMedium;
+    color: $black;
+    padding-block: 10px;
+    margin-block: 1em;
+}
 
-    & h6{
-        color: var(--error-color);
-    }
-
-    & input{
-        height: 3rem;
-        width: 100%;
-        border: none;
-        outline: none;
-        font-size: 20px;
-        font-family: 'RedHatDisplay-Meduim';
-
-        &[class='error'] {
-            border-color: var(--error-color);
-        }
-
-        & h6{
-            color: var(--error-color);
-        } 
-
-    }
-
-    &_content{
-        width: 100%;
-        display: flex;
-        border-bottom: 2px solid var(--grey-color);
-
-        & svg{
-            height: 44px;
-            width: 44px;
-        }
-
-        &:focus-within{
-            border-color: var(--black-color);
-        }
-
-    }
-
+label{
+    @extend .fontRedMedium;
+    color: $black;
+    font-size: 20px;
+}
+.error p{
+    @extend .fontRedSemiBold;
+    color: $error;
+    font-size: 20px;
+    margin-bottom: 25px;
 }
