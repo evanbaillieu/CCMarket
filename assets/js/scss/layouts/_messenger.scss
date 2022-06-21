@@ -1,4 +1,20 @@
 .messenger{
-    background-color: var(--white-color);
-    border: 1px solid rgba(0, 0, 0, 0.141);
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    &_content{
+        width: 80vw;
+        height: 80vh;
+        border: 2px solid black;
+        display: grid;
+        grid-template-columns: 2fr 5fr;
+
+
+        &_left{
+            flex:1;
+        }
+    }
 }

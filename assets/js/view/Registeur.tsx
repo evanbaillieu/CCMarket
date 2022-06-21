@@ -39,17 +39,25 @@ const Registeur: FC = ({}) => {
         <div>
             <h1 className="">Register</h1>
             <div>
-                {/*     <Inpute
-                    option={{ name: 'fisrtname', title: 'register.lastname', error: errors.firstname }}
+                <Inpute
+                    option={{
+                        type: 'text',
+                        name: 'firstname',
+                        title: 'register.firstname',
+                        error: errors.firstname,
+                        validate: '',
+                    }}
                     handleChange={hangleChange}
                     value={data.firstname}
                 />
 
                 <Inpute
                     option={{
+                        type: 'text',
                         name: 'lastname',
                         title: `register.lastname`,
                         error: errors.lastname,
+                        validate: '',
                     }}
                     handleChange={hangleChange}
                     value={data.lastname}
@@ -57,18 +65,22 @@ const Registeur: FC = ({}) => {
 
                 <Inpute
                     option={{
+                        type: 'email',
                         name: 'email',
                         title: `register.email`,
                         error: errors.email,
+                        validate: '',
                     }}
                     handleChange={hangleChange}
                     value={data.email}
                 />
                 <Inpute
                     option={{
+                        type: 'date',
                         name: 'dateDeNaisance',
                         title: `register.dateDeNaisance`,
                         error: errors.dateDeNaisance,
+                        validate: '',
                     }}
                     handleChange={hangleChange}
                     value={data.dateDeNaisance}
@@ -76,18 +88,27 @@ const Registeur: FC = ({}) => {
 
                 <Inpute
                     option={{
+                        type: 'password',
                         name: 'password',
                         title: `register.password`,
                         error: errors.password,
+                        validate: '',
                     }}
                     handleChange={hangleChange}
                     value={data.password}
                 />
-                */}
-                <div>
-                    <label>{t('register.veryfPassword')}</label>
-                    <input type="password" onChange={handleChangePWD} name="veryfPassword" value={veryfPassword} />
-                </div>
+
+                <Inpute
+                    option={{
+                        type: 'password',
+                        name: 'veryfPassword',
+                        title: `register.veryfPassword`,
+                        error: '',
+                        validate: '',
+                    }}
+                    handleChange={handleChangePWD}
+                    value={veryfPassword}
+                />
                 <button onClick={submit}>sinscrire</button>
             </div>
         </div>

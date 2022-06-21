@@ -10,7 +10,10 @@ export type TranslationFormat = {
         jobs: string;
     };
     home: {
-        title: string;
+        title_part_1: string;
+        title_part_2: string;
+        title_part_3: string;
+        title_part_4: string;
         description: string;
         getstarted: string;
         complete: string;
@@ -43,6 +46,8 @@ export type TranslationFormat = {
         title: string;
         email: string;
         password: string;
+        btnlogin: string;
+        btnregister: string;
     };
     register: {
         firstname: string;

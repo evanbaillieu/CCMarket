@@ -7,7 +7,10 @@ const data: TranslationFormat = {
         jobs: 'Poste',
     },
     home: {
-        title: 'La plateforme qui met en relation contributeurs et porteurs de projets open source',
+        title_part_1: 'The platform that',
+        title_part_2: 'connects contributors',
+        title_part_3: 'and',
+        title_part_4: 'open source project owners',
         description:
             'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l`imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n`a pas fait que survivre cinq siècles,',
         getstarted: 'Commencer',
@@ -41,6 +44,8 @@ const data: TranslationFormat = {
         title: 'Se Connecter',
         email: 'address mail',
         password: 'Mot de passe',
+        btnlogin: 'Connexion',
+        btnregister: "S'inscrire",
     },
     register: {
         firstname: 'Prénom',

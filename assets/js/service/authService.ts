@@ -22,7 +22,7 @@ export const login = async (data: IAuth) => {
     });
 
     const json = await newData.json();
-
+    console.log(json?.token);
     setTokken(json?.token);
 
     return json;

@@ -29,8 +29,6 @@ export const checkIsNotEmpty = (data: any): boolean => {
 };
 
 export const setTokken = (tokken: string) => {
-    const AppDispatch = useAppDispatch();
-    AppDispatch(setLogin(tokken));
     localStorage.setItem(config.tokken.key, tokken);
 };
 

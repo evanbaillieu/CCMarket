@@ -1,64 +1,42 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin: 0;
-}
 
-h1,
-h2,
-.h1,
-.h2 {
+.fontRedBold{
     font-family: 'RedHatDisplay-Bold';
 }
 
-h3,
-h4,
-.h3,
-.h4 {
+.fontRedSemiBold{
     font-family: 'RedHatDisplay-SemiBold';
 }
 
-h5,
-h6,
-.h5,
-.h6 {
+.fontRedMedium{
     font-family: 'RedHatDisplay-Medium';
 }
 
-h1, 
-.h1 {
+.title-section-60{
     font-size: 60px;
 }
 
-h2,
-.h2 {
+.title-section-50 {
     font-size: 50px;
 }
 
-h3,
-.h3 {
+.title-section-40 {
     font-size: 40px;
 }
 
-h4,
-.h4 {
+.title-section-35 {
     font-size: 35px;
 }
 
-h5,
-.h5 {
+.title-section-30 {
     font-size: 30px;
 }
 
-h6,
-.h6 {
+.title-section-25 {
     font-size: 25px;
 }
 
-p {
+.paragraph {
     font-family: 'ClashGrotesk-Light';
     font-size: 15px;
+    line-height: 18px;
 }

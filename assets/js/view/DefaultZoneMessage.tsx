@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 const DefaultZoneMessage: FC = ({}) => {
-    return <></>;
+    return <div>lol</div>;
 };
 
 export default DefaultZoneMessage;
