@@ -1,0 +1,113 @@
+.modal_search_container{
+  position: fixed;
+  background: rgba(0,0,0,0.8);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  z-index: 9999;
+  padding-inline: 5%;
+  padding-top: 100px;
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  &.is_active{
+    display: flex;
+  }
+  @media(max-width: 960px){
+    padding-top: 50px;
+  }
+  &_title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:75px ;
+    margin-top: 30px;
+    h2{
+      @extend .title-section-60;
+      @extend .fontRedBold;
+      color: $white;
+    }
+  }
+  &_form{
+    width: 50%;
+    @media(max-width:1481px ){
+      width: 100%;
+    }
+    &_buttons{
+      width: 100%;
+      button{
+        width: 100%;
+      }
+    }
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .form_row:first-child{
+      margin-bottom: 72px;
+      @media(max-width: 750px){
+        margin-bottom: 40px;
+      }
+    }
+    .form_row{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 40px;
+      @media (max-width: 750px){
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+
+      }
+      .form_item:last-child{
+        @media(max-width: 750px){
+          margin-bottom: 0;
+        }
+      }
+      .form_item{
+        display: flex;
+        flex-direction: column;
+        width: 216px;
+        @media(max-width:1481px ){
+          width: 25%;
+        }
+        @media (max-width: 750px){
+          margin-bottom: 50px;
+          width: 75%;
+        }
+        &_unique{
+          width: 100%;
+        }
+        label{
+          margin-bottom: 13px;
+          font-size:20px;
+          @extend .fontRedBold;
+          color: $white;
+          @media (max-width: 750px){
+            text-align: center;
+          }
+        }
+        select{
+          padding-block: 8px;
+          padding-inline: 2px;
+          background: $white;
+          color: $primary;
+          font-size: 15px;
+          @extend .fontRedMedium;
+          border-radius: 5px;
+        }
+        input{
+          border-bottom: 2px solid $white;
+          font-size: 30px;
+          margin: 0;
+          color: $white;
+        }
+        input::placeholder{
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+

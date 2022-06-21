@@ -12,6 +12,7 @@ import LogoMobile from '../svg/logo.svg';
 import MessageWhite from '../svg/messagewhite.svg';
 import SearchWhite from '../svg/searchwhite.svg';
 import ProfilWhite from '../svg/profilwhite.svg';
+import ModalSearch from './ModalSearch';
 const Navbar: FC = () => {
     const { t } = useTranslation();
 
@@ -31,13 +32,9 @@ const Navbar: FC = () => {
     }
 
     //Animation Menu Mobile
-    const MenuOpen = () => {
-        document.getElementById('menu_nav_mobile').classList.add('is_active');
-        document.getElementById('menu_mobile_content').classList.add('is_active');
-    };
-    const MenuClose = () => {
-        document.getElementById('menu_nav_mobile').classList.remove('is_active');
-        document.getElementById('menu_mobile_content').classList.remove('is_active');
+    const MenuOpenClose = () => {
+        document.getElementById('menu_nav_mobile').classList.toggle('is_active');
+        document.getElementById('menu_mobile_content').classList.toggle('is_active');
     };
 
     window.addEventListener('scroll', function (e) {
@@ -48,6 +45,12 @@ const Navbar: FC = () => {
             document.getElementById('container_nav_menu').classList.add('is_scroll');
         }
     });
+
+    const OpenCloseSearchModal = () => {
+        document.getElementById('menu_nav_mobile').classList.remove('is_active');
+        document.getElementById('menu_mobile_content').classList.remove('is_active');
+        document.getElementById('modal_search').classList.toggle('is_active');
+    };
 
     return (
         <div>
@@ -70,13 +73,13 @@ const Navbar: FC = () => {
                                     <NavLink to="/">{t('nav.home')}</NavLink>
                                 </li>
                                 <li>
-                                    <Link to="/projects">{t('nav.projects')}</Link>
+                                    <NavLink to="/projects">{t('nav.projects')}</NavLink>
                                 </li>
                                 <li>
-                                    <Link to="/jobs">{t('nav.jobs')}</Link>
+                                    <NavLink to="/jobs">{t('nav.jobs')}</NavLink>
                                 </li>
                             </ul>
-                            <div onClick={MenuOpen} className="header_navbar_menu_burgeur_button">
+                            <div onClick={MenuOpenClose} className="header_navbar_menu_burgeur_button">
                                 <div className="header_navbar_menu_burgeur_button_bar"></div>
                                 <div className="header_navbar_menu_burgeur_button_bar"></div>
                                 <div className="header_navbar_menu_burgeur_button_bar"></div>
@@ -87,7 +90,9 @@ const Navbar: FC = () => {
                                 <li>
                                     <Link to="/account">{ProfilIcon}</Link>
                                 </li>
-                                <li className="header_navbar_pictos_search_button">{SearchIcon}</li>
+                                <li onClick={OpenCloseSearchModal} className="header_navbar_pictos_search_button">
+                                    {SearchIcon}
+                                </li>
                                 <li>
                                     <Link to="/account">{MessageIcon}</Link>
                                 </li>
@@ -97,15 +102,21 @@ const Navbar: FC = () => {
                 </header>
             </div>
             <div id="menu_nav_mobile" className="container_nav_mobile">
-                <aside onClick={MenuClose} className="container_nav_mobile_background_black"></aside>
+                <aside onClick={MenuOpenClose} className="container_nav_mobile_background_black"></aside>
                 <aside id="menu_mobile_content" className="container_nav_mobile_content">
                     <div className="container_nav_mobile_content_logo">
                         <Logo />
                     </div>
                     <div className="container_nav_mobile_content_pictos">
-                        <Profil />
-                        <Message />
-                        <Search />
+                        <Link onClick={MenuOpenClose} to={'/account'}>
+                            <Profil />
+                        </Link>
+                        <Link onClick={MenuOpenClose} to={'/account'}>
+                            <Message />
+                        </Link>
+                        <p onClick={OpenCloseSearchModal}>
+                            <Search />
+                        </p>
                     </div>
                     <div className="container_nav_mobile_content_menu">
                         <nav>
@@ -114,16 +125,17 @@ const Navbar: FC = () => {
                                     <NavLink to="/">{t('nav.home')}</NavLink>
                                 </li>
                                 <li>
-                                    <Link to="/projects">{t('nav.projects')}</Link>
+                                    <NavLink to="/projects">{t('nav.projects')}</NavLink>
                                 </li>
                                 <li>
-                                    <Link to="/jobs">{t('nav.jobs')}</Link>
+                                    <NavLink to="/jobs">{t('nav.jobs')}</NavLink>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                 </aside>
             </div>
+            <ModalSearch />
         </div>
     );
 };
