@@ -20,13 +20,12 @@ const Messenger: FC = () => {
     return (
         <div className="messenger">
             <div className="messenger_content">
-                <div className="messenger_content_left">
-                    <div>
-                        <h2>{t('messenger.discution')}</h2>
-                    </div>
-                    <ListDiscution content={data?.messaging?.discution} />
+                <div className="messenger_content_titre">
+                    <h2>{t('messenger.discution')}</h2>
                 </div>
-                <div className="messeger_content_right">{outlet}</div>
+                <ListDiscution content={data?.messaging?.discution} />
+                <div className="messenger_content_message">{outlet}</div>
+                <div className="messenger_content_toolbar"></div>
             </div>
         </div>
     );

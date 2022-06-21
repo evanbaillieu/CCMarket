@@ -6,7 +6,7 @@ export interface IListDiscutionProps {
 }
 const ListDiscution: FC<IListDiscutionProps> = ({ content }) => {
     return (
-        <div className="messenger_list_user">
+        <div className="messenger_content_listUser">
             {content &&
                 content.map((item) => (
                     <CardUser key={item.id} name={`${item.sender.firstName} ${item.sender.lastName}`} />

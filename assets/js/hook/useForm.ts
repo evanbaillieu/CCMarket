@@ -91,7 +91,10 @@ const useForm = <T>(initState?: T) => {
         }
     };
 
-    return { data, errors, hangleChange };
+    const setInitialData = (data: T) => {
+        setData(data);
+    };
+    return { data, errors, hangleChange, setInitialData };
 };
 
 export default useForm;
