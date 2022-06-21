@@ -63,10 +63,10 @@ class ApiLoginController extends AbstractController
         $user = new User();
         $messaging  = new Messaging();
 
-        $user->setFirstName($data['firstname']);
-        $user->setLastName($data['lastname']);
+        $user->setFirstName($data['firstName']);
+        $user->setLastName($data['lastName']);
         $user->setEmail($data['email']);
-        $user->setDateOfBirth(new DateTime($data['dateDeNaisance']));
+        $user->setDateOfBirth(new DateTime($data['dateOfBirth']));
         $user->setPassword($passwordHasher->hashPassword($user, $data['password']));
         $user->setMessaging($messaging);
         $entityManager->persist($messaging);

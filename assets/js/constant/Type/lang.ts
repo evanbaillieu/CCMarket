@@ -50,18 +50,18 @@ export type TranslationFormat = {
         btnregister: string;
     };
     register: {
-        firstname: string;
-        lastname: string;
+        firstName: string;
+        lastName: string;
         email: string;
-        dateDeNaisance: string;
+        dateOfBirth: string;
         password: string;
         veryfPassword: string;
     };
     error: {
-        firstname: string;
-        lastname: string;
+        firstName: string;
+        lastName: string;
         email: string;
-        dateDeNaisance: string;
+        dateOfBirth: string;
         password: string;
         veryfPassword: string;
         tropcourt: string;
@@ -74,7 +74,7 @@ export type TranslationFormat = {
         firstName: string;
         lastName: string;
         email: string;
-        birth: string;
+        dateOfBirth: string;
         edit: string;
         changePassword: string;
         cancel: string;

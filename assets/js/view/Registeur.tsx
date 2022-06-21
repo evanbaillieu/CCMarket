@@ -10,10 +10,10 @@ const Registeur: FC = ({}) => {
     const { t } = useTranslation();
 
     const { data, errors, hangleChange } = useForm<IUser>({
-        firstname: '',
-        lastname: '',
+        firstName: '',
+        lastName: '',
         email: '',
-        dateDeNaisance: '',
+        dateOfBirth: '',
         password: '',
     });
 
@@ -42,25 +42,25 @@ const Registeur: FC = ({}) => {
                 <Inpute
                     option={{
                         type: 'text',
-                        name: 'firstname',
-                        title: 'register.firstname',
-                        error: errors.firstname,
+                        name: 'firstName',
+                        title: 'register.firstName',
+                        error: errors.firstName,
                         validate: '',
                     }}
                     handleChange={hangleChange}
-                    value={data.firstname}
+                    value={data.firstName}
                 />
 
                 <Inpute
                     option={{
                         type: 'text',
-                        name: 'lastname',
-                        title: `register.lastname`,
-                        error: errors.lastname,
+                        name: 'lastName',
+                        title: `register.lastName`,
+                        error: errors.lastName,
                         validate: '',
                     }}
                     handleChange={hangleChange}
-                    value={data.lastname}
+                    value={data.lastName}
                 />
 
                 <Inpute
@@ -77,13 +77,13 @@ const Registeur: FC = ({}) => {
                 <Inpute
                     option={{
                         type: 'date',
-                        name: 'dateDeNaisance',
-                        title: `register.dateDeNaisance`,
-                        error: errors.dateDeNaisance,
+                        name: 'dateOfBirth',
+                        title: `register.dateOfBirth`,
+                        error: errors.dateOfBirth,
                         validate: '',
                     }}
                     handleChange={hangleChange}
-                    value={data.dateDeNaisance}
+                    value={data.dateOfBirth}
                 />
 
                 <Inpute

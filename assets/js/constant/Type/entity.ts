@@ -1,12 +1,12 @@
 export type IUser = {
     id?: string;
-    firstname?: string;
-    lastname?: string;
+    firstName?: string;
+    lastName?: string;
     email?: string;
     password?: string;
     role?: string[];
-    dateDeNaisance: string;
-    project?: IProject[];
+    dateOfBirth?: string;
+    projects?: IProject[];
     source?: ISource[];
     wishlist?: IWishlist;
     experiance?: IExperiance[];

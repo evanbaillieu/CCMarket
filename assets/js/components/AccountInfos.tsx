@@ -30,8 +30,8 @@ export default function AccountInfos() {
                     <p>{user.email}</p>
                 </div>
                 <div className="grid-content">
-                    <h6>{t('account.birth')}</h6>
                     <p>{user.dateOfBirth.toLocaleDateString()}</p>
+                    <h6>{t('account.dateOfBirth')}</h6>
                 </div>
             </div>
 

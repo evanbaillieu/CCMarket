@@ -40,7 +40,7 @@ export const getTypeInpute = (name: string): string => {
     switch (name) {
         case 'password':
             return 'password';
-        case 'dateDeNaissance':
+        case 'dateOfBirth':
             return 'date';
         case 'email':
             return 'email';
