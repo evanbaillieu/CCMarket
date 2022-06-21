@@ -33,7 +33,7 @@ const Inpute: FC<IInputeProps> = ({ option, value, handleChange, svg, onClick })
                 />
                 {svg && <div onClick={onClick}>{svg}</div>}
             </div>
-            {option.error && <h6>{t(option.error)}</h6>}
+            <span className="error"> {option.error && <p>{t(option.error)}</p>}</span>
         </div>
     );
 };

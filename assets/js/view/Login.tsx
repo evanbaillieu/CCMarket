@@ -10,6 +10,7 @@ import Inpute from '../components/input';
 import Oeil from '../svg/oeil.svg';
 import OeilFermer from '../svg/oeilFermer.svg';
 import Arobase from '../svg/arobase.svg';
+import { Link } from 'react-router-dom';
 
 const auth: IAuth = { email: '', password: '' };
 
@@ -72,7 +73,9 @@ const Login: FC = ({}) => {
                     <button className="btn btn-primary" onClick={submit}>
                         {t('login.btnlogin')}
                     </button>
-                    <button className="btn btn-grey">{t('login.btnregister')}</button>
+                    <Link to={'/register'} className="btn btn-grey">
+                        {t('login.btnregister')}
+                    </Link>
                 </div>
             </div>
         </div>
