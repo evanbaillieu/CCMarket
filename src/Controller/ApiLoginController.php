@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Messaging;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,6 +46,12 @@ class ApiLoginController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $data = json_decode($request->getContent(), true);
+
+        if (!$data){
+            return $this->json([
+                'message' => 'error.nomRemplie'
+            ], Response::HTTP_BAD_REQUEST);
+        }
         $user = $entityManager->getRepository(User::class)->findByEmail($data['email']);
         
         if ($user){
@@ -54,12 +61,15 @@ class ApiLoginController extends AbstractController
         }
 
         $user = new User();
+        $messaging  = new Messaging();
 
-        $user->setFirstName($data['firstname']);
-        $user->setLastName($data['lastname']);
+        $user->setFirstName($data['firstName']);
+        $user->setLastName($data['lastName']);
         $user->setEmail($data['email']);
-        $user->setDateOfBirth(new DateTime($data['dateDeNaisance']));
+        $user->setDateOfBirth(new DateTime($data['dateOfBirth']));
         $user->setPassword($passwordHasher->hashPassword($user, $data['password']));
+        $user->setMessaging($messaging);
+        $entityManager->persist($messaging);
         $entityManager->persist($user);
         $entityManager->flush();
         

@@ -40,7 +40,8 @@ use Symfony\Component\Uid\Uuid;
         ]
     ]
 
-)]
+), ApiFilter(SearchFilter::class, properties: ['id' => 'exact','description' => 'partial'])]
+
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
 {
@@ -65,7 +66,7 @@ class Project
     #[ORM\Column(type: 'string', length: 255)]
     private $abstract;
 
-    #[Groups(['read:Project:item','write:Project:collection','edit:Project:item'])]
+    #[Groups(['read:Project:collection','write:Project:collection','edit:Project:item'])]
     #[ORM\Column(type: 'text')]
     private $description;
 

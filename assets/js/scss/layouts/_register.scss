@@ -1,0 +1,88 @@
+.container_register{
+  min-height: 100vh;
+  padding-inline: 2.5%;
+  margin-top:70px ;
+  @media(max-width: 960px){
+    padding-inline: 5%;
+  }
+  &_title{
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1{
+      @extend .title-section-40;
+      @extend .fontRedSemiBold
+    }
+  }
+  &_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &_row{
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      margin-bottom: 73px;
+
+
+      @media(max-width: 960px){
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 0px;
+      }
+      .input{
+        width: 40%;
+        @media(max-width: 960px){
+          margin-bottom: 40px;
+          width: 100%;
+        }
+      }
+    }
+    &_accept_conditions{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 48px;
+      input{
+        width: 20px;
+        height: 20px;
+        margin-right: 15px;
+        accent-color: $primary;
+
+      }
+      label{
+        width: 100%;
+        a{
+          text-decoration: underline;
+          color: $primary;
+        }
+      }
+    }
+    &_buttons{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 120px;
+      @media(max-width: 960px){
+        width: 100%;
+      }
+      button{
+        width: 558px;
+        @media(max-width: 960px){
+          width: 100%;
+        }
+      }
+      a{
+        width: 558px;
+        display: flex;
+        justify-content: center;
+        @media(max-width: 960px){
+          width: 100%;
+        }
+      }
+    }
+  }
+}

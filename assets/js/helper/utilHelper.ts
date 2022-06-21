@@ -1,4 +1,6 @@
 import config from '../config/default';
+import { setLogin } from '../store/reducer/settingReducer';
+import { useAppDispatch } from '../store/store';
 
 export const checkIsEmpty = (data: any): boolean => {
     let isEmpty = false;
@@ -38,7 +40,7 @@ export const getTypeInpute = (name: string): string => {
     switch (name) {
         case 'password':
             return 'password';
-        case 'dateDeNaissance':
+        case 'dateOfBirth':
             return 'date';
         case 'email':
             return 'email';

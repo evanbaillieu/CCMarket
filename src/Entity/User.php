@@ -54,6 +54,12 @@ use Symfony\Component\Validator\Constraints\Length;
                 //Possibilité de delete un compte uniquement si on est Admin
                 'security' => 'is_granted("ROLE_ADMIN")'
             ],
+            'patch' => [
+                //Possibilité d'éditer son compte uniquement si on est l'utilisateur lui même ou alors un Admin
+                "security" => "is_granted('ROLE_ADMIN') or id == user.getId() ",
+                //Paramètres possible d'edit
+                'denormalization_context' => ['groups' => ['edit:User:item']],
+            ],
         ],
     )
 ]
@@ -138,7 +144,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
 
     #[ORM\ManyToMany(targetEntity: Langues::class, mappedBy: 'user')]
     private $langues;
+    
+    #[ORM\OneToOne(mappedBy: 'User', targetEntity: Messaging::class)]
+    private $messaging;
 
+    #[ORM\OneToMany(mappedBy: 'sender', targetEntity: Message::class)]
+    private $messages;
 
 
     public function __construct(){
@@ -146,6 +157,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
         $this->projects = new ArrayCollection();
         $this->experience = new ArrayCollection();
         $this->langues = new ArrayCollection();
+        $this->messagings = new ArrayCollection();
+        $this->messages = new ArrayCollection();
     }
 
 
@@ -384,5 +397,52 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
         $user = $user->setId($id)->setRoles($payload["roles"]);
         return $user;
 
+    }
+
+    public function getMessaging(): ?Messaging
+    {
+        return $this->messaging;
+    }
+
+    public function setMessaging(Messaging $messaging): self
+    {
+        // set the owning side of the relation if necessary
+        if ($messaging->getUser() !== $this) {
+            $messaging->setUser($this);
+        }
+
+        $this->messaging = $messaging;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Message>
+     */
+    public function getMessages(): Collection
+    {
+        return $this->messages;
+    }
+
+    public function addMessage(Message $message): self
+    {
+        if (!$this->messages->contains($message)) {
+            $this->messages[] = $message;
+            $message->setSender($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessage(Message $message): self
+    {
+        if ($this->messages->removeElement($message)) {
+            // set the owning side to null (unless already changed)
+            if ($message->getSender() === $this) {
+                $message->setSender(null);
+            }
+        }
+
+        return $this;
     }
 }
