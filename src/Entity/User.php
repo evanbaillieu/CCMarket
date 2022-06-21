@@ -54,6 +54,12 @@ use Symfony\Component\Validator\Constraints\Length;
                 //Possibilité de delete un compte uniquement si on est Admin
                 'security' => 'is_granted("ROLE_ADMIN")'
             ],
+            'patch' => [
+                //Possibilité d'éditer son compte uniquement si on est l'utilisateur lui même ou alors un Admin
+                "security" => "is_granted('ROLE_ADMIN') or id == user.getId() ",
+                //Paramètres possible d'edit
+                'denormalization_context' => ['groups' => ['edit:User:item']],
+            ],
         ],
     )
 ]

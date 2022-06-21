@@ -37,8 +37,10 @@ const Registeur: FC = ({}) => {
 
     return (
         <div>
-            <h1 className="">Register</h1>
-            <div>
+            <section className="container_register">
+                <aside className="container_register_title">
+                <h1 className="">Register</h1>
+                </aside>
                 <Inpute
                     option={{
                         type: 'text',
