@@ -9,27 +9,31 @@ import Message from '../svg/message.svg';
 import Search from '../svg/search.svg';
 import Profil from '../svg/profil.svg';
 import LogoMobile from '../svg/logo.svg';
-import MessageWhite from '../svg/messagewhite.svg';
-import SearchWhite from '../svg/searchwhite.svg';
-import ProfilWhite from '../svg/profilwhite.svg';
+
 import ModalSearch from './ModalSearch';
+import * as path from 'path';
+
+export interface isHome {
+    class: string;
+}
+
 const Navbar: FC = () => {
     const { t } = useTranslation();
 
-    const location = useLocation();
-    console.log(location);
+    const [isHome, setIsHome] = useState<isHome[]>([{ class: null }]);
 
-    let MessageIcon: any = <Message />;
-    let ProfilIcon: any = <Profil />;
-    let SearchIcon: any = <Search />;
+    //If home user icon / message icon / search icon in white
+    const { pathname } = useLocation();
+    useEffect(() => {
+        if (pathname == '/') {
+            setIsHome({ class: 'header is_home' });
+        } else {
+            setIsHome({ class: 'header' });
+        }
+    }, [pathname]);
 
-    //Swicth color logo header
-    if (location.pathname !== '/') {
-    } else {
-        MessageIcon = <MessageWhite />;
-        ProfilIcon = <ProfilWhite />;
-        SearchIcon = <SearchWhite />;
-    }
+    const classHeader = isHome.class;
+    console.log(classHeader);
 
     //Animation Menu Mobile
     const MenuOpenClose = () => {
@@ -37,15 +41,16 @@ const Navbar: FC = () => {
         document.getElementById('menu_mobile_content').classList.toggle('is_active');
     };
 
+    //If Scroll add Background
     window.addEventListener('scroll', function (e) {
         if (window.scrollY == 0) {
             document.getElementById('container_nav_menu').classList.remove('is_scroll');
-            MessageIcon = <Message />;
         } else {
             document.getElementById('container_nav_menu').classList.add('is_scroll');
         }
     });
 
+    //Open Modal Search
     const OpenCloseSearchModal = () => {
         document.getElementById('menu_nav_mobile').classList.remove('is_active');
         document.getElementById('menu_mobile_content').classList.remove('is_active');
@@ -55,7 +60,7 @@ const Navbar: FC = () => {
     return (
         <div>
             <div className="container_nav">
-                <header id="container_nav_menu" className="header">
+                <header id="container_nav_menu" className={classHeader}>
                     <nav className="header_navbar">
                         <aside className="header_navbar_logo">
                             <div className="header_navbar_logo_desktop">
@@ -88,13 +93,17 @@ const Navbar: FC = () => {
                         <aside className="header_navbar_pictos">
                             <ul>
                                 <li>
-                                    <Link to="/account">{ProfilIcon}</Link>
+                                    <Link to="/account">
+                                        <Profil />
+                                    </Link>
                                 </li>
                                 <li onClick={OpenCloseSearchModal} className="header_navbar_pictos_search_button">
-                                    {SearchIcon}
+                                    <Search />
                                 </li>
                                 <li>
-                                    <Link to="/messenger">{MessageIcon}</Link>
+                                    <Link to="/messenger">
+                                        <Message />
+                                    </Link>
                                 </li>
                             </ul>
                         </aside>
