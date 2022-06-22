@@ -5,15 +5,17 @@ import { useTranslation } from 'react-i18next';
 export interface ISelectProps {
     name: string;
     custFetch: () => Promise<any>;
-    isTrad: boolean;
+    isTrad?: boolean;
 }
-const Select: FC<ISelectProps> = ({ name, custFetch, isTrad }) => {
+const Select: FC<ISelectProps> = ({ name, custFetch, isTrad = false }) => {
     const { t } = useTranslation();
     const { isError, isLoading, data } = useQuery(`select-${name}`, custFetch);
+
+    console.log(data);
     return (
         <select name={name}>
             {data &&
-                data.map((item: any) => (
+                data?.map((item: any) => (
                     <option key={item.id} value={item.name}>
                         {isTrad ? t(`searchList.${item.name}`) : item.name}
                     </option>

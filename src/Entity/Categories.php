@@ -23,6 +23,7 @@ use Symfony\Component\Uid\Uuid;
     ],
     itemOperations: [
         'get' => [
+
             "normalization_context" => ['groups' => ['read:Cat:item']],
             "openapi_context" =>[
                 'security' =>[['bearerAuth' => []]]

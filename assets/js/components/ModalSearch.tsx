@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import '../components/lang';
 import Select from '../components/select';
 import * as categoryService from '../service/categoryService';
+import * as ProfilTypeService from '../service/profilTypeService';
+import * as langueService from '../service/langueService';
 import Close from '../svg/close.svg';
 export type IModalSearch = {
     onClose: () => void;
@@ -28,18 +30,11 @@ const ModalSearch: FC<IModalSearch> = ({ onClose }) => {
                         </div>
                         <div className="form_item">
                             <label htmlFor="profilType">{t('modalSearch.profilType')}</label>
-                            <select name="profilType">
-                                <option value="Translator">{t('modalSearch.translator')}</option>
-                                <option value="Translator">{t('smodalSearch.translator')}</option>
-                            </select>
+                            <Select name="profilType" custFetch={ProfilTypeService.findAll} />
                         </div>
                         <div className="form_item">
                             <label htmlFor="language">{t('modalSearch.language')}</label>
-                            <select name="language">
-                                <option value="English">{t('modalSearch.english')}</option>
-                                <option value="Franch">{t('modalSearch.franch')}</option>
-                                <option value="Spanish">{t('modalSearch.spanish')}</option>
-                            </select>
+                            <Select name="language" custFetch={langueService.findAll} />
                         </div>
                     </div>
                     <div className="form_row">
