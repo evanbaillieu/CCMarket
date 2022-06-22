@@ -21,6 +21,7 @@ class Discussion
     #[ORM\ManyToMany(targetEntity: Messaging::class, inversedBy: 'discussions')]
     private $participant;
 
+    #[ORM\OrderBy(["createAt" => "Desc"])]
     #[ORM\OneToMany(mappedBy: 'discussion', targetEntity: Message::class)]
     private $message;
 

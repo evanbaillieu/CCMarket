@@ -13,6 +13,7 @@ use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\ORM\EntityManager;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\ManagerRegistry as DoctrineManagerRegistry;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
@@ -98,9 +99,25 @@ class ApiLoginController extends AbstractController
     }
 
     /**
-     * @route("/logout", name="api_logout", methods="POST")
+     * @route("/changePass", name="api_logout", methods="POST")
      */
-    public function logout(){
+    public function changePWD(Request $request, DoctrineManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher){
+        $entityManager = $doctrine->getManager();
+        $data = json_decode($request->getContent(), true);
+        $user = $entityManager->getRepository()->find($this->getUser()->id);
+        if($passwordHasher->hashPassword($user, $data['ancienPassword']) === $user->getPassword() )
+        {
+            $user->setPassword($passwordHasher->hashPassword($user, $data['newPassword']));
+            $this->json([
+                "message" => "change success"
+                
+            ],202);
+        }
+
+        return $this->json([
+            "message" => "note acces"
+        ], 400);
+
     }
 
 }

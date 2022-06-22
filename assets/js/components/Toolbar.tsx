@@ -1,8 +1,15 @@
 import React, { FC, ChangeEvent, useState } from 'react';
+import { sendMessage } from '../service/messengerService';
 import Send from '../svg/send.svg';
+import { useParams } from 'react-router-dom';
 
 const ToolBar: FC = ({}) => {
     const [value, setValue] = useState('');
+    const { id } = useParams();
+    console.log(id);
+    const send = () => {
+        sendMessage({ content: value, dicustionId: id });
+    };
     return (
         <div className="messenger_content_toolbar toolbar">
             <div className="toolbar_input">
@@ -14,7 +21,7 @@ const ToolBar: FC = ({}) => {
                 />
             </div>
             <div className="toolbar_btn_send">
-                <button onClick={() => console.log('send')}>
+                <button onClick={() => send()}>
                     <Send />
                 </button>
             </div>

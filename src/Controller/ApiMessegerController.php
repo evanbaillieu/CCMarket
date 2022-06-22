@@ -72,12 +72,12 @@ class ApiMessegerController extends AbstractController
         $user = $this->getUser();
         $entityManager = $doctrine->getManager();  
         $dicustion = $entityManager->getRepository(Discussion::class)->find($id);
+        $user = $entityManager->getRepository(User::class)->find($this->getUser()->id);
 
-        
-        foreach($dicustion->getParticipant() as $participant){
-            if($participant->getId() == $user["id"]){
-                return $this->json(["discution" => $dicustion]);
-            }
+        if($dicustion->checkParticipant($user->getMessaging())){
+            return $this->json([
+                'dicustion' => $dicustion
+            ]);
         }
 
         return $this->json(["message" => "error.notAcces"]);

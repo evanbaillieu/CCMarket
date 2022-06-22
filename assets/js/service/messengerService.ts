@@ -1,5 +1,7 @@
 import config from '../config/default';
 import { getTokken } from '../helper/utilHelper';
+import { IDiscution } from '../constant/Type/entity';
+import { ISendMessage } from '../constant/Type/messenger';
 
 export const getAll = async () => {
     const token = getTokken();
@@ -20,4 +22,21 @@ export const findDiscution = async (id: string) => {
         method: 'GET',
     });
     return data.json();
+};
+
+export const sendMessage = async ({ content, dicustionId }: ISendMessage) => {
+    const token = getTokken();
+
+    const data = await fetch(`${config.baseUrl}/messenger/message/`, {
+        headers: {
+            'Content-type': 'application/json',
+            Accept: 'application/json',
+            Authorization: `bearer ${token}`,
+        },
+        method: 'POST',
+        body: JSON.stringify({ dicustionId, content }),
+    });
+    const json = data.json();
+    console.log(json);
+    return json;
 };
