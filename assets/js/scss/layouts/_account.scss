@@ -1,4 +1,6 @@
 #account-container {
+    padding: 40px 0;
+
     h1 {
         @extend.fontRedSemiBold;
         @extend.title-section-50;
@@ -33,7 +35,7 @@
     }
 }
 
-.sidebar {
+#account-sidebar {
     img {
         display: none;
 
@@ -58,6 +60,7 @@
         padding: 0;
         margin-bottom: 50px;
         overflow-x: auto;
+        overflow-y: hidden;
         white-space: nowrap;
 
         @include respond-to('sm') {

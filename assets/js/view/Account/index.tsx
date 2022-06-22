@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useOutlet, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useOutlet } from 'react-router-dom';
 import { getMe } from '../../service/accountService';
 import { getTokken } from '../../helper/utilHelper';
 import profile from '../../img/test.png';
@@ -10,8 +10,6 @@ import { logout } from '../../store/reducer/settingReducer';
 
 const Account: FC = () => {
     const { t } = useTranslation();
-    const location = useLocation();
-    const navigate = useNavigate();
     const [user, setUser] = useState<IUser>({
         firstName: '',
         lastName: '',
@@ -25,7 +23,7 @@ const Account: FC = () => {
         getMe(getTokken()).then((response) => {
             setUser({ ...response.user });
         });
-    }, [location]);
+    }, []);
 
     const getNavLinkClass = (path: string) => {
         return window.location.pathname === path ? 'active' : '';
@@ -34,12 +32,11 @@ const Account: FC = () => {
     const accountLogout = () => {
         AppDispatch(logout());
         window.localStorage.removeItem('auth-cmarket');
-        navigate('/');
     };
 
     return (
         <div id="account-container">
-            <div className="sidebar">
+            <div id="account-sidebar">
                 <img src={profile} width={150} height={150} alt="Profile" />
                 <h3>{user.firstName + ' ' + user.lastName}</h3>
                 <ul>
@@ -54,7 +51,9 @@ const Account: FC = () => {
                         </Link>
                     </li>
                     <li>
-                        <a onClick={accountLogout}>{t('account.logout')}</a>
+                        <Link to={'/'} onClick={accountLogout}>
+                            {t('account.logout')}
+                        </Link>
                     </li>
                 </ul>
             </div>

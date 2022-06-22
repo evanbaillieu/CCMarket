@@ -24,7 +24,7 @@ const SearchList: FC = ({}) => {
                         </select>
                     </div>
                     <div className="custom-select">
-                        <label htmlFor="profilType">{t('searchList.profilleType')}</label>
+                        <label htmlFor="profilType">{t('searchList.profilType')}</label>
                         <select name="profilType">
                             <option value="Translator">{t('searchList.translator')}</option>
                             <option value="Translator">{t('searchList.translator')}</option>

@@ -1,4 +1,6 @@
 .edit-form {
+    padding: 40px 20px;
+
     h1 {
         @extend.fontRedSemiBold;
         @extend.title-section-50;
@@ -8,7 +10,6 @@
 
     #edit-inputs,
     #change-password-inputs {
-        margin: 0 10%;
         margin-bottom: 40px;
 
         @include respond-to('sm') {
@@ -16,6 +17,10 @@
             grid-template-columns: repeat(2, 1fr);
             grid-column-gap: 100px;
             grid-row-gap: 40px;
+        }
+
+        @include respond-to('md') {
+            margin: 0 10%;
         }
     }
 
