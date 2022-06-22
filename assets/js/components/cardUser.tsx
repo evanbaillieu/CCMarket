@@ -3,10 +3,12 @@ import Profil from '../svg/profil.svg';
 
 export interface ICardUserProps {
     name: string;
+    onClick: () => void;
+    isSelected: boolean;
 }
-const CardUser: FC<ICardUserProps> = ({ name }) => {
+const CardUser: FC<ICardUserProps> = ({ name, isSelected, onClick }) => {
     return (
-        <div className="cardUser">
+        <div onClick={onClick} className={`cardUser ${isSelected ? 'select' : ''}`}>
             <div className="cardUser_left">
                 <div className="cardUser_left_icon">
                     <Profil />

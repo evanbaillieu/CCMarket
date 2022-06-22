@@ -10,7 +10,7 @@
     left: 0;
     transition: 0;
     &.is_scroll{
-        background: $white;
+        background: #fafafaf5;
         .header_navbar_pictos ul li{
             background: $primary;
         }

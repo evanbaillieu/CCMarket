@@ -6,10 +6,10 @@
     align-items: center;
     
     &_content{
-        width: 80vw;
-        height: 80vh;
-        box-shadow: 0px 0px 5px 1px #00000055;
+        width: 100vw;
+        height: 85vh;
         display: grid;
+        border: 2px solid var(--grey-color);
         grid-template-rows: repeat(9, 1fr);
         grid-template-columns: repeat(5, 1fr);;
         grid-template-areas: "titre message message message message"
@@ -26,13 +26,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            border: 2px solid var(--grey-color);
         }
 
         &_listUser{
             grid-area: listUser;
+            border: 2px solid var(--grey-color);
+            overflow:auto
         }
         &_message{
             grid-area: message;
+            overflow:autos
         }
         &_toolbar{
             grid-area: toolbar;

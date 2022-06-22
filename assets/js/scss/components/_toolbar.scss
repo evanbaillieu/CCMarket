@@ -1,0 +1,35 @@
+.toolbar{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--grey-color);
+    &_input{
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & input{
+            border: none;
+            width: 80%;
+            padding: 1rem   ;
+            border-radius: 25px;
+            background-color: var(--grey-color) ;
+            
+        }
+    }
+    &_btn_send{
+        height: 100%;
+        width: 20%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        & button{
+            background-color: var(--primary-color);
+            border: none;
+            width: 60%;
+            height: 50%;
+            border-radius: 25px;
+        }
+    }
+}

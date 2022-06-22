@@ -10,7 +10,7 @@ import Inpute from '../components/input';
 import Oeil from '../svg/oeil.svg';
 import OeilFermer from '../svg/oeilFermer.svg';
 import Arobase from '../svg/arobase.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const auth: IAuth = { email: '', password: '' };
 
@@ -19,6 +19,7 @@ const Login: FC = ({}) => {
     const { data, errors, hangleChange } = useForm<IAuth>(auth);
     const [isActivate, setIsActivate] = useState(false);
     const AppDispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const submit = async () => {
         console.log(checkIsEmpty(data) && !checkIsNotEmpty(errors));
@@ -26,7 +27,10 @@ const Login: FC = ({}) => {
             return;
         }
         const token = await login(data);
-        AppDispatch(setLogin(token));
+        if (token) {
+            AppDispatch(setLogin(token));
+            navigate('/');
+        }
     };
 
     const changeVisble = () => {

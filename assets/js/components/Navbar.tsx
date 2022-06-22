@@ -94,7 +94,7 @@ const Navbar: FC = () => {
                                     {SearchIcon}
                                 </li>
                                 <li>
-                                    <Link to="/account">{MessageIcon}</Link>
+                                    <Link to="/messenger">{MessageIcon}</Link>
                                 </li>
                             </ul>
                         </aside>
@@ -111,7 +111,7 @@ const Navbar: FC = () => {
                         <Link onClick={MenuOpenClose} to={'/account'}>
                             <Profil />
                         </Link>
-                        <Link onClick={MenuOpenClose} to={'/account'}>
+                        <Link onClick={MenuOpenClose} to={'/messenger'}>
                             <Message />
                         </Link>
                         <p onClick={OpenCloseSearchModal}>
