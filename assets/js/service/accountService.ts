@@ -1,5 +1,6 @@
 import config from '../config/default';
 import { IUser } from '../constant/Type/entity';
+import { getTokken } from '../helper/utilHelper';
 
 export const getMe = async (token: string) => {
     const data = await fetch(`${config.baseUrl}/auth/me`, {
@@ -24,14 +25,15 @@ export const updateUser = async (token: string, idUser: string, data: IUser) => 
     return result.json();
 };
 
-export const updatePassword = async (token: string, idUser: string, password: string) => {
-    const result = await fetch(`${config.baseUrl}/users/${idUser}`, {
+export const updatePassword = async (currentPassword: string, newPassword: string) => {
+    const token = getTokken();
+    const result = await fetch(`${config.baseUrl}/auth/changePass`, {
         headers: {
-            'Content-type': 'application/merge-patch+json',
+            'Content-type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
-        method: 'PATCH',
-        body: JSON.stringify(password),
+        method: 'POST',
+        body: JSON.stringify({ currentPassword, newPassword }),
     });
     return result.json();
 };

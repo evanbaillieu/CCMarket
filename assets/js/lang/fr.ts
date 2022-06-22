@@ -141,6 +141,9 @@ const data: TranslationFormat = {
         newPassword: 'Nouveau mot de passe',
         confirmNewPassword: 'Confirmer le nouveau mot de passe',
         profileImg: 'Image de profil',
+        passwordNotIdentical: "La confirmation de mot de passe n'est pas identique",
+        inputEmpty: 'Certains champs sont vides',
+        incorrectPassword: 'Mot de passe incorrect',
     },
     job: {
         leader: 'Chef du projet',

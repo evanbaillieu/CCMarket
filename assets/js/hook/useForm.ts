@@ -15,12 +15,17 @@ const useForm = <T>(initState?: T) => {
             };
         });
 
-        if (value.length <= 2) {
+        if (value.length <= 1) {
             setErrors({
                 ...errors,
                 [name]: 'error.tropcourt',
             });
             return;
+        } else {
+            setErrors({
+                ...errors,
+                [name]: '',
+            });
         }
 
         validate(name, value);
@@ -75,6 +80,8 @@ const useForm = <T>(initState?: T) => {
                     });
                 }
                 break;
+            case 'currentPassword':
+            case 'newPassword':
             case 'password':
                 if (!new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/).test(value)) {
                     setErrors({
