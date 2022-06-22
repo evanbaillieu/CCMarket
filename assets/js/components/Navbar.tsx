@@ -1,17 +1,15 @@
 //import React, { FC } from 'react';
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import '../components/lang';
-import Logo from '../svg/logoHeader.svg';
-import IconHamburg from '../svg/iconHamburg.svg';
-import Message from '../svg/message.svg';
-import Search from '../svg/search.svg';
-import Profil from '../svg/profil.svg';
 import LogoMobile from '../svg/logo.svg';
+import Logo from '../svg/logoHeader.svg';
+import Message from '../svg/message.svg';
+import Profil from '../svg/profil.svg';
+import Search from '../svg/search.svg';
 
 import ModalSearch from './ModalSearch';
-import * as path from 'path';
 
 export interface isHome {
     class: string;
@@ -20,7 +18,7 @@ export interface isHome {
 const Navbar: FC = () => {
     const { t } = useTranslation();
 
-    const [isHome, setIsHome] = useState<isHome[]>([{ class: null }]);
+    const [isHome, setIsHome] = useState<isHome>({ class: null });
 
     //If home user icon / message icon / search icon in white
     const { pathname } = useLocation();
@@ -33,7 +31,6 @@ const Navbar: FC = () => {
     }, [pathname]);
 
     const classHeader = isHome.class;
-    console.log(classHeader);
 
     //Animation Menu Mobile
     const MenuOpenClose = () => {
