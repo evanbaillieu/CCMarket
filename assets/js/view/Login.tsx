@@ -26,9 +26,9 @@ const Login: FC = ({}) => {
         if (checkIsEmpty(data) && !checkIsNotEmpty(errors)) {
             return;
         }
-        const token = await login(data);
-        if (token) {
-            AppDispatch(setLogin(token));
+        const returndata = await login(data);
+        if (returndata.token) {
+            AppDispatch(setLogin(returndata.token));
             navigate('/');
         }
     };

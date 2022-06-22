@@ -36,7 +36,5 @@ export const sendMessage = async ({ content, dicustionId }: ISendMessage) => {
         method: 'POST',
         body: JSON.stringify({ dicustionId, content }),
     });
-    const json = data.json();
-    console.log(json);
-    return json;
+    return data.json();
 };

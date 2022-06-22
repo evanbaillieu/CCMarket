@@ -20,7 +20,8 @@ export interface isHome {
 const Navbar: FC = () => {
     const { t } = useTranslation();
 
-    const [isHome, setIsHome] = useState<isHome[]>([{ class: null }]);
+    const [isHome, setIsHome] = useState<isHome>({ class: null });
+    const [isOpen, setIsOpen] = useState(false);
 
     //If home user icon / message icon / search icon in white
     const { pathname } = useLocation();
@@ -52,9 +53,9 @@ const Navbar: FC = () => {
 
     //Open Modal Search
     const OpenCloseSearchModal = () => {
+        setIsOpen((state) => !state);
         document.getElementById('menu_nav_mobile').classList.remove('is_active');
         document.getElementById('menu_mobile_content').classList.remove('is_active');
-        document.getElementById('modal_search').classList.toggle('is_active');
     };
 
     return (
@@ -144,7 +145,7 @@ const Navbar: FC = () => {
                     </div>
                 </aside>
             </div>
-            <ModalSearch />
+            {isOpen ? <ModalSearch onClose={OpenCloseSearchModal} /> : <></>}
         </div>
     );
 };

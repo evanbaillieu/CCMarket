@@ -2,26 +2,19 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import Arrow from '../svg/Arrow.svg';
 import imgProjet from '../img/imgProjet.png';
+import Select from '../components/select';
+import * as categoryService from '../service/categoryService';
 
 const SearchList: FC = ({}) => {
     const { t } = useTranslation();
+
     return (
         <div className="templateContainer">
             <div className="containerZonFiltre">
                 <div className="div-custom-select">
                     <div className="custom-select">
                         <label htmlFor="category">{t('searchList.catagory')}</label>
-                        <select name="catgory">
-                            <option value="Developement">{t('searchList.developement')}</option>
-                            <option value="Education">{t('searchList.education')}</option>
-                            <option value="Game">{t('searchList.game')}</option>
-                            <option value="Design">{t('searchList.design')}</option>
-                            <option value="Internet">{t('searchList.internet')}</option>
-                            <option value="Multimedia">{t('searchList.multimedia')}</option>
-                            <option value="Office Automation">{t('searchList.officeAutomation')}</option>
-                            <option value="System">{t('searchList.system')}</option>
-                            <option value="Utilities">{t('searchList.utilities')}</option>
-                        </select>
+                        <Select name="category" custFetch={categoryService.getAll} isTrad />
                     </div>
                     <div className="custom-select">
                         <label htmlFor="profilType">{t('searchList.profilType')}</label>

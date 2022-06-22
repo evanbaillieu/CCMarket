@@ -14,6 +14,7 @@ import Badge from '../components/badge';
 
 const Home: FC = () => {
     const { t } = useTranslation();
+
     return (
         <div>
             <section className="home_section_presentation">

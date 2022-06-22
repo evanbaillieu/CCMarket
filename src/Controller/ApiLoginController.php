@@ -104,7 +104,8 @@ class ApiLoginController extends AbstractController
     public function changePWD(Request $request, DoctrineManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher){
         $entityManager = $doctrine->getManager();
         $data = json_decode($request->getContent(), true);
-        $user = $entityManager->getRepository()->find($this->getUser()->id);
+        $user = $entityManager->getRepository(User::class)->find($this->getUser()->id);
+        
         if($passwordHasher->hashPassword($user, $data['ancienPassword']) === $user->getPassword() )
         {
             $user->setPassword($passwordHasher->hashPassword($user, $data['newPassword']));
@@ -115,7 +116,7 @@ class ApiLoginController extends AbstractController
         }
 
         return $this->json([
-            "message" => "note acces"
+            "message" => "not acces"
         ], 400);
 
     }

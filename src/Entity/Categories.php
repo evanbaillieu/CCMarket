@@ -14,11 +14,8 @@ use Symfony\Component\Uid\Uuid;
 #[ApiResource(
     collectionOperations : [
         'get' =>[
+            "pagination_enabled" => false,
             "normalization_context" => ['groups' => ['read:Cat:collection']],
-            "security" => "is_granted('ROLE_ADMIN')",
-            "openapi_context" =>[
-                'security' => [['bearerAuth' => []]]
-            ]
         ],
         'post' =>[
             "security" => "is_granted('ROLE_ADMIN')",

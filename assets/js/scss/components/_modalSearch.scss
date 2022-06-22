@@ -7,12 +7,10 @@
   z-index: 9999;
   padding-inline: 5%;
   padding-top: 100px;
-  display: none;
+  display: flex;
   align-items: center;
   flex-direction: column;
-  &.is_active{
-    display: flex;
-  }
+  
   @media(max-width: 960px){
     padding-top: 50px;
   }

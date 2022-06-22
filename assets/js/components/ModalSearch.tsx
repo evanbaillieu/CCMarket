@@ -1,23 +1,20 @@
 //import React, { FC } from 'react';
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, NavLink, useLocation } from 'react-router-dom';
 import '../components/lang';
+import Select from '../components/select';
+import * as categoryService from '../service/categoryService';
 import Close from '../svg/close.svg';
-
-const ModalSearch: FC = () => {
+export type IModalSearch = {
+    onClose: () => void;
+};
+const ModalSearch: FC<IModalSearch> = ({ onClose }) => {
     const { t } = useTranslation();
-
-    const OpenCloseSearchModal = () => {
-        document.getElementById('menu_nav_mobile').classList.remove('is_active');
-        document.getElementById('menu_mobile_content').classList.remove('is_active');
-        document.getElementById('modal_search').classList.toggle('is_active');
-    };
 
     return (
         <div>
             <section id="modal_search" className="modal_search_container">
-                <aside onClick={OpenCloseSearchModal} className="modal_search_container_close">
+                <aside onClick={onClose} className="modal_search_container_close">
                     <Close />
                 </aside>
                 <aside className="modal_search_container_title">
@@ -27,17 +24,7 @@ const ModalSearch: FC = () => {
                     <div className="form_row">
                         <div className="form_item">
                             <label htmlFor="category">{t('modalSearch.catagory')}</label>
-                            <select name="catgory">
-                                <option value="Developement">{t('modalSearch.developement')}</option>
-                                <option value="Education">{t('modalSearch.education')}</option>
-                                <option value="Game">{t('modalSearch.game')}</option>
-                                <option value="Design">{t('modalSearch.design')}</option>
-                                <option value="Internet">{t('modalSearch.internet')}</option>
-                                <option value="Multimedia">{t('modalSearch.multimedia')}</option>
-                                <option value="Office Automation">{t('modalSearch.officeAutomation')}</option>
-                                <option value="System">{t('modalSearch.system')}</option>
-                                <option value="Utilities">{t('modalSearch.utilities')}</option>
-                            </select>
+                            <Select name="category" custFetch={categoryService.getAll} isTrad />
                         </div>
                         <div className="form_item">
                             <label htmlFor="profilType">{t('modalSearch.profilType')}</label>
