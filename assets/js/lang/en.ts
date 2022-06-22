@@ -141,6 +141,9 @@ const data: TranslationFormat = {
         newPassword: 'New password',
         confirmNewPassword: 'Confirm new password',
         profileImg: 'Profile image',
+        passwordNotIdentical: 'The confirmation of password is not identical',
+        inputEmpty: 'Some fields are empty',
+        incorrectPassword: 'Incorrect password',
     },
     job: {
         leader: 'Project leader',

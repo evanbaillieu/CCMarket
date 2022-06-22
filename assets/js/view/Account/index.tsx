@@ -1,29 +1,31 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useOutlet } from 'react-router-dom';
-import { getMe } from '../../service/accountService';
-import { getTokken } from '../../helper/utilHelper';
+import { Circles } from 'react-loader-spinner';
+import { useQuery } from 'react-query';
+import { Link, useNavigate, useOutlet } from 'react-router-dom';
 import profile from '../../img/test.png';
-import { IUser } from '../../constant/Type/entity';
-import { useAppDispatch } from '../../store/store';
+import { getMe } from '../../service/accountService';
 import { logout } from '../../store/reducer/settingReducer';
+import { useAppDispatch } from '../../store/store';
 
 const Account: FC = () => {
     const { t } = useTranslation();
-    const [user, setUser] = useState<IUser>({
-        firstName: '',
-        lastName: '',
-        email: '',
-        dateOfBirth: '',
-    });
-    const outlet = useOutlet(user);
+    const { isError, isLoading, data } = useQuery('User-infos', getMe);
+    const outlet = useOutlet(data?.user);
+    const navigate = useNavigate();
     const AppDispatch = useAppDispatch();
 
-    useEffect(() => {
-        getMe(getTokken()).then((response) => {
-            setUser({ ...response.user });
-        });
-    }, []);
+    if (data?.code === 401) {
+        navigate('/login');
+    }
+
+    if (isError) {
+        navigate('/login');
+    }
+
+    if (isLoading) {
+        return <Circles color="#F05454" />;
+    }
 
     const getNavLinkClass = (path: string) => {
         return window.location.pathname === path ? 'active' : '';
@@ -38,7 +40,7 @@ const Account: FC = () => {
         <div id="account-container">
             <div id="account-sidebar">
                 <img src={profile} width={150} height={150} alt="Profile" />
-                <h3>{user.firstName + ' ' + user.lastName}</h3>
+                <h3>{data?.user?.firstName + ' ' + data?.user?.lastName}</h3>
                 <ul>
                     <li>
                         <Link to={'/account'} className={getNavLinkClass('/account')}>

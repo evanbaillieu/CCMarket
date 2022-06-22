@@ -1,52 +1,50 @@
-import React, { ChangeEvent, FC, useEffect, useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Inpute from '../../components/input';
-import { checkIsEmpty, checkIsNotEmpty, getTokken } from '../../helper/utilHelper';
+import { checkIsEmpty, checkIsNotEmpty } from '../../helper/utilHelper';
 import useForm from '../../hook/useForm';
-import { getMe, updatePassword } from '../../service/accountService';
+import { updatePassword } from '../../service/accountService';
 import Oeil from '../../svg/oeil.svg';
 import OeilFermer from '../../svg/oeilFermer.svg';
 
 const ChangePassword: FC = () => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
     const [isVisibleCurrentPass, setIsVisibleCurrentPass] = useState(false);
     const [isVisibleNewPass, setIsVisibleNewPass] = useState(false);
     const [isVisibleConfirmNewPass, setIsVisibleConfirmNewPass] = useState(false);
 
     const { data, errors, hangleChange } = useForm({
-        password: '',
+        newPassword: '',
     });
-
-    const [userId, setUserId] = useState<string>();
-
-    useEffect(() => {
-        getMe(getTokken()).then((response) => {
-            setUserId(response.user.id);
-        });
-    }, []);
-
-    const [confirmNewPassword, setConfirmNewPassword] = useState<string>('');
     const [currentPassword, setCurrentPassword] = useState<string>('');
+    const [confirmNewPassword, setConfirmNewPassword] = useState<string>('');
+    const [errorMessage, setErrorMessage] = useState<string>('');
 
-    const handleChangePWD = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChangeConfirmNewPassword = (e: ChangeEvent<HTMLInputElement>) => {
         setConfirmNewPassword(e.target.value);
     };
 
-    const handleChangeCurrentPWD = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChangeCurrentPassword = (e: ChangeEvent<HTMLInputElement>) => {
         setCurrentPassword(e.target.value);
     };
 
     const submit = () => {
-        if (checkIsEmpty(data) && !checkIsNotEmpty(errors)) {
-            return;
-        }
+        setErrorMessage('');
 
-        if (confirmNewPassword === data.password) {
-            console.log('se son les meme');
+        if (checkIsNotEmpty(data) && checkIsEmpty(errors) && confirmNewPassword) {
+            if (confirmNewPassword === data.newPassword) {
+                updatePassword(currentPassword, data.newPassword).then((response) => {
+                    if (response.message === 'change success') navigate(-1);
+                    else setErrorMessage(t('account.incorrectPassword'));
+                });
+            } else {
+                setErrorMessage(t('account.passwordNotIdentical'));
+            }
+        } else {
+            setErrorMessage(t('account.inputEmpty'));
         }
-
-        updatePassword(getTokken(), userId, data.password);
     };
 
     const changeVisbleCurrentPass = () => {
@@ -64,6 +62,7 @@ const ChangePassword: FC = () => {
     return (
         <div className="edit-form">
             <h1>{t('account.changePassword')}</h1>
+            {errorMessage ? <p className="error-message">{errorMessage}</p> : ''}
             <div id="change-password-inputs">
                 <Inpute
                     svg={isVisibleCurrentPass ? <Oeil /> : <OeilFermer />}
@@ -74,7 +73,7 @@ const ChangePassword: FC = () => {
                         error: '',
                         validate: '',
                     }}
-                    handleChange={handleChangeCurrentPWD}
+                    handleChange={handleChangeCurrentPassword}
                     value={currentPassword}
                     onClick={changeVisbleCurrentPass}
                 />
@@ -83,13 +82,13 @@ const ChangePassword: FC = () => {
                     svg={isVisibleNewPass ? <Oeil /> : <OeilFermer />}
                     option={{
                         type: isVisibleNewPass ? 'text' : 'password',
-                        name: 'password',
+                        name: 'newPassword',
                         title: `account.newPassword`,
-                        error: errors.password,
+                        error: errors.newPassword,
                         validate: '',
                     }}
                     handleChange={hangleChange}
-                    value={data.password}
+                    value={data.newPassword}
                     onClick={changeVisbleNewPass}
                 />
 
@@ -102,7 +101,7 @@ const ChangePassword: FC = () => {
                         error: '',
                         validate: '',
                     }}
-                    handleChange={handleChangePWD}
+                    handleChange={handleChangeConfirmNewPassword}
                     value={confirmNewPassword}
                     onClick={changeVisbleConfirmNewPass}
                 />

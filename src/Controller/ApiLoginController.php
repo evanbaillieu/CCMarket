@@ -105,7 +105,7 @@ class ApiLoginController extends AbstractController
         $data = json_decode($request->getContent(), true);
         $user = $entityManager->getRepository(User::class)->find($this->getUser()->id);
         
-        if ($passwordHasher->isPasswordValid($user, $data['ancienPassword']))
+        if ($passwordHasher->isPasswordValid($user, $data['currentPassword']))
         {
             $user->setPassword($passwordHasher->hashPassword($user, $data['newPassword']));
             $entityManager->persist($user);
@@ -115,8 +115,8 @@ class ApiLoginController extends AbstractController
             ], Response::HTTP_ACCEPTED);
         } else {
             return $this->json([
-                "message" => "not acces"
-            ], Response::HTTP_BAD_REQUEST);
+                "message" => "not access"
+            ], Response::HTTP_ACCEPTED);
         }
     }
 

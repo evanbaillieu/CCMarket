@@ -141,6 +141,9 @@ export type TranslationFormat = {
         newPassword: string;
         confirmNewPassword: string;
         profileImg: string;
+        passwordNotIdentical: string;
+        inputEmpty: string;
+        incorrectPassword: string;
     };
     job: {
         leader: string;
