@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\JobRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -34,7 +36,7 @@ use Symfony\Component\Uid\Uuid;
             "security" => "is_granted('ROLE_USER')",
         ]
     ]
-)]
+), ApiFilter(SearchFilter::class, properties: ['id' => 'exact','description' => 'partial'])]
 
 class Job
 {
