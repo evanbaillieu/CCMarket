@@ -13,7 +13,6 @@ use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\ORM\EntityManager;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bridge\Doctrine\ManagerRegistry as DoctrineManagerRegistry;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
@@ -101,24 +100,24 @@ class ApiLoginController extends AbstractController
     /**
      * @route("/changePass", name="api_logout", methods="POST")
      */
-    public function changePWD(Request $request, DoctrineManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher){
+    public function changePWD(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher){
         $entityManager = $doctrine->getManager();
         $data = json_decode($request->getContent(), true);
         $user = $entityManager->getRepository(User::class)->find($this->getUser()->id);
         
-        if($passwordHasher->hashPassword($user, $data['ancienPassword']) === $user->getPassword() )
+        if ($passwordHasher->isPasswordValid($user, $data['ancienPassword']))
         {
             $user->setPassword($passwordHasher->hashPassword($user, $data['newPassword']));
-            $this->json([
+            $entityManager->persist($user);
+            $entityManager->flush();
+            return $this->json([
                 "message" => "change success"
-                
-            ],202);
+            ], Response::HTTP_ACCEPTED);
+        } else {
+            return $this->json([
+                "message" => "not acces"
+            ], Response::HTTP_BAD_REQUEST);
         }
-
-        return $this->json([
-            "message" => "not acces"
-        ], 400);
-
     }
 
 }
