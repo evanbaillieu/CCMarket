@@ -15,8 +15,11 @@
         @include respond-to('sm') {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-column-gap: 100px;
-            grid-row-gap: 40px;
+            gap: 40px 100px;
+        }
+
+        @include respond-to('md') {
+            margin: 0 10%;
         }
 
         @include respond-to('md') {

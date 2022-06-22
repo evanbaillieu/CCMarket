@@ -33,7 +33,7 @@ class JobCrudController extends AbstractCrudController
 
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-        if (!$entityInstance instanceof Project) return;
+        if (!$entityInstance instanceof Job) return;
         $entityInstance->setCreatedAt(new \DateTimeImmutable());
         parent::persistEntity($entityManager, $entityInstance);
     }

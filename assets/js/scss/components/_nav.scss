@@ -1,6 +1,27 @@
 .container_nav{
     height: 100px;
 }
+
+.is_home{
+    & .header{
+        &_navbar{
+            &_pictos{
+                svg{
+                    stroke: $white;
+                }
+            }
+        }
+    }
+}
+
+.is_scroll{
+    .header_navbar_pictos svg {
+        stroke: $black;
+    }
+}
+
+
+
 .header{
     padding-block: 30px;
     width: 100%;
@@ -8,12 +29,8 @@
     z-index: 999;
     top: 0;
     left: 0;
-    transition: 0;
     &.is_scroll{
         background: #fafafaf5;
-        .header_navbar_pictos ul li{
-            background: $primary;
-        }
     }
     &_navbar{
         display: flex;
@@ -96,13 +113,15 @@
                     align-items: center;
                     justify-content: center;
                     svg{
-                        stroke: rgb(255,255,255);
+                        stroke: $black;
+                        stroke-width: 2.75;
                     }
                 }
             }
         }
     }
 }
+
 
 .container_nav_mobile{
     width: 0%;
