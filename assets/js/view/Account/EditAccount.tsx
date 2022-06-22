@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import Inpute from '../../components/input';
 import { IUser } from '../../constant/Type/entity';
-import { checkIsEmpty, checkIsNotEmpty, getTokken } from '../../helper/utilHelper';
+import { checkIsEmpty, checkIsNotEmpty } from '../../helper/utilHelper';
 import useForm from '../../hook/useForm';
 import profile from '../../img/test.png';
 import { getMe, updateUser } from '../../service/accountService';
@@ -22,7 +22,7 @@ const EditAccount: FC = () => {
     const [userId, setUserId] = useState<string>();
 
     useEffect(() => {
-        getMe(getTokken()).then((response) => {
+        getMe().then((response) => {
             setUserId(response.user.id);
             setInitialData({
                 firstName: response.user.firstName,
@@ -35,7 +35,7 @@ const EditAccount: FC = () => {
 
     const submit = async () => {
         if (checkIsNotEmpty(data) && checkIsEmpty(errors)) {
-            updateUser(getTokken(), userId, data).then((result) => {
+            updateUser(userId, data).then((result) => {
                 if (result) navigate('/account');
             });
         }
