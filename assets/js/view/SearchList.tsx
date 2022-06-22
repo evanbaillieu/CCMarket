@@ -10,8 +10,8 @@ const SearchList: FC = ({}) => {
             <div className="containerZonFiltre">
                 <div className="div-custom-select">
                     <div className="custom-select">
-                        <p>Catagory{t('searchList.catagory')}</p>
-                        <select>
+                        <label htmlFor="category">{t('searchList.catagory')}</label>
+                        <select name="catgory">
                             <option value="Developement">{t('searchList.developement')}</option>
                             <option value="Education">{t('searchList.education')}</option>
                             <option value="Game">{t('searchList.game')}</option>
@@ -24,15 +24,15 @@ const SearchList: FC = ({}) => {
                         </select>
                     </div>
                     <div className="custom-select">
-                        <p>{t('searchList.profilleType')}</p>
-                        <select>
+                        <label htmlFor="profilType">{t('searchList.profilleType')}</label>
+                        <select name="profilType">
                             <option value="Translator">{t('searchList.translator')}</option>
                             <option value="Translator">{t('searchList.translator')}</option>
                         </select>
                     </div>
                     <div className="custom-select">
-                        <p>{t('searchList.language')}</p>
-                        <select>
+                        <label htmlFor="language">{t('searchList.language')}</label>
+                        <select name="language">
                             <option value="English">{t('searchList.english')}</option>
                             <option value="Franch">{t('searchList.franch')}</option>
                             <option value="Spanish">{t('searchList.spanish')}</option>

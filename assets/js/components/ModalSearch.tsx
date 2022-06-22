@@ -21,26 +21,37 @@ const ModalSearch: FC = () => {
                     <Close />
                 </aside>
                 <aside className="modal_search_container_title">
-                    <h2>Search</h2>
+                    <h2>{t('modalSearch.titlePrincipleSearch')}</h2>
                 </aside>
                 <aside className="modal_search_container_form">
                     <div className="form_row">
                         <div className="form_item">
-                            <label htmlFor="category">Category</label>
+                            <label htmlFor="category">{t('modalSearch.catagory')}</label>
                             <select name="catgory">
-                                <option>Test</option>
+                                <option value="Developement">{t('modalSearch.developement')}</option>
+                                <option value="Education">{t('modalSearch.education')}</option>
+                                <option value="Game">{t('modalSearch.game')}</option>
+                                <option value="Design">{t('modalSearch.design')}</option>
+                                <option value="Internet">{t('modalSearch.internet')}</option>
+                                <option value="Multimedia">{t('modalSearch.multimedia')}</option>
+                                <option value="Office Automation">{t('modalSearch.officeAutomation')}</option>
+                                <option value="System">{t('modalSearch.system')}</option>
+                                <option value="Utilities">{t('modalSearch.utilities')}</option>
                             </select>
                         </div>
                         <div className="form_item">
-                            <label htmlFor="profilType">Profil Type</label>
+                            <label htmlFor="profilType">{t('modalSearch.profilType')}</label>
                             <select name="profilType">
-                                <option>Test</option>
+                                <option value="Translator">{t('modalSearch.translator')}</option>
+                                <option value="Translator">{t('smodalSearch.translator')}</option>
                             </select>
                         </div>
                         <div className="form_item">
-                            <label htmlFor="language">Language</label>
+                            <label htmlFor="language">{t('modalSearch.language')}</label>
                             <select name="language">
-                                <option>Test</option>
+                                <option value="English">{t('modalSearch.english')}</option>
+                                <option value="Franch">{t('modalSearch.franch')}</option>
+                                <option value="Spanish">{t('modalSearch.spanish')}</option>
                             </select>
                         </div>
                     </div>
@@ -50,7 +61,7 @@ const ModalSearch: FC = () => {
                         </div>
                     </div>
                     <div className="modal_search_container_form_buttons">
-                        <button className="btn btn-primary">Search</button>
+                        <button className="btn btn-primary">{t('modalSearch.buttonSearch')}</button>
                     </div>
                 </aside>
             </section>

@@ -53,7 +53,7 @@ export type TranslationFormat = {
         game: string;
         education: string;
         developement: string;
-        profilleType: string;
+        profilType: string;
         translator: string;
         language: string;
         english: string;
@@ -75,6 +75,26 @@ export type TranslationFormat = {
         listMissionsIls: string;
         listMissionsIlss: string;
         listMissionsIlsss: string;
+    };
+    modalSearch: {
+        titlePrincipleSearch: string;
+        catagory: string;
+        utilities: string;
+        system: string;
+        officeAutomation: string;
+        multimedia: string;
+        internet: string;
+        design: string;
+        game: string;
+        education: string;
+        developement: string;
+        profilType: string;
+        translator: string;
+        language: string;
+        english: string;
+        spanish: string;
+        franch: string;
+        buttonSearch: string;
     };
     login: {
         title: string;
