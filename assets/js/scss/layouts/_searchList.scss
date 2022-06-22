@@ -1,6 +1,5 @@
 .templateContainer{
   margin: 30px;
-  font-family: 'Red Hat Display';
   .containerZonFiltre{
     width: 100%;
       margin: 0;
@@ -60,6 +59,7 @@
       flex-wrap: wrap;
       width: 100%;
       flex-direction: row;
+      font-family: 'Red Hat Display';
       justify-content: space-between;
       text-align: left;
       padding: 20px 0px;
@@ -69,7 +69,6 @@
         width: 350px;
         padding: 0;
         margin: 10px 50px 10px 0;
-        font-family: 'Red Hat Display';
         justify-content: space-between;
         border: 1px solid var(--grey-color);
         border-radius: 24px;
@@ -93,16 +92,20 @@
         .container_text{
           padding: 20px;
           h2{
-            font-size: 16px;
+            font-size: 18px;
             .titleRed{
               color: var(--primary-color);
             }
+          }
+          .paragraphe{
+            margin: 15px 0;
           }
           h3{
             font-size: 14px;
           }
           ul{
             padding-left: 22px;
+            margin: 15px 0;
             ::marker {
               color: var(--primary-color);
               margin-right: 10px;
@@ -112,6 +115,7 @@
             background-color: var(--primary-color);
             color: var(--white-color);
             padding: 10px 15px;
+            margin: 0;
             border: 0;
     
             .arrow_button{
@@ -126,13 +130,12 @@
 
 @media screen and (max-width: 768px){
   .templateContainer{
-      margin: 12% 3% 3% 3%;
+      margin: 0 3% 3% 3%;
       .containerZonFiltre {
         flex-wrap: wrap;
         flex-direction: column;
         .div-custom-select {
           justify-content: center;
-          padding-bottom: 20px;
           .custom-select {
             margin: 10px;
           }
@@ -151,17 +154,25 @@
 
 @media screen and (max-width: 425px){
   .templateContainer{
-      margin: 22% 2% 3% 2%;
+      margin: 0 2% 3% 2%;
+      .containerZonFiltre {
+        .div-custom-select {
+          flex-direction: column;
+        }
+      }
       .containerResults{
         .search_results {
           flex-flow: column wrap;
           .template{
-            margin: 10px;
+            .buttonsSurImgs {
+              position: absolute;
+              right: 0%;
+              top: 47%;
         }
       } 
     }
   }
 }
 
-
+}
 

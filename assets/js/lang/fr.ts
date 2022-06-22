@@ -60,7 +60,7 @@ const data: TranslationFormat = {
         titlePrincipleProjets: 'Projet(s)',
         buttonDevelopement: 'Developement',
         buttonEducation: 'Éducation',
-        titleProjets: 'Projet -',
+        titleProjets: 'Projet - ',
         projetsTitle: 'Titre',
         projetDescription:
             'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de.',

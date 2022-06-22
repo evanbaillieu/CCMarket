@@ -60,7 +60,7 @@ const data: TranslationFormat = {
         titlePrincipleProjets: 'Project(s)',
         buttonDevelopement: 'Developement',
         buttonEducation: 'Education',
-        titleProjets: 'Project -',
+        titleProjets: 'Project - ',
         projetsTitle: 'Title',
         projetDescription:
             'Lorem Ipsum is simply dummy text used in typesetting and layout before printing. Lorem Ipsum is the standard dummy text of.',

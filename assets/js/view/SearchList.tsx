@@ -181,7 +181,7 @@ const SearchList: FC = ({}) => {
                     <div className="template">
                         <div className="container_text">
                             <h2>
-                                {t('searchList.titlePrincipleJobs')}
+                                {t('searchList.titleProjets')}
                                 <span className="titleRed">{t('searchList.jabsTitle')}</span>
                             </h2>
                             <p className="paragraphe">{t('searchList.jabsDescription')}</p>
@@ -205,7 +205,7 @@ const SearchList: FC = ({}) => {
                     <div className="template">
                         <div className="container_text">
                             <h2>
-                                {t('searchList.titlePrincipleJobs')}
+                                {t('searchList.titleProjets')}
                                 <span className="titleRed">{t('searchList.jabsTitle')}</span>
                             </h2>
                             <p className="paragraphe">{t('searchList.jabsDescription')}</p>
@@ -229,7 +229,7 @@ const SearchList: FC = ({}) => {
                     <div className="template">
                         <div className="container_text">
                             <h2>
-                                {t('searchList.titlePrincipleJobs')}
+                                {t('searchList.titleProjets')}
                                 <span className="titleRed">{t('searchList.jabsTitle')}</span>
                             </h2>
                             <p className="paragraphe">{t('searchList.jabsDescription')}</p>
@@ -253,7 +253,7 @@ const SearchList: FC = ({}) => {
                     <div className="template">
                         <div className="container_text">
                             <h2>
-                                {t('searchList.titlePrincipleJobs')}
+                                {t('searchList.titleProjets')}
                                 <span className="titleRed">{t('searchList.jabsTitle')}</span>
                             </h2>
                             <p className="paragraphe">{t('searchList.jabsDescription')}</p>
@@ -277,7 +277,7 @@ const SearchList: FC = ({}) => {
                     <div className="template">
                         <div className="container_text">
                             <h2>
-                                {t('searchList.titlePrincipleJobs')}
+                                {t('searchList.titleProjets')}
                                 <span className="titleRed">{t('searchList.jabsTitle')}</span>
                             </h2>
                             <p className="paragraphe">{t('searchList.jabsDescription')}</p>
@@ -301,7 +301,7 @@ const SearchList: FC = ({}) => {
                     <div className="template">
                         <div className="container_text">
                             <h2>
-                                {t('searchList.titlePrincipleJobs')}
+                                {t('searchList.titleProjets')}
                                 <span className="titleRed">{t('searchList.jabsTitle')}</span>
                             </h2>
                             <p className="paragraphe">{t('searchList.jabsDescription')}</p>
