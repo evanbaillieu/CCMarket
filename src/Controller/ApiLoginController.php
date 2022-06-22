@@ -88,7 +88,8 @@ class ApiLoginController extends AbstractController
             $fullUser = $entityManager->getRepository(User::class)->find($user->getId());
 
             return $this->json([
-                'user' => $fullUser
+                'user' => $fullUser,
+                'profilType' => $fullUser->getProfilType()
             ]);
         }
 
