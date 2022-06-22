@@ -142,4 +142,9 @@ export type TranslationFormat = {
         confirmNewPassword: string;
         profileImg: string;
     };
+    job: {
+        leader: string;
+        contact: string;
+        seeProject: string;
+    };
 };

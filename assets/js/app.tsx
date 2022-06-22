@@ -20,6 +20,7 @@ import ListDemo from './components/ListDemo';
 import Messenger from './view/Messenger';
 import Message from './view/Message';
 import DefaultZoneMessage from './view/DefaultZoneMessage';
+import Job from './view/Job';
 
 const App: FC = () => {
     const { i18n } = useTranslation();
@@ -50,6 +51,9 @@ const App: FC = () => {
                 <Route path="/register" element={<Register />} />
                 <Route path="/account/edit" element={<EditAccount />} />
                 <Route path="/account/password" element={<ChangePassword />} />
+                <Route path="/job">
+                    <Route path=":idJob" element={<Job />} />
+                </Route>
             </Routes>
             <Footer />
         </div>

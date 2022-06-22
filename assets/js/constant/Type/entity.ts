@@ -7,40 +7,40 @@ export type IUser = {
     role?: string[];
     dateOfBirth?: string;
     projects?: IProject[];
-    source?: ISource[];
+    sources?: ISource[];
     wishlist?: IWishlist;
     experiance?: IExperiance[];
-    profilType?: IProfileType[];
+    profilType?: IProfilType[];
     lang?: ILang[];
     contributeProject?: IProject[];
 };
 
 export type IProject = {
-    id: string;
-    titre: string;
-    resumer: string;
+    id?: string;
+    title: string;
+    abstract: string;
     description: string;
-    nombreStar: number;
-    porteur: IUser;
-    fichePost: IFichePost[];
-    source: ISource[];
-    Contributeur: IUser[];
+    nbStar: number;
+    leader?: IUser;
+    jobs?: IJob[];
+    sources?: ISource[];
+    contributors?: IUser[];
 };
 
 export type ISource = {
     id: string;
     name: string;
     type: string;
-    lien: string;
+    link: string;
 };
 
 export type IExperiance = {
     id: string;
-    titre: string;
+    title: string;
     resumer: string;
     dateDeDebut: string;
     dateDeFin: string;
-    source: ISource[];
+    sources: ISource[];
 };
 
 export type IWishlist = {
@@ -49,12 +49,14 @@ export type IWishlist = {
     user: IUser;
 };
 
-export type IFichePost = {
-    id: string;
-    titre: string;
-    resumer: string;
+export type IJob = {
+    id?: string;
+    title: string;
+    abstract: string;
     description: string;
-    source: ISource[];
+    Project?: IProject;
+    profilType?: IProfilType;
+    sources?: ISource[];
 };
 
 export type IMessagerie = {
@@ -77,8 +79,8 @@ export type IMessage = {
     message: string;
 };
 
-export type IProfileType = {
-    id: string;
+export type IProfilType = {
+    id?: string;
     name: string;
 };
 

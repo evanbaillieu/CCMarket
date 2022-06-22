@@ -1,0 +1,119 @@
+#job-container {
+    padding: 20px;
+
+    @include respond-to('sm') {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        gap: 20px;
+    }
+}
+
+#job-content {
+    grid-area: 1 / 1 / 2 / 2;
+    justify-self: center;
+
+    h1 {
+        @extend.fontRedBold;
+        @extend.title-section-50;
+        display: inline-block;
+        margin: 0 20px 20px 0;
+        vertical-align: middle;
+    }
+    
+    .profilType-name {
+        @extend.fontRedBold;
+        font-size: 15px;
+        background-color: $primary;
+        padding: 10px;
+        border-radius: 2px;
+        color: $white;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    p {
+        @extend.paragraph;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .source-box {
+        display: flex;
+        align-items: center;
+
+        svg {
+            margin-right: 20px;
+        }
+
+        a {
+            @extend.fontRedMedium;
+            font-size: 20px;
+            color: $black;
+
+            &:hover {
+                color: $secondary;
+            }
+        }
+    }
+
+    @include respond-to('sm') {
+        max-width: 80%;
+    }
+}
+
+#job-sidebar {
+    justify-self: center;
+
+    &-project,
+    &-leader {
+        box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
+        border-radius: 20px;
+        grid-area: 1 / 2 / 2 / 3;
+        padding: 40px;
+        margin: 40px 0;
+    }
+
+    h2 {
+        @extend.fontRedSemiBold;
+        @extend.title-section-30;
+        margin-bottom: 20px;
+        color: $primary
+    }
+
+    h3 {
+        @extend.fontRedMedium;
+        @extend.title-section-25;
+        margin-bottom: 20px;
+    }
+
+    #project-description {
+        @extend.paragraph;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        margin-bottom: 0;
+    }
+
+    #leader-box {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+
+        img {
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        p {
+            @extend.fontRedMedium;
+        }
+    }
+
+    @include respond-to('sm') {
+        max-width: 500px;
+    }
+}
+
+    

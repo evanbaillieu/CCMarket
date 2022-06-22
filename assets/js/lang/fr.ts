@@ -142,6 +142,11 @@ const data: TranslationFormat = {
         confirmNewPassword: 'Confirmer le nouveau mot de passe',
         profileImg: 'Image de profil',
     },
+    job: {
+        leader: 'Chef du projet',
+        contact: 'Contacter le chef',
+        seeProject: 'Voir le projet',
+    },
 };
 
 export default data;

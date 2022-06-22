@@ -18,7 +18,7 @@ const ListDemo: FC = () => {
     return (
         <div>
             <img src={image} />
-            {data && data.map((item) => <p key={item.id}>{item.titre}</p>)}
+            {data && data.map((item) => <p key={item.id}>{item.title}</p>)}
         </div>
     );
 };
