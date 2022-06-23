@@ -33,7 +33,7 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress",
-        "start": "ttab -a iterm2 yarn encore dev --watch && ttab -a iterm2 symfony server:start",
+        "start": "ttab -a iterm2 yarn encore dev --watch && ttab -a iterm2 symfony server:start --no-tls",
         "start-code": "code . && yarn run start",
         "start-PS": "open -na \"PhpStorm.app\" && yarn run start",
         "all-install": "yarn install && composer install",
