@@ -47,7 +47,7 @@ class Job
     #[Groups(['read:Job:collection'])]
     private $id;
 
-    #[Groups(['read:Project:item', 'read:Job:collection',"write:Job:collection"])]
+    #[Groups(['read:Project:collection', 'read:Job:collection',"write:Job:collection"])]
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
 

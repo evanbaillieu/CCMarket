@@ -2,12 +2,22 @@ import config from '../config/default';
 import { IProject } from '../constant/Type/entity';
 import { getTokken } from '../helper/utilHelper';
 
-export const getProjects = async ({ pageParam = 1 }) => {
-    const data = await fetch(`${config.baseUrl}/projects/?page=${pageParam}`, {
-        headers: { 'Content-type': 'application/json' },
+export const getProjects = async () => {
+    const data = await fetch(`${config.baseUrl}/projects?page=1`, {
+        headers: { Accept: 'application/json' },
         method: 'GET',
     });
-    return data.json();
+    const json = data.json();
+    return json;
+};
+
+export const getProjectCollectionCategories = async (name: string) => {
+    const data = await fetch(`${config.baseUrl}/projects?page=1&category.name=${name}`, {
+        headers: { Accept: 'application/json' },
+        method: 'GET',
+    });
+    const json = data.json();
+    return json;
 };
 
 export const getProject = async (idProject: string) => {

@@ -1,0 +1,25 @@
+.container_for_you{
+  margin-top: 80px;
+  &_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    h1{
+      @extend .title-section-50;
+      @extend .fontRedBold;
+      color: $black;
+    }
+  }
+  &_description{
+    max-width: 60%;
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+
+    p{
+      @extend .paragraph;
+    }
+  }
+}

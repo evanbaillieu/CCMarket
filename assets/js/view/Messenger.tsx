@@ -30,6 +30,7 @@ const Messenger: FC = () => {
                 <div className="messenger_content_titre">
                     <h2>{t('messenger.discution')}</h2>
                 </div>
+
                 <ListDiscution content={currentData?.messaging?.discution} setSelect={() => setSelect} />
                 {outlet}
             </div>

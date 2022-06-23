@@ -24,10 +24,7 @@
         margin: 20px 0;
     }
 
-    img {
-        border-radius: 50%;
-        margin-bottom: 20px;
-    }
+
 
     @include respond-to('sm') {
         margin: 0 50px;
@@ -36,6 +33,10 @@
 }
 
 #account-sidebar {
+    img {
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
     img {
         display: none;
 
@@ -104,6 +105,10 @@
 }
 
 .account-content {
+    img {
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
     width: 100%;
     padding: 0 20px;
 

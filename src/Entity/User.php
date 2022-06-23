@@ -69,7 +69,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
-    #[Groups(['read:User:collection', 'read:Project:item'])]
+    #[Groups(['read:User:collection'])]
     public $id;
 
 
@@ -332,7 +332,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
     }
 
     public function __toString(){
-        return $this->firstName;
+        return $this->id;
     }
 
     /**

@@ -4,10 +4,12 @@ import { useQuery } from 'react-query';
 import { findDiscution } from '../service/messengerService';
 import BullMessage from '../components/BullMessage';
 import ToolBar from '../components/Toolbar';
+import { useTranslation } from 'react-i18next';
 
 const Message: FC = ({}) => {
     const { id } = useParams();
     const [currentData, setCurrentData] = useState([]);
+    const { t } = useTranslation();
 
     const { isLoading, isError, data, refetch } = useQuery('list-message', () => findDiscution(id), {
         refetchInterval: 2000,
@@ -25,6 +27,10 @@ const Message: FC = ({}) => {
     }, [data]);
     return (
         <>
+            <div className="messenger_content_message_title">
+                <h2>{data.name}</h2>
+                <button>{t('messsnger.blocked')}</button>
+            </div>
             <div className="messenger_content_message" id="list_message">
                 {data &&
                     data?.message.map((item: any) => {

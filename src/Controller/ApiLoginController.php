@@ -87,9 +87,51 @@ class ApiLoginController extends AbstractController
         if($user){
             $fullUser = $entityManager->getRepository(User::class)->find($user->getId());
 
+
+            $projects = array();
+
+            foreach ($fullUser->getProjects() as $project){
+                $jobs = array();
+                foreach ($project->getJobs() as $job){
+                    array_push($jobs, [
+                        "id" => $job->getId(),
+                        "title" => $job->getTitle(),
+                        "description" => $job->getAbstract(),
+                        "isBanned" => $job->isIsBanned(),
+                        ]);
+                }
+                $category = [
+                    'name' => $project->getCategory()->getName(),
+                    'id' => $project->getCategory()->getId(),
+                ];
+
+                $sources = array();
+                foreach ($project->getSource() as $source){
+                    array_push($sources, [
+                        "id" => $source->getId(),
+                        "type" => $source->getType(),
+                        "link" => $source->getLink(),
+                    ]);
+                }
+
+                array_push($projects, [
+                    "jobs" => $jobs,
+                    "sources" => $sources,
+                    "category" => $category,
+                    "id" => $project->getId(),
+                    "title" => $project->getTitle(),
+                    "abstract" => $project->getAbstract(),
+                    "isBanned" => $project->isIsBanned(),
+
+                ]);
+            }
+
+
             return $this->json([
                 'user' => $fullUser,
-                'profilType' => $fullUser->getProfilType()
+                'profilType' => $fullUser->getProfilType(),
+                'projects' => $projects,
+                'experiences' => $fullUser->getExperience(),
             ]);
         }
 

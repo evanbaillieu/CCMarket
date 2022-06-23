@@ -115,7 +115,7 @@ const AddProject: FC = () => {
                     option={{
                         type: 'text',
                         name: 'github',
-                        title: `project.github`,
+                        title: `github`,
                         error: '',
                         validate: '',
                     }}

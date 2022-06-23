@@ -8,6 +8,7 @@ import SecureSvg from '../svg/secure.svg';
 import CommunitySvg from '../svg/community.svg';
 import { Link } from 'react-router-dom';
 import Badge from '../components/badge';
+import ListCategories from '../components/ListCategories';
 
 const Home: FC = () => {
     const { t } = useTranslation();
@@ -45,6 +46,17 @@ const Home: FC = () => {
                         <img src={HomeSectionPresentationImageMobile} alt="homeSectionPresentationImage" />
                     </div>
                 </aside>
+            </section>
+            <section className="all_categories_container">
+                <div className="all_categories_container_title">
+                    <h3>
+                        {t('home.findYourOwn')}
+                        <span className="red-important"> {t('home.happiness')}</span>{' '}
+                    </h3>
+                </div>
+                <div className="all_categories_container_box">
+                    <ListCategories />
+                </div>
             </section>
         </div>
     );
