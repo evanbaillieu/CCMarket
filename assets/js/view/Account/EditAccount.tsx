@@ -42,7 +42,7 @@ const EditAccount: FC = () => {
     };
 
     return (
-        <div className="edit-form">
+        <div className="form">
             <h1>{t('account.edit')}</h1>
             <label htmlFor="profileImg">
                 <img src={profile} width={150} height={150} alt={t('profileImage')} />
@@ -97,7 +97,7 @@ const EditAccount: FC = () => {
                 />
             </div>
 
-            <div className="edit-buttons">
+            <div className="form-buttons">
                 <Link to={'/account'} className="btn btn-cancel">
                     {t('account.cancel')}
                 </Link>

@@ -21,7 +21,7 @@ import Messenger from './view/Messenger';
 import Message from './view/Message';
 import DefaultZoneMessage from './view/DefaultZoneMessage';
 import Job from './view/Job';
-
+import AddProject from './view/Project/AddProject';
 import Project from './view/Project';
 import ForYou from './view/ForYou';
 
@@ -60,6 +60,7 @@ const App: FC = () => {
                 </Route>
                 <Route path="/project">
                     <Route path=":idProject" element={<Project />} />
+                    <Route path="add" element={<AddProject />} />
                 </Route>
             </Routes>
             <Footer />

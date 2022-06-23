@@ -149,10 +149,15 @@ const data: TranslationFormat = {
         leader: 'Chef du projet',
         seeProject: 'Voir le projet',
     },
-
+    project: {
+        add: 'Ajouter un projet',
+        title: 'Titre du projet',
+        abstract: 'Résumé',
+        description: 'Description',
+        category: 'Categorie',
+    },
     contactLeader: 'Contacter le chef',
     profileImage: 'Image de profil',
-
     listing: {
         noJobs: 'Aucune fiche de poste disponible',
         noProjects: 'Aucun projet disponible',

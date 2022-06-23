@@ -1,144 +1,76 @@
-.edit-form {
-    padding: 40px 20px;
+#edit-inputs,
+#change-password-inputs {
+    margin-bottom: 40px;
 
-    h1 {
-        @extend.fontRedSemiBold;
-        @extend.title-section-50;
-        text-align: center;
-        margin-bottom: 40px;
+    @include respond-to('sm') {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 100px;
     }
 
-    .error-message {
-        text-align: center;
-        @extend.fontRedMedium;
-        font-size: 20px;
-        margin-bottom: 20px;
-        color: $error;
+    @include respond-to('md') {
+        margin: 0 10%;
     }
 
-    #edit-inputs,
-    #change-password-inputs {
-        margin-bottom: 40px;
-
-        @include respond-to('sm') {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px 100px;
-        }
-
-        @include respond-to('md') {
-            margin: 0 10%;
-        }
-
-        @include respond-to('md') {
-            margin: 0 10%;
-        }
+    @include respond-to('md') {
+        margin: 0 10%;
     }
+}
 
-    #edit-inputs {
-        @include respond-to('sm') {
-            grid-template-rows: repeat(2, 1fr);
-            
-            :nth-child(1).input { grid-area: 1 / 1 / 2 / 2; }
-            :nth-child(2).input { grid-area: 1 / 2 / 2 / 3; }
-            :nth-child(3).input { grid-area: 2 / 1 / 3 / 2; }
-            :nth-child(4).input { grid-area: 2 / 2 / 3 / 3; }
-        }
+#edit-inputs {
+    @include respond-to('sm') {
+        grid-template-rows: repeat(2, 1fr);
+        
+        :nth-child(1).input { grid-area: 1 / 1 / 2 / 2; }
+        :nth-child(2).input { grid-area: 1 / 2 / 2 / 3; }
+        :nth-child(3).input { grid-area: 2 / 1 / 3 / 2; }
+        :nth-child(4).input { grid-area: 2 / 2 / 3 / 3; }
     }
+}
 
-    #change-password-inputs {
-        @include respond-to('sm') {
-            grid-template-rows: repeat(2, 1fr);
-            
-            :nth-child(1).input { grid-area: 1 / 1 / 2 / 2; }
-            :nth-child(2).input { grid-area: 1 / 2 / 2 / 3; }
-            :nth-child(3).input { grid-area: 2 / 1 / 3 / 2; }
-        }
-
-        .input_content {
-            position: relative;
-    
-            div {
-                position:absolute;
-                right: 0;
-                top: 50%;
-                transform:translate(-0%, -50%)scale(0.8);
-            }
-          }
+#change-password-inputs {
+    @include respond-to('sm') {
+        grid-template-rows: repeat(2, 1fr);
+        
+        :nth-child(1).input { grid-area: 1 / 1 / 2 / 2; }
+        :nth-child(2).input { grid-area: 1 / 2 / 2 / 3; }
+        :nth-child(3).input { grid-area: 2 / 1 / 3 / 2; }
     }
+}
 
-    input {
-        margin: 20px 0;
-        font-size: 20px;
-        outline: none;
-        border-radius: 0;
-        border: none;
-        border-bottom: 1px solid $black;
-        width: 100%;
+input[type='file']#profileImg {
+    display: none;
+}
 
-        &[type='file'] {
-            display: none;
-        }
-    }
+label[for='profileImg'] {
+    margin-bottom: 20px;
+    display: inline-flex;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    color: $white;
 
-    label[for='profileImg'] {
-        margin-bottom: 20px;
-        display: inline-flex;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
+    img, 
+    #transparent-black {
         border-radius: 50%;
-        color: $white;
-
-        img, 
-        #transparent-black {
-            border-radius: 50%;
-        }
-
-        span,
-        #transparent-black {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        #transparent-black {
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, .5);
-        }
-
-        &:hover > img {
-            opacity: 0.5;
-        }
     }
 
-    .required::after{
-        content: '*';
-        margin-left: 4px;
-        color: $primary;
+    span,
+    #transparent-black {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 
-    .edit-buttons {
-        display: flex;
-        flex-direction: column-reverse;
-        padding: 0 20px;
+    #transparent-black {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .5);
+    }
 
-        .btn {
-            display: block;
-            text-align: center;
-    
-            @include respond-to('sm') {
-                display: inline-block;
-                margin-left: 0;
-                width: auto;
-            }
-        }
-
-        @include respond-to('sm') {
-            flex-direction: row;
-            justify-content: center;
-        }
+    &:hover > img {
+        opacity: 0.5;
     }
 }

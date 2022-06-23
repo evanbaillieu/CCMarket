@@ -38,6 +38,7 @@ const ListProjet: FC = () => {
                         return (
                             <CardItem
                                 key={item.id}
+                                id={item.id}
                                 title={item.title}
                                 category={item.category.name}
                                 abstract={item.abstract}

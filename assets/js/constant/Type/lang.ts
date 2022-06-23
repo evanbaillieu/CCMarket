@@ -149,7 +149,13 @@ export type TranslationFormat = {
         leader: string;
         seeProject: string;
     };
-
+    project: {
+        add: string;
+        title: string;
+        abstract: string;
+        description: string;
+        category: string;
+    };
     contactLeader: string;
     profileImage: string;
 

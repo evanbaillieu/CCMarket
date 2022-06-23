@@ -20,19 +20,20 @@ export type IProject = {
     title: string;
     abstract: string;
     description: string;
-    nbStar: number;
-    leader?: IUser;
+    nbStar?: number;
+    leader?: string;
     jobs?: IJob[];
-    category?: ICategory;
-    sources?: ISource[];
+    category?: string;
+    sources?: string[];
     contributors?: IUser[];
 };
 
 export type ISource = {
-    id: string;
+    id?: string;
     name: string;
     type: string;
     link: string;
+    projects: string[];
 };
 
 export type IExperiance = {
