@@ -147,7 +147,8 @@ export type TranslationFormat = {
     };
     job: {
         leader: string;
-        contact: string;
         seeProject: string;
     };
+    contactLeader: string;
+    profileImage: string;
 };

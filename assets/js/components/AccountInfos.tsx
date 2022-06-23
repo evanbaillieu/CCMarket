@@ -11,7 +11,7 @@ const AccountInfos: FC = () => {
     return (
         <div className="account-content">
             <h1>{t('account.title')}</h1>
-            <img src={profile} width={150} height={150} alt="Profile" />
+            <img src={profile} width={150} height={150} alt={t('profileImage')} />
             <div id="account-infos">
                 <div className="grid-content">
                     <h6>{t('account.firstName')}</h6>

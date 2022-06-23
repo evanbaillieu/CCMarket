@@ -73,7 +73,7 @@ class Project
     private $description;
 
     #[Groups(['read:Project:item'])]
-    #[ORM\Column(type: 'integer', nullable: true)]
+    #[ORM\Column(type: 'integer')]
     private $nbStar;
 
     #[Groups(['read:Project:item','read:Project:collection','write:Project:collection',
@@ -119,6 +119,7 @@ class Project
         $this->setIsBanned(false);
         $this->sources = new ArrayCollection();
         $this->setCreatedAt(new \DateTime());
+        $this->setNbStar(0);
     }
 
 

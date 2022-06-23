@@ -58,11 +58,11 @@ const Job: FC = () => {
                 <div id="job-sidebar-leader">
                     <h3>{t('job.leader')}</h3>
                     <div id="leader-box">
-                        <img src={profile} width={50} height={50} alt="Profile" />
+                        <img src={profile} width={50} height={50} alt={t('profileImage')} />
                         <p>{leader?.firstName + ' ' + leader?.lastName}</p>
                     </div>
                     <Link to={'/messenger/'} className="btn btn-primary btn-with-arrow">
-                        {t('job.contact')}
+                        {t('contactLeader')}
                     </Link>
                 </div>
             </div>

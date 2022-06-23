@@ -23,6 +23,7 @@ export type IProject = {
     nbStar: number;
     leader?: IUser;
     jobs?: IJob[];
+    category?: ICategory;
     sources?: ISource[];
     contributors?: IUser[];
 };
@@ -88,4 +89,9 @@ export type ILang = {
     id: string;
     name: string;
     type: string;
+};
+
+export type ICategory = {
+    id?: string;
+    name: string;
 };

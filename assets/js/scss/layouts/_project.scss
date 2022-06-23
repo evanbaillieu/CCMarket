@@ -1,4 +1,4 @@
-#job-container {
+#project-container {
     padding: 20px;
 
     @include respond-to('sm') {
@@ -9,7 +9,7 @@
     }
 }
 
-#job-content {
+#project-content {
     grid-area: 1 / 1 / 2 / 2;
     justify-self: center;
 
@@ -62,16 +62,30 @@
     }
 }
 
-#job-sidebar {
+#project-sidebar {
     grid-area: 1 / 2 / 2 / 3;
     justify-self: center;
 
-    &-project,
     &-leader {
         box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
         border-radius: 20px;
         padding: 40px;
         margin: 40px 0;
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+
+        svg {
+            margin-right: 15px;
+        }
+
+        p {
+            @extend.fontRedSemiBold;
+            @extend.title-section-25;
+        }
     }
 
     h2 {
