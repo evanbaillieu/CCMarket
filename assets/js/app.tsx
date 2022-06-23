@@ -2,28 +2,28 @@ import Cookies from 'js-cookie';
 import React, { FC, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Route, Routes } from 'react-router-dom';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
-import Home from './view/Home';
-import Listing from './view/Listing';
-import Login from './view/Login';
-import Posts from './view/Posts';
-import Register from './view/Registeur';
-import Account from './view/Account';
+import AccountExperience from './components/AccountExperience';
 import AccountInfos from './components/AccountInfos';
 import AccountSettings from './components/AccountSettings';
-import EditAccount from './view/Account/EditAccount';
-import ChangePassword from './view/Account/ChangePassword';
-import './scss/main.scss';
-import config from './config/default';
+import Footer from './components/Footer';
 import ListProject from './components/ListProject';
-import Messenger from './view/Messenger';
-import Message from './view/Message';
+import Navbar from './components/Navbar';
+import config from './config/default';
+import './scss/main.scss';
+import Account from './view/Account';
+import ChangePassword from './view/Account/ChangePassword';
+import EditAccount from './view/Account/EditAccount';
 import DefaultZoneMessage from './view/DefaultZoneMessage';
-import Job from './view/Job';
-
-import Project from './view/Project';
 import ForYou from './view/ForYou';
+import Home from './view/Home';
+import Job from './view/Job';
+import Listing from './view/Listing';
+import Login from './view/Login';
+import Message from './view/Message';
+import Messenger from './view/Messenger';
+import Posts from './view/Posts';
+import Project from './view/Project';
+import Register from './view/Registeur';
 
 const App: FC = () => {
     const { i18n } = useTranslation();
@@ -44,6 +44,7 @@ const App: FC = () => {
                 <Route path="/account" element={<Account />}>
                     <Route path="" element={<AccountInfos />} />
                     <Route path="settings" element={<AccountSettings />} />
+                    <Route path="experiences" element={<AccountExperience />} />
                 </Route>
                 <Route path="/messenger/:id" element={<Messenger />}>
                     <Route path="" element={<DefaultZoneMessage />} />
