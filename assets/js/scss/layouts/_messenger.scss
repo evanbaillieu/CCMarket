@@ -48,6 +48,14 @@
         }
         &_title{
             grid-area: title;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row ;
+            &_t{
+                justify-self: center;
+            }
         }
     }
 

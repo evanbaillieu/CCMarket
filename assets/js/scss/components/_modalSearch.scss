@@ -47,7 +47,8 @@
     }
     .form_row{
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+      flex-direction: row;
       width: 100%;
       margin-bottom: 40px;
       @media (max-width: 750px){
@@ -64,6 +65,7 @@
       .form_item{
         display: flex;
         flex-direction: column;
+        margin-left: 2.5rem;
         width: 216px;
         @media(max-width:1481px ){
           width: 25%;
