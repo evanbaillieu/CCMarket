@@ -4,7 +4,7 @@ const data: TranslationFormat = {
     nav: {
         home: 'Home',
         foryou: 'For You',
-        about: 'About',
+        createProject: 'Create a project',
     },
     home: {
         title_part_1: 'The platform that',
@@ -145,6 +145,7 @@ const data: TranslationFormat = {
         passwordNotIdentical: 'The confirmation of password is not identical',
         inputEmpty: 'Some fields are empty',
         incorrectPassword: 'Incorrect password',
+        experiences: 'Experience(s)',
     },
     job: {
         leader: 'Project leader',
@@ -163,6 +164,13 @@ const data: TranslationFormat = {
     listing: {
         noJobs: 'No Jobs found',
         noProjects: 'No Projects found',
+        titleProjectJob: 'All of your Projects and Jobs',
+    },
+
+    forYou: {
+        title: 'For You',
+        description:
+            'You will find here, the job descriptions according to your typical profile, no need to search, we take care of it for you',
     },
 };
 export default data;

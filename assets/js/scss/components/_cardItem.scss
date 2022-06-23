@@ -30,6 +30,7 @@
     p{
       color: $white;
       @extend .fontRedBold;
+      margin: 0 !important;
     }
   }
   &_source{
@@ -40,6 +41,7 @@
       width: 100%;
       height: 100%;
       border-radius: 27px 27px 0 0;
+      display: flex;
     }
   }
   &_all_infos{
@@ -47,7 +49,7 @@
     &_title{
       margin-bottom: 37px;
       h3{
-        font-size: 25px;
+        font-size: 25px !important;
         @extend .fontRedMedium;
       }
     }

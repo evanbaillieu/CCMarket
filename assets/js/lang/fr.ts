@@ -4,7 +4,7 @@ const data: TranslationFormat = {
     nav: {
         home: 'Accuile',
         foryou: 'Pour vous',
-        about: 'A propos',
+        createProject: 'Créer un projet',
     },
     home: {
         title_part_1: 'The platform that',
@@ -144,6 +144,7 @@ const data: TranslationFormat = {
         passwordNotIdentical: "La confirmation de mot de passe n'est pas identique",
         inputEmpty: 'Certains champs sont vides',
         incorrectPassword: 'Mot de passe incorrect',
+        experiences: 'Experience(s)',
     },
     job: {
         leader: 'Chef du projet',
@@ -162,6 +163,13 @@ const data: TranslationFormat = {
     listing: {
         noJobs: 'Aucune fiche de poste disponible',
         noProjects: 'Aucun projet disponible',
+        titleProjectJob: 'Tous vos projets et fichs de poste',
+    },
+
+    forYou: {
+        title: 'Pour vous',
+        description:
+            "Vous retrouverez ici, les fiches de postes selon votre profil type, plus besoins de rechercher, on s'en occupe pour vous",
     },
 };
 

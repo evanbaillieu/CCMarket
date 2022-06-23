@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { ISource } from '../constant/Type/entity';
+import { ICategory, ISource } from '../constant/Type/entity';
 import imgDefault from '../img/img-de-base.png';
 export interface iCardProps {
     id: string;
     title: string;
     abstract: string;
-    category: string;
+    category: ICategory;
     isBanned: boolean;
     source?: ISource[];
 }
@@ -38,7 +38,7 @@ const cardItem: FC<iCardProps> = ({ id, title, abstract, category, isBanned, sou
                         </div>
                     </div>
                     <div className="item_listing_category">
-                        <p>{category}</p>
+                        <p>{category?.name}</p>
                     </div>
                 </div>
             </div>

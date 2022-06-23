@@ -56,6 +56,9 @@ const Account: FC = () => {
                         <Link to={'/'} onClick={accountLogout}>
                             {t('account.logout')}
                         </Link>
+                    </li>{' '}
+                    <li>
+                        <Link to={'/experiences'}>{t('account.logout')}</Link>
                     </li>
                 </ul>
             </div>

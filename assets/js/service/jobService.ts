@@ -37,3 +37,12 @@ export const getJobCollectionForYou = async (ProfilType: string) => {
     const json = data.json();
     return json;
 };
+
+export const getJobCollectionOwner = async (id: string) => {
+    const data = await fetch(`${config.baseUrl}/jobs?page=1&id=${id}`, {
+        headers: { Accept: 'application/json' },
+        method: 'GET',
+    });
+    const json = data.json();
+    return json;
+};

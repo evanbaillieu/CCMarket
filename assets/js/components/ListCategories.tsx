@@ -3,13 +3,14 @@ import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
 import { Circles } from 'react-loader-spinner';
 import CardItem from './cardItem';
-import getProjectCollection from '../service/projectService';
+import { getCategoryCollection } from '../service/CategoryService';
+import BadgeCategory from './BadgeCategory';
 
-const ListProjet: FC = () => {
+const ListCategories: FC = () => {
     const { t } = useTranslation();
     const [content, setContent] = useState('');
 
-    const { isError, isLoading, data } = useQuery('List-post', getProjectCollection, {});
+    const { isError, isLoading, data } = useQuery('List-category', getCategoryCollection, {});
 
     if (isLoading) {
         return (
@@ -28,27 +29,17 @@ const ListProjet: FC = () => {
     }
 
     return (
-        <section>
-            <aside className="title_project_listing">
-                <h2>Project(s)</h2>
-            </aside>
-            <div className="container_listing">
-                {data &&
-                    data.map((item: any) => {
-                        return (
-                            <CardItem
-                                key={item.id}
-                                title={item.title}
-                                category={item.category}
-                                abstract={item.abstract}
-                                isBanned={item.isBanned}
-                                source={item?.source}
-                            />
-                        );
-                    })}
-            </div>
+        <section className="all_categories_container_box_element">
+            {data &&
+                data.map((item: any) => {
+                    return (
+                        <div key={item.id}>
+                            <BadgeCategory name={item.name} />
+                        </div>
+                    );
+                })}
         </section>
     );
 };
 
-export default ListProjet;
+export default ListCategories;

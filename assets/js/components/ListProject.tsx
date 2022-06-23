@@ -3,13 +3,16 @@ import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
 import { Circles } from 'react-loader-spinner';
 import CardItem from './cardItem';
-import getProjectCollection from '../service/projectService';
 
-const ListProjet: FC = () => {
+export type IProjectProps = {
+    getProject: () => Promise<any>;
+};
+
+const ListProjet: FC<IProjectProps> = ({ getProject }) => {
     const { t } = useTranslation();
     const [content, setContent] = useState('');
 
-    const { isError, isLoading, data } = useQuery('List-post', getProjectCollection, {});
+    const { isError, isLoading, data } = useQuery('List-project', getProject, {});
 
     if (isLoading) {
         return (
@@ -18,7 +21,6 @@ const ListProjet: FC = () => {
             </div>
         );
     }
-
     if (data.length === 0) {
         return (
             <div className="container_listing_not_found">
@@ -40,7 +42,7 @@ const ListProjet: FC = () => {
                                 key={item.id}
                                 id={item.id}
                                 title={item.title}
-                                category={item.category.name}
+                                category={item.category}
                                 abstract={item.abstract}
                                 isBanned={item.isBanned}
                                 source={item?.source}

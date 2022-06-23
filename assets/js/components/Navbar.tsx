@@ -78,7 +78,7 @@ const Navbar: FC = () => {
                                     <NavLink to="/foryou">{t('nav.foryou')}</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/about">{t('nav.about')}</NavLink>
+                                    <NavLink to="/createProject">{t('nav.createProject')}</NavLink>
                                 </li>
                             </ul>
                             <div onClick={MenuOpenClose} className="header_navbar_menu_burgeur_button">
@@ -134,7 +134,7 @@ const Navbar: FC = () => {
                                     <NavLink to="/projects">{t('nav.foryou')}</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/jobs">{t('nav.about')}</NavLink>
+                                    <NavLink to="/createProject">{t('nav.createProject')}</NavLink>
                                 </li>
                             </ul>
                         </nav>

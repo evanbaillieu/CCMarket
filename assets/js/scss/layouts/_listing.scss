@@ -10,6 +10,19 @@
   @media (max-width: 1246px){
     gap: 6%;
   }
+  &.account{
+    padding-inline: 0;
+    margin-bottom: 20px;
+    min-height: min-content;
+  }
+  &.jobs{
+    display: flex;
+    overflow-x: scroll;
+    padding: 1em;
+    width: 70%;
+    position: relative;
+    left:-1em
+  }
   @media (max-width: 860px) {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -20,7 +33,7 @@
     align-items: center;
     margin-top:0px ;
 
-    h2{
+    h1{
       @extend .title-section-40;
       color: $black;
       @extend .fontRedSemiBold;
@@ -35,5 +48,17 @@
     @extend .title-section-50;
     @extend .fontRedMedium;
     color: $black;
+  }
+}
+
+.project_with_jobs_account{
+  margin-bottom: 200px;
+}
+
+.content_his_project_title{
+  margin-top: 50px;
+  h3{
+    @extend .title-section-30;
+    @extend .fontRedSemiBold;
   }
 }

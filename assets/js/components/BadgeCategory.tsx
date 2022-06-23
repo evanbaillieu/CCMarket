@@ -1,19 +1,19 @@
 import React, { FC } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 
-export interface IBadgeProps {
-    svg?: JSX.Element;
-    title: string;
+export interface IBadgeCategoryProps {
+    name: string;
 }
 
-const Badge: FC<IBadgeProps> = ({ svg, title }) => {
+const Badge: FC<IBadgeCategoryProps> = ({ name }) => {
     return (
-        <div className="home_section_presentation_text_points_importants_badge_item">
-            <div className="home_section_presentation_text_points_importants_badge_item_red_background_picto">
-                {svg}
-            </div>
-            <div className="home_section_presentation_text_points_importants_badge_item_title">
-                <h6>{title}</h6>
-            </div>
+        <div>
+            <Link to={`/listingCategory/${name}`} className="badge_categories_container">
+                <div className="badge_categories_container_picto"></div>
+                <div className="badge_categories_container_title">
+                    <h4>{name}</h4>
+                </div>
+            </Link>
         </div>
     );
 };

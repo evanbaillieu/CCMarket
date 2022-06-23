@@ -7,7 +7,7 @@ export type TranslationFormat = {
     nav: {
         home: string;
         foryou: string;
-        about: string;
+        createProject: string;
     };
     home: {
         title_part_1: string;
@@ -144,6 +144,7 @@ export type TranslationFormat = {
         passwordNotIdentical: string;
         inputEmpty: string;
         incorrectPassword: string;
+        experiences: string;
     };
     job: {
         leader: string;
@@ -163,5 +164,11 @@ export type TranslationFormat = {
     listing: {
         noJobs: string;
         noProjects: string;
+        titleProjectJob: string;
+    };
+
+    forYou: {
+        title: string;
+        description: string;
     };
 };

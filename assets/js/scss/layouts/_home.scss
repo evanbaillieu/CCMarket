@@ -3,7 +3,7 @@
   justify-content: space-between;
   margin-top:120px;
   position: relative;
-  margin-bottom: 400px;
+  margin-bottom: 300px;
   @media (max-width: 960px){
     flex-direction: column-reverse;
     margin-top:30px;
@@ -119,3 +119,37 @@
   }
 }
 
+
+.all_categories_container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-inline: 2.5%;
+  margin-bottom: 80px;
+  @media (max-width: 960px){
+    padding-inline: 5%;
+  }
+  &_title{
+    margin-bottom:76px;
+
+    h3{
+      @extend .title-section-50;
+      @extend .fontRedBold;
+      color: $black;
+
+      .red-important{
+        color: $primary;
+      }
+    }
+  }
+  &_box{
+    width:60%;
+    &_element{
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}

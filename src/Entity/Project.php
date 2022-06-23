@@ -42,7 +42,7 @@ use Symfony\Component\Uid\Uuid;
         ]
     ]
 
-), ApiFilter(SearchFilter::class, properties: ['id' => 'exact','description' => 'partial'])]
+), ApiFilter(SearchFilter::class, properties: ['id' => 'exact','description' => 'partial', 'category.name' => 'exact'])]
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
@@ -76,10 +76,13 @@ class Project
     #[ORM\Column(type: 'integer')]
     private $nbStar;
 
-    #[Groups(['read:Project:item','read:Project:collection','write:Project:collection',
+
+
+    #[Groups(['read:Project:collection','write:Project:collection',
         'read:Job:item'])]
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'projects')]
     #[ORM\JoinColumn(nullable: false)]
+
     private $leader;
 
     #[Groups('read:Project:collection')]
