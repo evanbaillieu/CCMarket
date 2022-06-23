@@ -259,7 +259,10 @@ class Project
     }
 
 
-
+    public function incrementStar()
+    {
+        $this->nbStar += 1;
+    }
 
 
 

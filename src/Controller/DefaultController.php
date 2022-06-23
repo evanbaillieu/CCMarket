@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Project;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,17 +19,22 @@ class DefaultController extends AbstractController
     }
     
     /**
-     * @Route("/api/me", methods="POST")
+     * @Route("/api/links", methods="POST")
      */
-    public function r(Request $request): JsonResponse
+    public function setFave(Request $request , ManagerRegistry $doctrine): JsonResponse
     {
-        $user = $this->security->getUser();
-        dd($user);
-        dd($request);
-        return $this->json([
-            'user' => $user,
-            'requeste' => $request
-        ]);
+        $entityManager = $doctrine->getManager();
+        $user = $entityManager->getRepository(User::class)->find($this->getUser()->id);
+        $data = json_encode($request->getContent, true);
+        if($data['projectId']){
+            $project = $entityManager->getRepository(Project::class)->find($data['projectId']);
+            $user->addFavorite($project);
+            $project->incrementStar();
+            $entityManager->flush();
+            return $this->json(["message" => $user], 201);
+        }
+
+        return $this->json([], 404);
     }
     /**
      * @Route("/{reactRouting}/{reactRouting2}/{reactRouting3}", name="home", defaults={"reactRouting": null, "reactRouting2": null, "reactRouting3": null})
