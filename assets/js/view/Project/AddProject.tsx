@@ -58,8 +58,8 @@ const AddProject: FC = () => {
                             link: 'https://github.com/' + source,
                             projects: [result['@id']],
                         });
-                    }
-                    navigate('/project/' + result.id);
+                        navigate('/project/' + result.id);
+                    } else navigate('/project/' + result.id);
                 }
             });
         }

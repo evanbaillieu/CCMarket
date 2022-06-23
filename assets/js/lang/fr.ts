@@ -4,7 +4,7 @@ const data: TranslationFormat = {
     nav: {
         home: 'Accuile',
         foryou: 'Pour vous',
-        createProject: 'Créer un projet',
+        addProject: 'Ajouter un projet',
     },
     home: {
         title_part_1: 'The platform that',

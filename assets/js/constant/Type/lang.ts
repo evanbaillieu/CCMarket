@@ -7,7 +7,7 @@ export type TranslationFormat = {
     nav: {
         home: string;
         foryou: string;
-        createProject: string;
+        addProject: string;
     };
     home: {
         title_part_1: string;
