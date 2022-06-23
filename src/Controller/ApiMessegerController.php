@@ -86,9 +86,22 @@ class ApiMessegerController extends AbstractController
                      "sender" => $msg->getSender(),
                       "isYou" => $isYou]);
             }
+
+            $lastName = "";
+            $firstName = "";
+
+            foreach($dicustion->getParticipant() as $participant){
+                if ($participant->getId() != $user->getId()){
+                    $lastName = $participant->getUser()->getLastName();
+                    $firstName = $participant->getUser()->getFirstName();
+                }
+            }
+
             return $this->json([
                 'id' => $dicustion->getId(),
                 'message' => $message,
+                'lastName' => $lastName,
+                'firstName' => $firstName,
                 'blocked' => $dicustion->getBlocked()
             ]);
         }

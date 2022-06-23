@@ -5,7 +5,7 @@ import { Circles } from 'react-loader-spinner';
 import CardItem from './cardItem';
 
 export type IProjectProps = {
-    getProject: () => Promise<any>;
+    getProject?: () => Promise<any>;
 };
 
 const ListProjet: FC<IProjectProps> = ({ getProject }) => {

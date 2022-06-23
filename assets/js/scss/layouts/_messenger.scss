@@ -12,7 +12,7 @@
         border: 1px solid var(--grey-color);
         grid-template-rows: repeat(9, 1fr);
         grid-template-columns: repeat(5, 1fr);;
-        grid-template-areas: "titre message message message message"
+        grid-template-areas: "titre title title title title"
                              "listUser message message message message"
                              "listUser message message message message"
                              "listUser message message message message"
@@ -46,7 +46,9 @@
         &_toolbar{
             grid-area: toolbar;
         }
-        
+        &_title{
+            grid-area: title;
+        }
     }
 
     &_list_user{

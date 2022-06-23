@@ -6,8 +6,8 @@ export type IUser = {
     password?: string;
     role?: string[];
     dateOfBirth?: string;
-    projects?: IProject[];
-    sources?: ISource[];
+    projects?: string[] | IProject[];
+    sources?: string[] | ISource[];
     wishlist?: IWishlist;
     experiance?: IExperiance[];
     profilType?: IProfilType[];
@@ -22,9 +22,9 @@ export type IProject = {
     description: string;
     nbStar?: number;
     leader?: string;
-    jobs?: IJob[];
-    category?: string;
-    sources?: string[];
+    jobs?: string[] | IJob[];
+    category?: string | ICategory;
+    sources?: string[] | ISource[];
     contributors?: IUser[];
 };
 
@@ -33,7 +33,7 @@ export type ISource = {
     name: string;
     type: string;
     link: string;
-    projects: string[];
+    projects: string[] | IProject[];
 };
 
 export type IExperiance = {
@@ -56,7 +56,7 @@ export type IJob = {
     title: string;
     abstract: string;
     description: string;
-    Project?: IProject;
+    Project?: string[] | IProject;
     profilType?: IProfilType;
     sources?: ISource[];
 };

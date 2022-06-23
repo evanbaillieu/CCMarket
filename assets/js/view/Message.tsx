@@ -15,6 +15,8 @@ const Message: FC = ({}) => {
         refetchInterval: 2000,
         refetchIntervalInBackground: true,
     });
+    console.log('**********data**********');
+    console.log(data);
 
     useEffect(() => {
         const element = document.getElementById('list_message');
@@ -28,7 +30,7 @@ const Message: FC = ({}) => {
     return (
         <>
             <div className="messenger_content_message_title">
-                <h2>{data.name}</h2>
+                <h2>{data?.firstName}</h2>
                 <button>{t('messsnger.blocked')}</button>
             </div>
             <div className="messenger_content_message" id="list_message">

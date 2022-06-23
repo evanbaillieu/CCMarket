@@ -1,6 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import CardUser from './cardUser';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export interface IListDiscutionProps {
     content: any[];
@@ -8,8 +8,13 @@ export interface IListDiscutionProps {
 }
 
 const ListDiscution: FC<IListDiscutionProps> = ({ content, setSelect }) => {
+    const { id } = useParams();
     const [selected, setSelected] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        setSelected(id);
+    }, [id]);
 
     const selectCard = (id: string) => {
         setSelected(id);

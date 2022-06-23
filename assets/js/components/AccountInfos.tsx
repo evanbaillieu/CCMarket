@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate, useOutletContext } from 'react-router-dom';
-import { IJob, IProfilType, IProject, IUser } from '../constant/Type/entity';
+import { IJob, IProfilType, IProject, IUser, ICategory, ISource } from '../constant/Type/entity';
 import profile from '../img/test.png';
 import ListJobs from './ListJobs';
 import { getJobCollectionOwner } from '../service/jobService';
@@ -17,7 +17,7 @@ const AccountInfos: FC = () => {
     useEffect(() => {
         getMe().then((response) => {
             if (response.user) {
-                setProjects(response.projects);
+                setProjects(response.projects as IProject[]);
             } else {
                 navigate('/login');
             }
@@ -60,19 +60,20 @@ const AccountInfos: FC = () => {
                 <div className="content_his_project_title">
                     <h3>{t('listing.titleProjectJob')}</h3>
                 </div>
-                {projects.map((project) => (
-                    <div className="project_with_jobs_account">
+                {projects.map((project: IProject) => (
+                    <div className="project_with_jobs_account" key={project.id}>
                         <div className="container_listing account">
                             <CardItem
+                                id={project.id}
                                 title={project.title}
                                 abstract={project.abstract}
                                 isBanned={false}
-                                category={project.category}
-                                source={project.sources}
+                                category={project.category as ICategory}
+                                source={project.sources as ISource[]}
                             />
                         </div>
                         <div className="container_listing account jobs">
-                            {project.jobs.map((job) => (
+                            {(project.jobs as IJob[]).map((job) => (
                                 <>
                                     <CardItemJobs title={job.title} abstract={job.abstract} isBanned={false} />
                                 </>

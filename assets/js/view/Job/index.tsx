@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { IJob, IUser } from '../../constant/Type/entity';
+import { IJob, IUser, IProject } from '../../constant/Type/entity';
 import profile from '../../img/test.png';
 import { getJob, getLeader } from '../../service/jobService';
 import Github from '../../svg/github.svg';
@@ -15,7 +15,7 @@ const Job: FC = () => {
 
     useEffect(() => {
         getJob(idJob).then((response) => {
-            setJob(response);
+            setJob(response as IJob);
             if (response.Project) {
                 getLeader(response.Project.leader).then((result) => {
                     setLeader(result);
@@ -48,9 +48,9 @@ const Job: FC = () => {
 
             <div id="job-sidebar">
                 <div id="job-sidebar-project">
-                    <h2>{job?.Project?.title}</h2>
-                    <p id="project-description">{job?.Project?.abstract}</p>
-                    <Link to={'/project/' + job?.Project?.id} className="btn btn-primary btn-with-arrow">
+                    <h2>{(job?.Project as IProject)?.title}</h2>
+                    <p id="project-description">{(job?.Project as IProject)?.abstract}</p>
+                    <Link to={'/project/' + (job?.Project as IProject)?.id} className="btn btn-primary btn-with-arrow">
                         {t('job.seeProject')}
                     </Link>
                 </div>
