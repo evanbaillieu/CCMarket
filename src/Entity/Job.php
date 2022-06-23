@@ -28,6 +28,7 @@ use Symfony\Component\Uid\Uuid;
         'get' => [
             'normalization_context' => ['groups' => ['read:Job:item', 'read:Job:collection']]
         ],
+        "patch",
         'put' =>[
             "security" => "is_granted('ROLE_ADMIN') or (Project.leader == user)",
             "denormalization_context" => ['groups' => ['write:Job:collection']]
