@@ -97,9 +97,7 @@ class Project
     #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'projects')]
     private $category;
 
-    #[Groups('read:Project:collection')]
-    #[ORM\ManyToMany(targetEntity: Favorite::class, mappedBy: 'project')]
-    private $favorites;
+
 
 
     #[Groups(['read:Project:collection','write:Project:collection'])]
@@ -116,16 +114,22 @@ class Project
     #[ORM\ManyToMany(targetEntity: Source::class, inversedBy: 'projects')]
     private $source;
 
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favorite')]
+    private $userFavorite;
+
+
+
 
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
-        $this->favorites = new ArrayCollection();
         $this->contributors = new ArrayCollection();
         $this->setIsBanned(false);
         $this->setCreatedAt(new \DateTime());
         $this->setNbStar(0);
         $this->source = new ArrayCollection();
+        $this->users = new ArrayCollection();
+        $this->userFavorite = new ArrayCollection();
     }
 
 
@@ -251,32 +255,11 @@ class Project
         return $this;
     }
 
-    /**
-     * @return Collection<string, Favorite>
-     */
-    public function getFavorites(): Collection
-    {
-        return $this->favorites;
-    }
 
-    public function addFavorite(Favorite $favorite): self
-    {
-        if (!$this->favorites->contains($favorite)) {
-            $this->favorites[] = $favorite;
-            $favorite->addProject($this);
-        }
 
-        return $this;
-    }
 
-    public function removeFavorite(Favorite $favorite): self
-    {
-        if ($this->favorites->removeElement($favorite)) {
-            $favorite->removeProject($this);
-        }
 
-        return $this;
-    }
+
 
 
 
@@ -352,6 +335,35 @@ class Project
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUserFavorite(): Collection
+    {
+        return $this->userFavorite;
+    }
+
+    public function addUserFavorite(User $userFavorite): self
+    {
+        if (!$this->userFavorite->contains($userFavorite)) {
+            $this->userFavorite[] = $userFavorite;
+            $userFavorite->addFavorite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserFavorite(User $userFavorite): self
+    {
+        if ($this->userFavorite->removeElement($userFavorite)) {
+            $userFavorite->removeFavorite($this);
+        }
+
+        return $this;
+    }
+
+
 
 
 }

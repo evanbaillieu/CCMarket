@@ -152,6 +152,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
     private $messages;
 
 
+    #[
+        Groups(['edit:User:item','read:User:collection'])
+    ]
+    #[ORM\ManyToMany(targetEntity: Project::class, inversedBy: 'userFavorite')]
+    private $favorite;
+
+
+
+
     public function __construct(){
         $this->setRoles(['ROLE_USER']);
         $this->projects = new ArrayCollection();
@@ -159,6 +168,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
         $this->langues = new ArrayCollection();
         $this->messagings = new ArrayCollection();
         $this->messages = new ArrayCollection();
+        $this->favorite = new ArrayCollection();
     }
 
 
@@ -445,4 +455,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Project>
+     */
+    public function getFavorite(): Collection
+    {
+        return $this->favorite;
+    }
+
+    public function addFavorite(Project $favorite): self
+    {
+        if (!$this->favorite->contains($favorite)) {
+            $this->favorite[] = $favorite;
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(Project $favorite): self
+    {
+        $this->favorite->removeElement($favorite);
+
+        return $this;
+    }
+
 }

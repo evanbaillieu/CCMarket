@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import ListProject from '../components/ListProject';
 import ListJobs from '../components/ListJobs';
 import { getJobCollection } from '../service/jobService';
-import { getProjectCollectionCategories, getProjects } from '../service/projectService';
+import { getProjectsSearch } from '../service/projectService';
 import Select from '../components/select';
 import * as categoryService from '../service/categoryService';
 import * as ProfilTypeService from '../service/profilTypeService';
@@ -71,7 +71,13 @@ const Listing: FC = ({}) => {
                     </div>
                     <div>
                         <div>
-                            <input className="input" type="text" name="description" placeholder="Search" />
+                            <input
+                                className="input"
+                                type="text"
+                                name="description"
+                                value={option?.description}
+                                placeholder="Search"
+                            />
                         </div>
                     </div>
                     <div>
@@ -81,10 +87,9 @@ const Listing: FC = ({}) => {
                     </div>
                 </aside>
             </section>
-            {/*
-            <ListProject getProject={getProjects} />
-             <ListJobs getJobs={getJobCollection} />
-            */}
+
+            <ListProject getProject={() => getProjectsSearch(option?.category, option?.description)} />
+            {/*<ListJobs getJobs={getJobCollection} />*/}
         </div>
     );
 };
