@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ISource } from '../constant/Type/entity';
 import imgDefault from '../img/img-de-base.png';
 export interface iCardProps {
+    id: string;
     title: string;
     abstract: string;
     category: string;
@@ -10,7 +11,7 @@ export interface iCardProps {
     source?: ISource[];
 }
 
-const cardItem: FC<iCardProps> = ({ title, abstract, category, isBanned, source }) => {
+const cardItem: FC<iCardProps> = ({ id, title, abstract, category, isBanned, source }) => {
     if (isBanned == false) {
         const sourceImage = source?.filter((value) => value.type === 'Image');
 
@@ -31,7 +32,7 @@ const cardItem: FC<iCardProps> = ({ title, abstract, category, isBanned, source 
                             <p>{abstract}</p>
                         </div>
                         <div className="item_listing_all_infos_see_more">
-                            <Link className="btn btn-primary btn-with-arrow" to={''}>
+                            <Link className="btn btn-primary btn-with-arrow" to={'/project/' + id}>
                                 See more
                             </Link>
                         </div>

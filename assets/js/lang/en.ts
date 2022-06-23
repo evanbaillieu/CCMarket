@@ -1,4 +1,5 @@
 import { TranslationFormat } from '../constant/Type/lang';
+
 const data: TranslationFormat = {
     nav: {
         home: 'Home',
@@ -149,9 +150,16 @@ const data: TranslationFormat = {
         leader: 'Project leader',
         seeProject: 'See the project',
     },
+    project: {
+        add: 'Add a project',
+        title: 'Title of project',
+        abstract: 'Summary',
+        description: 'Description',
+        category: 'Category',
+    },
+    github: 'GitHub link',
     contactLeader: 'Contact leader',
     profileImage: 'Profile image',
-
     listing: {
         noJobs: 'No Jobs found',
         noProjects: 'No Projects found',

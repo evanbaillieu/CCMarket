@@ -1,5 +1,4 @@
 import config from '../config/default';
-import { useLocation } from 'react-router-dom';
 
 export const getJob = async (idJob: string) => {
     const data = await fetch(`${config.baseUrl}/jobs/${idJob}`, {
@@ -20,6 +19,7 @@ export const getLeader = async (idLeader: string) => {
     });
     return data.json();
 };
+
 export const getJobCollection = async () => {
     const data = await fetch(`${config.baseUrl}/jobs?page=1`, {
         headers: { Accept: 'application/json' },
