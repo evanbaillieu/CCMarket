@@ -33,7 +33,8 @@ export type ISource = {
     name: string;
     type: string;
     link: string;
-    projects: string[] | IProject[];
+    projects?: string[] | IProject[];
+    job?: string;
 };
 
 export type IExperiance = {
@@ -56,8 +57,8 @@ export type IJob = {
     title: string;
     abstract: string;
     description: string;
-    Project?: string[] | IProject;
-    profilType?: IProfilType;
+    Project?: string | IProject;
+    profilType?: string | IProfilType;
     sources?: ISource[];
 };
 

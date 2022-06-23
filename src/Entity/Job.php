@@ -84,6 +84,8 @@ class Job
     public function __construct()
     {
         $this->sources = new ArrayCollection();
+        $this->setIsBanned(false);
+        $this->setCreatedAt(new \DateTime());
     }
 
 

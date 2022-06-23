@@ -150,6 +150,12 @@ const data: TranslationFormat = {
     job: {
         leader: 'Chef du projet',
         seeProject: 'Voir le projet',
+        add: 'Ajouter un poste',
+        title: 'Titre du poste',
+        abstract: 'Résumé',
+        description: 'Description',
+        profileType: 'Type de profil',
+        project: 'Projet',
     },
     project: {
         add: 'Ajouter un projet',

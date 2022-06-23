@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { IJob, IUser, IProject } from '../../constant/Type/entity';
+import { IJob, IUser, IProject, IProfilType } from '../../constant/Type/entity';
 import profile from '../../img/test.png';
 import { getJob, getLeader } from '../../service/jobService';
 import Github from '../../svg/github.svg';
@@ -30,7 +30,7 @@ const Job: FC = () => {
         <div id="job-container">
             <div id="job-content">
                 <h1>{job?.title}</h1>
-                <p className="profilType-name">{job?.profilType?.name}</p>
+                <p className="profilType-name">{(job?.profilType as IProfilType)?.name}</p>
 
                 <p>{job?.description}</p>
 

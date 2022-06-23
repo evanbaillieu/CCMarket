@@ -17,12 +17,14 @@ import DefaultZoneMessage from './view/DefaultZoneMessage';
 import ForYou from './view/ForYou';
 import Home from './view/Home';
 import Job from './view/Job';
+import AddJob from './view/Job/AddJob';
 import Listing from './view/Listing';
 import Login from './view/Login';
 import Message from './view/Message';
 import Messenger from './view/Messenger';
 import Posts from './view/Posts';
 import Project from './view/Project';
+import AddProject from './view/Project/AddProject';
 import Register from './view/Registeur';
 
 const App: FC = () => {
@@ -58,9 +60,11 @@ const App: FC = () => {
                 <Route path="/account/password" element={<ChangePassword />} />
                 <Route path="/job">
                     <Route path=":idJob" element={<Job />} />
+                    <Route path="add" element={<AddJob />} />
                 </Route>
                 <Route path="/project">
                     <Route path=":idProject" element={<Project />} />
+                    <Route path="add" element={<AddProject />} />
                 </Route>
             </Routes>
             <Footer />

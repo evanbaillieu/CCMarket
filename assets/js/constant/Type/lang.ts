@@ -150,6 +150,12 @@ export type TranslationFormat = {
     job: {
         leader: string;
         seeProject: string;
+        add: string;
+        title: string;
+        abstract: string;
+        description: string;
+        profileType: string;
+        project: string;
     };
     project: {
         add: string;

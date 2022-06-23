@@ -151,6 +151,12 @@ const data: TranslationFormat = {
     job: {
         leader: 'Project leader',
         seeProject: 'See the project',
+        add: 'Add a job',
+        title: 'Title of job',
+        abstract: 'Summary',
+        description: 'Description',
+        profileType: 'Profile type',
+        project: 'Project',
     },
     project: {
         add: 'Add a project',
