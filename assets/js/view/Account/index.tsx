@@ -51,13 +51,20 @@ const Account: FC = () => {
                         </Link>
                     </li>
                     <li>
+                        <Link to={'/account/experiences'}>{t('account.experiences')}</Link>
+                    </li>
+                    <li>
                         <Link to={'/'} onClick={accountLogout}>
                             {t('account.logout')}
                         </Link>
+<<<<<<< HEAD
                     </li>
                     <li>
                         <Link to={'/experiences'}>{t('account.logout')}</Link>
                     </li>
+=======
+                    </li>{' '}
+>>>>>>> b07aae6 (core(front):Experience)
                 </ul>
             </div>
             {outlet}

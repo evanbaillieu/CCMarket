@@ -25,6 +25,8 @@ import AddProject from './view/Project/AddProject';
 import Project from './view/Project';
 import ForYou from './view/ForYou';
 import ListingCategory from './view/ListingCategory';
+import Experience from './view/Account/AccountExperience';
+import AccountExperience from './view/Account/AccountExperience';
 
 const App: FC = () => {
     const { i18n } = useTranslation();
@@ -46,6 +48,7 @@ const App: FC = () => {
                 <Route path="/account" element={<Account />}>
                     <Route path="" element={<AccountInfos />} />
                     <Route path="settings" element={<AccountSettings />} />
+                    <Route path="experiences" element={<AccountExperience />} />
                 </Route>
                 <Route path="/messenger" element={<Messenger />}>
                     <Route path="" element={<DefaultZoneMessage />} />

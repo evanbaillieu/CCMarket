@@ -1,33 +1,40 @@
-import React, { ChangeEvent, FC, useState } from 'react';
+import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import Inpute from '../../components/input';
 import { checkIsEmpty, checkIsNotEmpty } from '../../helper/utilHelper';
 import useForm from '../../hook/useForm';
-import { updatePassword } from '../../service/accountService';
+import { getMe, updatePassword } from '../../service/accountService';
 import Oeil from '../../svg/oeil.svg';
 import OeilFermer from '../../svg/oeilFermer.svg';
 import Lang from '../../components/lang';
+import { IExperiance, IProject, IUser } from '../../constant/Type/entity';
+import CardExperience from '../../components/cardExperience';
 
 const AccountExperience: FC = () => {
     const { t } = useTranslation();
+    const user: IUser = useOutletContext();
+    const [experiences, setExperiences] = useState<IExperiance[]>([]);
+    const navigate = useNavigate();
+    useEffect(() => {
+        getMe().then((response) => {
+            if (response.user) {
+                setExperiences(response.experiences);
+            } else {
+                navigate('/login');
+            }
+        });
+    }, []);
+
+    console.log(experiences);
 
     return (
         <div className="account-content">
-            <h1>{t('account.settings')}</h1>
-            <div id="account-settings">
-                <div className="grid-content">
-                    <label htmlFor="theme">{t('account.theme')}</label>
-                    <select>
-                        <option>{t('account.light')}</option>
-                        <option>{t('account.dark')}</option>
-                    </select>
+            {experiences.map((exp) => (
+                <div>
+                    <CardExperience key={exp.id} id={exp.id} title={exp.title} abstract={exp.dateDeFin} />
                 </div>
-                <div className="grid-content">
-                    <label htmlFor="language">{t('account.language')}</label>
-                    <Lang />
-                </div>
-            </div>
+            ))}
         </div>
     );
 };
