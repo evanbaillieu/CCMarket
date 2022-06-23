@@ -21,6 +21,7 @@ import Messenger from './view/Messenger';
 import Message from './view/Message';
 import DefaultZoneMessage from './view/DefaultZoneMessage';
 import Job from './view/Job';
+import Project from './view/Project';
 
 const App: FC = () => {
     const { i18n } = useTranslation();
@@ -53,6 +54,9 @@ const App: FC = () => {
                 <Route path="/account/password" element={<ChangePassword />} />
                 <Route path="/job">
                     <Route path=":idJob" element={<Job />} />
+                </Route>
+                <Route path="/project">
+                    <Route path=":idProject" element={<Project />} />
                 </Route>
             </Routes>
             <Footer />

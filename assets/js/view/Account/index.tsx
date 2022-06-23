@@ -39,7 +39,7 @@ const Account: FC = () => {
     return (
         <div id="account-container">
             <div id="account-sidebar">
-                <img src={profile} width={150} height={150} alt="Profile" />
+                <img src={profile} width={150} height={150} alt={t('profileImage')} />
                 <h3>{data?.user?.firstName + ' ' + data?.user?.lastName}</h3>
                 <ul>
                     <li>

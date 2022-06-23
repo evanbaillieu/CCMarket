@@ -45,7 +45,7 @@ const EditAccount: FC = () => {
         <div className="edit-form">
             <h1>{t('account.edit')}</h1>
             <label htmlFor="profileImg">
-                <img src={profile} width={150} height={150} alt="Profile" />
+                <img src={profile} width={150} height={150} alt={t('profileImage')} />
                 <div id="transparent-black"></div>
                 <span>Edit</span>
             </label>

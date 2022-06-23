@@ -147,8 +147,9 @@ const data: TranslationFormat = {
     },
     job: {
         leader: 'Project leader',
-        contact: 'Contact leader',
         seeProject: 'See the project',
     },
+    contactLeader: 'Contact leader',
+    profileImage: 'Profile image',
 };
 export default data;
