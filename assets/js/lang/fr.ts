@@ -3,8 +3,8 @@ import { TranslationFormat } from '../constant/Type/lang';
 const data: TranslationFormat = {
     nav: {
         home: 'Accuile',
-        projects: 'Projets',
-        jobs: 'Poste',
+        foryou: 'Pour vous',
+        about: 'A propos',
     },
     home: {
         title_part_1: 'The platform that',
@@ -149,8 +149,14 @@ const data: TranslationFormat = {
         leader: 'Chef du projet',
         seeProject: 'Voir le projet',
     },
+
     contactLeader: 'Contacter le chef',
     profileImage: 'Image de profil',
+
+    listing: {
+        noJobs: 'Aucune fiche de poste disponible',
+        noProjects: 'Aucun projet disponible',
+    },
 };
 
 export default data;

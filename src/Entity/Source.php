@@ -56,11 +56,18 @@ class Source
     #[ORM\Column(type: 'string', length: 255)]
     private $link;
 
-    #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'sources')]
-    private $Project;
+
 
     #[ORM\ManyToOne(targetEntity: Job::class, inversedBy: 'sources')]
     private $Job;
+
+    #[ORM\ManyToMany(targetEntity: Project::class, mappedBy: 'source')]
+    private $projects;
+
+    public function __construct()
+    {
+        $this->projects = new ArrayCollection();
+    }
 
     public function getId():string{
         return $this->id;
@@ -103,17 +110,9 @@ class Source
         return $this;
     }
 
-    public function getProject(): ?Project
-    {
-        return $this->Project;
-    }
 
-    public function setProject(?Project $Project): self
-    {
-        $this->Project = $Project;
 
-        return $this;
-    }
+
 
     public function getJob(): ?Job
     {
@@ -127,5 +126,38 @@ class Source
         return $this;
     }
 
+    /**
+     * @return Collection<int, Project>
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(Project $project): self
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->addSource($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(Project $project): self
+    {
+        if ($this->projects->removeElement($project)) {
+            $project->removeSource($this);
+        }
+
+        return $this;
+    }
+
+
+
+    public function __toString()
+    {
+        return $this->link;
+    }
 
 }

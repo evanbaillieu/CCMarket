@@ -15,3 +15,12 @@ export const getProject = async (idProject: string) => {
     });
     return data.json();
 };
+const getProjectCollection = async () => {
+    const data = await fetch(`${config.baseUrl}/projects/?page=1`, {
+        headers: { Accept: 'application/json' },
+        method: 'GET',
+    });
+    const json = data.json();
+    return json;
+};
+export default getProjectCollection;

@@ -103,12 +103,15 @@ class Project
     #[ORM\OneToMany(mappedBy: 'Project', targetEntity: Contributor::class)]
     private $contributors;
 
-    #[Groups(['read:Project:collection','write:Project:collection', 'read:User:item'])]
-    #[ORM\OneToMany(mappedBy: 'Project', targetEntity: Source::class)]
-    private $sources;
+
 
     #[ORM\Column(type: 'datetime')]
     private $CreatedAt;
+
+
+    #[Groups(['read:Project:collection'])]
+    #[ORM\ManyToMany(targetEntity: Source::class, inversedBy: 'projects')]
+    private $source;
 
 
     public function __construct()
@@ -117,9 +120,9 @@ class Project
         $this->favorites = new ArrayCollection();
         $this->contributors = new ArrayCollection();
         $this->setIsBanned(false);
-        $this->sources = new ArrayCollection();
         $this->setCreatedAt(new \DateTime());
         $this->setNbStar(0);
+        $this->source = new ArrayCollection();
     }
 
 
@@ -305,35 +308,7 @@ class Project
         return $this;
     }
 
-    /**
-     * @return Collection<int, Source>
-     */
-    public function getSources(): Collection
-    {
-        return $this->sources;
-    }
 
-    public function addSource(Source $source): self
-    {
-        if (!$this->sources->contains($source)) {
-            $this->sources[] = $source;
-            $source->setProject($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSource(Source $source): self
-    {
-        if ($this->sources->removeElement($source)) {
-            // set the owning side to null (unless already changed)
-            if ($source->getProject() === $this) {
-                $source->setProject(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
@@ -349,6 +324,30 @@ class Project
 
     public function __toString(){
         return $this->title;
+    }
+
+    /**
+     * @return Collection<int, Source>
+     */
+    public function getSource(): Collection
+    {
+        return $this->source;
+    }
+
+    public function addSource(Source $source): self
+    {
+        if (!$this->source->contains($source)) {
+            $this->source[] = $source;
+        }
+
+        return $this;
+    }
+
+    public function removeSource(Source $source): self
+    {
+        $this->source->removeElement($source);
+
+        return $this;
     }
 
 

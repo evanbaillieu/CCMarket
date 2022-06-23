@@ -6,8 +6,8 @@ export enum Language {
 export type TranslationFormat = {
     nav: {
         home: string;
-        projects: string;
-        jobs: string;
+        foryou: string;
+        about: string;
     };
     home: {
         title_part_1: string;
@@ -149,6 +149,12 @@ export type TranslationFormat = {
         leader: string;
         seeProject: string;
     };
+
     contactLeader: string;
     profileImage: string;
+
+    listing: {
+        noJobs: string;
+        noProjects: string;
+    };
 };

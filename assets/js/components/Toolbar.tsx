@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 const ToolBar: FC = ({}) => {
     const [value, setValue] = useState('');
     const { id } = useParams();
-    console.log(id);
     const send = () => {
         sendMessage({ content: value, dicustionId: id });
     };

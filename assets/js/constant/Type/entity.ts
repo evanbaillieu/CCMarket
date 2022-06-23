@@ -82,7 +82,7 @@ export type IMessage = {
 
 export type IProfilType = {
     id?: string;
-    name: string;
+    name?: string;
 };
 
 export type ILang = {
