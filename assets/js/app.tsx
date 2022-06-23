@@ -28,6 +28,7 @@ import Project from './view/Project';
 import AddProject from './view/Project/AddProject';
 import EditProject from './view/Project/EditProject';
 import Register from './view/Registeur';
+import ListingCategory from './view/ListingCategory';
 
 const App: FC = () => {
     const { i18n } = useTranslation();
@@ -44,6 +45,7 @@ const App: FC = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/listing" element={<Listing />} />
+                <Route path="/listingCategory/:name" element={<ListingCategory />} />
                 <Route path="/foryou" element={<ForYou />} />
                 <Route path="/account" element={<Account />}>
                     <Route path="" element={<AccountInfos />} />

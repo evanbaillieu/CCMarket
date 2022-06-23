@@ -37,7 +37,7 @@ use Symfony\Component\Uid\Uuid;
             "security" => "is_granted('ROLE_USER')",
         ]
     ]
-), ApiFilter(SearchFilter::class, properties: ['id' => 'exact','description' => 'partial', 'profilType.name' => 'exact'])]
+), ApiFilter(SearchFilter::class, properties: ['id' => 'exact','description' => 'partial', 'profilType.name' => 'exact','language.name' => 'exact'])]
 
 class Job
 {
@@ -82,11 +82,16 @@ class Job
     #[ORM\Column(type: 'datetime')]
     private $createdAt;
 
+    #[Groups(['read:Job:collection',"write:Job:collection"])]
+    #[ORM\ManyToMany(targetEntity: Langues::class, inversedBy: 'jobs')]
+    private $language;
+
     public function __construct()
     {
         $this->sources = new ArrayCollection();
         $this->setIsBanned(false);
         $this->setCreatedAt(new \DateTime());
+        $this->language = new ArrayCollection();
     }
 
 
@@ -208,6 +213,30 @@ class Job
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Langues>
+     */
+    public function getLanguage(): Collection
+    {
+        return $this->language;
+    }
+
+    public function addLanguage(Langues $language): self
+    {
+        if (!$this->language->contains($language)) {
+            $this->language[] = $language;
+        }
+
+        return $this;
+    }
+
+    public function removeLanguage(Langues $language): self
+    {
+        $this->language->removeElement($language);
 
         return $this;
     }

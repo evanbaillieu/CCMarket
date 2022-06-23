@@ -55,11 +55,17 @@ export const addProject = async (data: IProject, category: string, leader: strin
     return json;
 };
 
-export const getProjectsSearch = async (category: string, description: string) => {
-    const data = await fetch(`${config.baseUrl}/projects?description=${description}&category.name=${category}`, {
-        headers: { Accept: 'application/json' },
-        method: 'GET',
-    });
+export const getProjectsSearch = async (category?: string, description?: string) => {
+    const data = await fetch(
+        `${config.baseUrl}/projects?page=1&${description ? `description=${description}&` : ''}${
+            category ? `category.name=${category}&` : ''
+        }
+        }`,
+        {
+            headers: { Accept: 'application/json' },
+            method: 'GET',
+        },
+    );
 
     console.log(data);
     const json = data.json();

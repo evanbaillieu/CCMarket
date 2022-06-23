@@ -66,6 +66,7 @@ export const addJob = async (data: IJob, profilType: string, project: string) =>
     return json;
 };
 
+
 export const updateJob = async (jobId: string, data: IJob, profilType: string, project: string) => {
     const token = getTokken();
     data.profilType = profilType;
@@ -81,5 +82,18 @@ export const updateJob = async (jobId: string, data: IJob, profilType: string, p
 
     const json = await response.json();
 
+
+export const getJobCollectionSearch = async (ProfilType: string, description: string, language: string) => {
+    const data = await fetch(
+        `${config.baseUrl}/jobs?page=1&${description ? `description=${description}&` : ''}${
+            ProfilType ? `profilType.name=${ProfilType}&` : ''
+        }${language ? `language.name=${language}&` : ''}`,
+        {
+            headers: { Accept: 'application/json' },
+            method: 'GET',
+        },
+    );
+    console.log(data);
+    const json = data.json();
     return json;
 };

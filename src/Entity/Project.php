@@ -34,7 +34,9 @@ use Symfony\Component\Uid\Uuid;
         ],
         // Delete uniquement disponible pour les utilisateur Admin
         "delete" => ["security" => "is_granted('ROLE_ADMIN')"],
-        "patch",
+        "patch" =>[
+            "security" => "is_granted('ROLE_ADMIN') or (object.getLeader() == user)"
+            ],
         'put' => [
             //Elements que l'ont peut edit
             'denormalization_context' => ['groups' => ['edit:Project:item']],

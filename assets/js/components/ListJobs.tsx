@@ -13,7 +13,11 @@ const ListJobs: FC<IListJobsProps> = ({ getJobs }) => {
     const navigate = useNavigate();
     const [content, setContent] = useState('');
 
-    const { isError, isLoading, data } = useQuery('List-jobs-For-You', getJobs, {});
+    const { isError, isLoading, data, refetch } = useQuery('List-jobs-For-You', getJobs, {});
+
+    useEffect(() => {
+        refetch();
+    }, [getJobs]);
 
     if (isLoading) {
         return (
@@ -30,6 +34,7 @@ const ListJobs: FC<IListJobsProps> = ({ getJobs }) => {
             </div>
         );
     }
+    console.log(data);
 
     return (
         <section>

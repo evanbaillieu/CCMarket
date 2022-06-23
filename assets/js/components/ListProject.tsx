@@ -12,7 +12,11 @@ const ListProjet: FC<IProjectProps> = ({ getProject }) => {
     const { t } = useTranslation();
     const [content, setContent] = useState('');
 
-    const { isError, isLoading, data } = useQuery('List-project', getProject, {});
+    const { isError, isLoading, data, refetch } = useQuery('List-project', getProject, {});
+
+    useEffect(() => {
+        refetch();
+    }, [getProject]);
 
     if (isLoading) {
         return (

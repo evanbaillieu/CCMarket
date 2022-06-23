@@ -1,8 +1,8 @@
-import React, { ChangeEventHandler, FC, useState, ChangeEvent } from 'react';
+import React, { ChangeEventHandler, FC, useState, ChangeEvent, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import ListProject from '../components/ListProject';
 import ListJobs from '../components/ListJobs';
-import { getJobCollection } from '../service/jobService';
+import { getJobCollection, getJobCollectionSearch } from '../service/jobService';
 import { getProjectsSearch } from '../service/projectService';
 import Select from '../components/select';
 import * as categoryService from '../service/categoryService';
@@ -14,20 +14,41 @@ const Listing: FC = ({}) => {
     const { t } = useTranslation();
     const location = useLocation();
     const navigate = useNavigate();
-    const [option, setOption] = useState<any>({});
-    console.log(location.state);
-    const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const [option, setOption] = useState<any>(location.state);
+
+    // const onChange = (e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+    //     setOption((state: any) => {
+    //         return {
+    //             ...state,
+    //             [e.target?.name]: e.target?.value,
+    //         };
+    //     });
+    //     navigate('/listing', { state: { ...option } });
+    // };
+
+    const onChange = (e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
         setOption((state: any) => {
+            if (e.target?.name == 'profilType' && e.target?.value != 'Developpeur Web') {
+                return {
+                    ...state,
+                    [e.target?.name]: e.target?.value,
+                    language: '',
+                };
+            }
             return {
                 ...state,
                 [e.target?.name]: e.target?.value,
             };
         });
+        navigate('/listing', { state: { ...option } });
     };
 
     const send = () => {
         navigate('/listing', { state: { ...option } });
     };
+
+    console.log(option);
+
     return (
         <div>
             <section>
@@ -55,7 +76,7 @@ const Listing: FC = ({}) => {
                                 custFetch={ProfilTypeService.getProfilTypeCollection}
                             />
                         </div>
-                        {option.profilType === 'Dev' ? (
+                        {option.profilType === 'Developpeur Web' ? (
                             <div className="form_item">
                                 <label htmlFor="language">{t('modalSearch.language')}</label>
                                 <Select
@@ -77,6 +98,7 @@ const Listing: FC = ({}) => {
                                 name="description"
                                 value={option?.description}
                                 placeholder="Search"
+                                onChange={onChange}
                             />
                         </div>
                     </div>
@@ -88,8 +110,8 @@ const Listing: FC = ({}) => {
                 </aside>
             </section>
 
-            <ListProject getProject={() => getProjectsSearch(option?.category, option?.description)} />
-            {/*<ListJobs getJobs={getJobCollection} />*/}
+            <ListProject getProject={() => getProjectsSearch(option.category, option.description)} />
+            <ListJobs getJobs={() => getJobCollectionSearch(option.profilType, option.description, option.language)} />
         </div>
     );
 };

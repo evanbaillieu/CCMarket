@@ -159,6 +159,8 @@
             justify-content: center;
             svg{
                 margin-inline: 20px;
+                stroke: $black;
+                stroke-width: 2.5;
             }
         }
         &_menu{

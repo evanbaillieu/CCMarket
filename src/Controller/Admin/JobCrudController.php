@@ -29,6 +29,7 @@ class JobCrudController extends AbstractCrudController
             BooleanField::new('isBanned'),
             AssociationField::new('profilType',),
             AssociationField::new('Project',),
+
         ];
     }
 

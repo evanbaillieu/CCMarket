@@ -15,6 +15,7 @@ const Select: FC<ISelectProps> = ({ name, custFetch, onChange, value, isTrad = f
 
     return (
         <select onChange={onChange} value={value} name={name}>
+            <option value={''}></option>
             {data &&
                 data?.map((item: any) => (
                     <option key={item.id} value={item.name}>

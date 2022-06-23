@@ -37,7 +37,9 @@ use Symfony\Component\Validator\Constraints\Length;
         ],
         //Operation sur des items précis
         itemOperations : [
+
             'get' => [],
+
             'put' => [
                 //Possibilité d'éditer son compte uniquement si on est l'utilisateur lui même ou alors un Admin
                 "security" => "is_granted('ROLE_ADMIN') or id == user.getId() ",
@@ -148,7 +150,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
 
 
     #[
-        Groups(['edit:User:item','read:User:collection'])
+        Groups(['write:User:item','edit:User:item','read:User:collection'])
     ]
     #[ORM\ManyToMany(targetEntity: Project::class, inversedBy: 'userFavorite')]
     private $favorite;
