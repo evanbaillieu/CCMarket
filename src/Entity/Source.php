@@ -20,7 +20,8 @@ class Source
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
     #[Groups([
         'read:User:item',
-        'read:Project:collection'
+        'read:Project:collection',
+        'read:Job:collection'
     ])]
     private $id;
 

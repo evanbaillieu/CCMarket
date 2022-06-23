@@ -162,9 +162,9 @@ const data: TranslationFormat = {
         add: 'Ajouter un projet',
         title: 'Titre du projet',
         abstract: 'Résumé',
-        description: 'Description',
+        description: 'Description (markdown)',
         category: 'Categorie',
-        edit: 'Modifier le projet'
+        edit: 'Modifier le projet',
     },
     github: 'Lien GitHub',
     contactLeader: 'Contacter le chef',

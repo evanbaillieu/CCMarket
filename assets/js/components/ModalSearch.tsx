@@ -56,7 +56,7 @@ const ModalSearch: FC<IModalSearch> = ({ onClose }) => {
                                 name="profilType"
                                 onChange={onChange}
                                 value={option?.profilType}
-                                custFetch={ProfilTypeService.findAll}
+                                custFetch={ProfilTypeService.getProfilTypeCollection}
                             />
                         </div>
                         {option?.profilType === 'Dev' ? (
@@ -66,7 +66,7 @@ const ModalSearch: FC<IModalSearch> = ({ onClose }) => {
                                     name="language"
                                     onChange={onChange}
                                     value={option?.language}
-                                    custFetch={langueService.findAll}
+                                    custFetch={langueService.getLangueCollection}
                                 />
                             </div>
                         ) : (

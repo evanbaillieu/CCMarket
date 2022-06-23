@@ -65,3 +65,21 @@ export const addJob = async (data: IJob, profilType: string, project: string) =>
     const json = await response.json();
     return json;
 };
+
+export const updateJob = async (jobId: string, data: IJob, profilType: string, project: string) => {
+    const token = getTokken();
+    data.profilType = profilType;
+    data.Project = project;
+    const response = await fetch(`${config.baseUrl}/jobs/${jobId}`, {
+        headers: {
+            'Content-type': 'application/merge-patch+json',
+            Authorization: `Bearer ${token}`,
+        },
+        method: 'PATCH',
+        body: JSON.stringify(data),
+    });
+
+    const json = await response.json();
+
+    return json;
+};

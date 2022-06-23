@@ -18,6 +18,7 @@ import ForYou from './view/ForYou';
 import Home from './view/Home';
 import Job from './view/Job';
 import AddJob from './view/Job/AddJob';
+import EditJob from './view/Job/EditJob';
 import Listing from './view/Listing';
 import Login from './view/Login';
 import Message from './view/Message';
@@ -62,6 +63,7 @@ const App: FC = () => {
                 <Route path="/job">
                     <Route path=":idJob" element={<Job />} />
                     <Route path="add" element={<AddJob />} />
+                    <Route path="edit/:idJob" element={<EditJob />} />
                 </Route>
                 <Route path="/project">
                     <Route path=":idProject" element={<Project />} />

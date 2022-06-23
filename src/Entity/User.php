@@ -37,12 +37,7 @@ use Symfony\Component\Validator\Constraints\Length;
         ],
         //Operation sur des items précis
         itemOperations : [
-            'get' => [
-                'normalization_context' => [
-                    //Propriété que l'ont peut lire lors d'une requête d'un élément précis
-                    'groups' => ['read:User:collection', 'read:User:item']
-                ]
-            ],
+            'get' => [],
             'put' => [
                 //Possibilité d'éditer son compte uniquement si on est l'utilisateur lui même ou alors un Admin
                 "security" => "is_granted('ROLE_ADMIN') or id == user.getId() ",

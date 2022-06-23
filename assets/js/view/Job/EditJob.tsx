@@ -1,15 +1,15 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Inpute from '../../components/input';
 import Textarea from '../../components/textarea';
-import { IJob, IProfilType, IProject } from '../../constant/Type/entity';
+import { IJob, IProfilType, IProject, ISource } from '../../constant/Type/entity';
 import { checkIsEmpty, checkIsNotEmpty } from '../../helper/utilHelper';
 import useForm from '../../hook/useForm';
 import { getMe } from '../../service/accountService';
-import { addJob } from '../../service/jobService';
+import { getJob, updateJob } from '../../service/jobService';
 import { getProfilTypeCollection } from '../../service/profilTypeService';
-import { createGitHubSource } from '../../service/sourceService';
+import { createGitHubSource, deleteGitHubSource, updateGitHubSource } from '../../service/sourceService';
 import GitHub from '../../svg/github.svg';
 
 const job: IJob = {
@@ -18,26 +18,43 @@ const job: IJob = {
     description: '',
 };
 
-const AddJob: FC = () => {
+const EditJob: FC = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const { idJob } = useParams();
     const [projects, setProjects] = useState([]);
     const [profileTypes, setProfileTypes] = useState([]);
     const [selectedProject, setSelectedProject] = useState('');
     const [selectedProfileType, setSelectedProfileType] = useState<string>('');
     const [source, setSource] = useState<string>('');
-    const { data, errors, hangleChange } = useForm<IJob>(job);
+    const [sourceId, setSourceId] = useState<string>('');
+    const { data, errors, hangleChange, setInitialData } = useForm<IJob>(job);
 
     useEffect(() => {
         getMe().then((response) => {
             if (response.user) {
                 setProjects(response.projects);
-                setSelectedProject(response.projects[0].id);
             } else navigate('/login');
         });
+
         getProfilTypeCollection().then((response) => {
             setProfileTypes(response);
-            setSelectedProfileType(response[0].id);
+        });
+
+        getJob(idJob).then((response) => {
+            setInitialData({
+                title: response.title,
+                description: response.description,
+                abstract: response.abstract,
+            });
+            setSelectedProfileType(response.profilType.id);
+            setSelectedProject(response.Project.id);
+            response.sources.map((item: ISource) => {
+                if (item.type === 'github') {
+                    setSource(item.link.substring(19));
+                    setSourceId(item.id);
+                }
+            });
         });
     }, []);
 
@@ -55,16 +72,28 @@ const AddJob: FC = () => {
 
     const submit = async () => {
         if (checkIsNotEmpty(data) && checkIsEmpty(errors)) {
-            addJob(data, '/api/profil_types/' + selectedProfileType, '/api/projects/' + selectedProject).then(
+            updateJob(idJob, data, '/api/profil_types/' + selectedProfileType, '/api/projects/' + selectedProject).then(
                 (result) => {
                     if (result.id) {
                         if (source) {
-                            createGitHubSource({
-                                type: 'github',
-                                name: 'GitHub of ' + data.title,
-                                link: 'https://github.com/' + source,
-                                job: result['@id'],
-                            });
+                            if (sourceId) {
+                                updateGitHubSource(sourceId, {
+                                    name: 'GitHub of ' + data.title,
+                                    link: 'https://github.com/' + source,
+                                    job: result['@id'],
+                                });
+                            } else {
+                                createGitHubSource({
+                                    type: 'github',
+                                    name: 'GitHub of ' + data.title,
+                                    link: 'https://github.com/' + source,
+                                    job: result['@id'],
+                                });
+                            }
+                        } else {
+                            if (sourceId) {
+                                deleteGitHubSource(sourceId);
+                            }
                         }
                         navigate('/job/' + result.id);
                     }
@@ -75,7 +104,7 @@ const AddJob: FC = () => {
 
     return (
         <div className="form">
-            <h1>{t('job.add')}</h1>
+            <h1>{t('job.edit')}</h1>
             <div id="add-job-inputs">
                 <Inpute
                     option={{
@@ -100,7 +129,12 @@ const AddJob: FC = () => {
                 />
                 <div className="input">
                     <label htmlFor="profileType">{t('job.profileType')}</label>
-                    <select name="profileType" id="profileType" onChange={handleSelectProfileTypeChange}>
+                    <select
+                        name="profileType"
+                        id="profileType"
+                        value={selectedProfileType}
+                        onChange={handleSelectProfileTypeChange}
+                    >
                         {profileTypes.map((option: IProfilType) => (
                             <option value={option.id} key={option.id}>
                                 {option.name}
@@ -122,7 +156,7 @@ const AddJob: FC = () => {
                 />
                 <div className="input">
                     <label htmlFor="project">{t('job.project')}</label>
-                    <select name="project" id="project" onChange={handleSelectProjectChange}>
+                    <select name="project" id="project" value={selectedProject} onChange={handleSelectProjectChange}>
                         {projects.map((option: IProject) => (
                             <option value={option.id} key={option.id}>
                                 {option.title}
@@ -154,4 +188,4 @@ const AddJob: FC = () => {
         </div>
     );
 };
-export default AddJob;
+export default EditJob;

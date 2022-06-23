@@ -163,7 +163,7 @@ const data: TranslationFormat = {
         add: 'Add a project',
         title: 'Title of project',
         abstract: 'Summary',
-        description: 'Description',
+        description: 'Description (markdown)',
         category: 'Category',
         edit: 'Edit the project',
     },

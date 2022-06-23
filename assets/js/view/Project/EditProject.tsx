@@ -9,7 +9,7 @@ import useForm from '../../hook/useForm';
 import { getMe } from '../../service/accountService';
 import { getCategoryCollection } from '../../service/categoryService';
 import { getProject, updateProject } from '../../service/projectService';
-import { updateGitHubSource } from '../../service/sourceService';
+import { createGitHubSource, deleteGitHubSource, updateGitHubSource } from '../../service/sourceService';
 import GitHub from '../../svg/github.svg';
 
 const project: IProject = {
@@ -35,7 +35,6 @@ const EditProject: FC = () => {
 
         getCategoryCollection().then((response) => {
             setCategories(response);
-            setSelectedCategory(response[0]['id']);
         });
 
         getProject(idProject).then((response) => {
@@ -67,12 +66,26 @@ const EditProject: FC = () => {
             updateProject(idProject, data, '/api/categories/' + selectedCategory).then((result) => {
                 if (result.id) {
                     if (source) {
-                        updateGitHubSource(sourceId, {
-                            name: 'GitHub of ' + data.title,
-                            link: 'https://github.com/' + source,
-                            projects: [result['@id']],
-                        }).then(() => navigate('/project/' + result.id));
-                    } else navigate('/project/' + result.id);
+                        if (sourceId) {
+                            updateGitHubSource(sourceId, {
+                                name: 'GitHub of ' + data.title,
+                                link: 'https://github.com/' + source,
+                                projects: [result['@id']],
+                            });
+                        } else {
+                            createGitHubSource({
+                                type: 'github',
+                                name: 'GitHub of ' + data.title,
+                                link: 'https://github.com/' + source,
+                                projects: [result['@id']],
+                            });
+                        }
+                    } else {
+                        if (sourceId) {
+                            deleteGitHubSource(sourceId);
+                        }
+                    }
+                    navigate('/project/' + result.id);
                 }
             });
         }

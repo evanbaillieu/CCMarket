@@ -33,3 +33,14 @@ export const updateGitHubSource = async (sourceId: string, source: ISource) => {
 
     return json;
 };
+
+export const deleteGitHubSource = async (sourceId: string) => {
+    const token = getTokken();
+    await fetch(`${config.baseUrl}/sources/${sourceId}`, {
+        headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+        method: 'DELETE',
+    });
+};
