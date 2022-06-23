@@ -1,7 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Circles } from 'react-loader-spinner';
-import { useQuery } from 'react-query';
 import { Link, useNavigate, useOutlet } from 'react-router-dom';
 import profile from '../../img/test.png';
 import { getMe } from '../../service/accountService';
@@ -10,22 +8,22 @@ import { useAppDispatch } from '../../store/store';
 
 const Account: FC = () => {
     const { t } = useTranslation();
-    const { isError, isLoading, data } = useQuery('User-infos', getMe);
-    const outlet = useOutlet(data?.user);
+    const [me, setMe] = useState({
+        user: {
+            firstName: '',
+            lastName: '',
+        },
+    });
+    const outlet = useOutlet(me);
     const navigate = useNavigate();
     const AppDispatch = useAppDispatch();
-    console.log(data);
-    if (data?.code === 401) {
-        navigate('/login');
-    }
 
-    if (isError) {
-        navigate('/login');
-    }
-
-    if (isLoading) {
-        return <Circles color="#F05454" />;
-    }
+    useEffect(() => {
+        getMe().then((response) => {
+            if (response.user) setMe(response);
+            else navigate('/login');
+        });
+    }, []);
 
     const getNavLinkClass = (path: string) => {
         return window.location.pathname === path ? 'active' : '';
@@ -40,7 +38,7 @@ const Account: FC = () => {
         <div id="account-container">
             <div id="account-sidebar">
                 <img src={profile} width={150} height={150} alt={t('profileImage')} />
-                <h3>{data?.user?.firstName + ' ' + data?.user?.lastName}</h3>
+                <h3>{me.user.firstName + ' ' + me.user.lastName}</h3>
                 <ul>
                     <li>
                         <Link to={'/account'} className={getNavLinkClass('/account')}>
@@ -56,7 +54,7 @@ const Account: FC = () => {
                         <Link to={'/'} onClick={accountLogout}>
                             {t('account.logout')}
                         </Link>
-                    </li>{' '}
+                    </li>
                     <li>
                         <Link to={'/experiences'}>{t('account.logout')}</Link>
                     </li>
