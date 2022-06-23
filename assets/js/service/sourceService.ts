@@ -17,3 +17,19 @@ export const createGitHubSource = async (source: ISource) => {
 
     return json;
 };
+
+export const updateGitHubSource = async (sourceId: string, source: ISource) => {
+    const token = getTokken();
+    const response = await fetch(`${config.baseUrl}/sources/${sourceId}`, {
+        headers: {
+            'Content-type': 'application/merge-patch+json',
+            Authorization: `Bearer ${token}`,
+        },
+        method: 'PATCH',
+        body: JSON.stringify(source),
+    });
+
+    const json = await response.json();
+
+    return json;
+};

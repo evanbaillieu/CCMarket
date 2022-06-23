@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
 import { Circles } from 'react-loader-spinner';
 import CardItem from './cardItem';
-import { getCategoryCollection } from '../service/CategoryService';
+import { getCategoryCollection } from '../service/categoryService';
 import BadgeCategory from './BadgeCategory';
 
 const ListCategories: FC = () => {

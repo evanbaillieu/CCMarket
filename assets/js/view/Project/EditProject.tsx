@@ -1,15 +1,15 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Inpute from '../../components/input';
 import Textarea from '../../components/textarea';
-import { ICategory, IProject } from '../../constant/Type/entity';
+import { ICategory, IProject, ISource } from '../../constant/Type/entity';
 import { checkIsEmpty, checkIsNotEmpty } from '../../helper/utilHelper';
 import useForm from '../../hook/useForm';
 import { getMe } from '../../service/accountService';
 import { getCategoryCollection } from '../../service/categoryService';
-import { addProject } from '../../service/projectService';
-import { createGitHubSource } from '../../service/sourceService';
+import { getProject, updateProject } from '../../service/projectService';
+import { updateGitHubSource } from '../../service/sourceService';
 import GitHub from '../../svg/github.svg';
 
 const project: IProject = {
@@ -18,24 +18,39 @@ const project: IProject = {
     description: '',
 };
 
-const AddProject: FC = () => {
+const EditProject: FC = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const { idProject } = useParams();
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState<string>('');
-    const [user, setUser] = useState<string>('');
     const [source, setSource] = useState<string>('');
-    const { data, errors, hangleChange } = useForm<IProject>(project);
+    const [sourceId, setSourceId] = useState<string>('');
+    const { data, errors, hangleChange, setInitialData } = useForm<IProject>(project);
 
     useEffect(() => {
+        getMe().then((response) => {
+            if (!response.user) navigate('/login');
+        });
+
         getCategoryCollection().then((response) => {
             setCategories(response);
             setSelectedCategory(response[0]['id']);
         });
 
-        getMe().then((response) => {
-            if (response.user) setUser('/api/users/' + response.user.id);
-            else navigate('/login');
+        getProject(idProject).then((response) => {
+            setInitialData({
+                title: response.title,
+                description: response.description,
+                abstract: response.abstract,
+            });
+            setSelectedCategory(response.category.id);
+            response.source.map((item: ISource) => {
+                if (item.type === 'github') {
+                    setSource(item.link.substring(19));
+                    setSourceId(item.id);
+                }
+            });
         });
     }, []);
 
@@ -48,12 +63,11 @@ const AddProject: FC = () => {
     };
 
     const submit = async () => {
-        if (checkIsNotEmpty(data) && checkIsEmpty(errors) && selectedCategory && user) {
-            addProject(data, '/api/categories/' + selectedCategory, user).then((result) => {
+        if (checkIsNotEmpty(data) && checkIsEmpty(errors) && selectedCategory) {
+            updateProject(idProject, data, '/api/categories/' + selectedCategory).then((result) => {
                 if (result.id) {
                     if (source) {
-                        createGitHubSource({
-                            type: 'github',
+                        updateGitHubSource(sourceId, {
                             name: 'GitHub of ' + data.title,
                             link: 'https://github.com/' + source,
                             projects: [result['@id']],
@@ -66,8 +80,8 @@ const AddProject: FC = () => {
 
     return (
         <div className="form">
-            <h1>{t('project.add')}</h1>
-            <div id="add-project-inputs">
+            <h1>{t('project.edit')}</h1>
+            <div id="edit-project-inputs">
                 <Inpute
                     option={{
                         type: 'text',
@@ -89,9 +103,9 @@ const AddProject: FC = () => {
                     handleChange={hangleChange}
                     value={data.abstract}
                 />
-                <div>
+                <div className="input">
                     <label htmlFor="category">{t('project.category')}</label>
-                    <select name="category" id="category" onChange={handleSelectChange}>
+                    <select name="category" id="category" value={selectedCategory} onChange={handleSelectChange}>
                         {categories.map((option: ICategory, key: number) => (
                             <option value={option.id} key={key}>
                                 {option.name}
@@ -135,4 +149,4 @@ const AddProject: FC = () => {
         </div>
     );
 };
-export default AddProject;
+export default EditProject;

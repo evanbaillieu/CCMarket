@@ -46,7 +46,7 @@ const ModalSearch: FC<IModalSearch> = ({ onClose }) => {
                                 name="category"
                                 onChange={onChange}
                                 value={option?.category}
-                                custFetch={categoryService.getAll}
+                                custFetch={categoryService.getCategoryCollection}
                                 isTrad
                             />
                         </div>

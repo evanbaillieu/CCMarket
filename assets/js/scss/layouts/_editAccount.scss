@@ -1,23 +1,4 @@
-#edit-inputs,
-#change-password-inputs {
-    margin-bottom: 40px;
-
-    @include respond-to('sm') {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px 100px;
-    }
-
-    @include respond-to('md') {
-        margin: 0 10%;
-    }
-
-    @include respond-to('md') {
-        margin: 0 10%;
-    }
-}
-
-#edit-inputs {
+#edit-account-inputs {
     @include respond-to('sm') {
         grid-template-rows: repeat(2, 1fr);
         

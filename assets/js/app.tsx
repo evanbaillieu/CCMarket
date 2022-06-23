@@ -25,6 +25,7 @@ import Messenger from './view/Messenger';
 import Posts from './view/Posts';
 import Project from './view/Project';
 import AddProject from './view/Project/AddProject';
+import EditProject from './view/Project/EditProject';
 import Register from './view/Registeur';
 
 const App: FC = () => {
@@ -65,6 +66,7 @@ const App: FC = () => {
                 <Route path="/project">
                     <Route path=":idProject" element={<Project />} />
                     <Route path="add" element={<AddProject />} />
+                    <Route path="edit/:idProject" element={<EditProject />} />
                 </Route>
             </Routes>
             <Footer />

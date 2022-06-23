@@ -19,17 +19,15 @@ const Textarea: FC<ITextareaProps> = ({ option, value, handleChange }) => {
     const { t } = useTranslation();
 
     return (
-        <div className="text-area">
+        <div className="input">
             <label htmlFor={option.name}>{t(option.title)}</label>
-            <div className="text-area-content">
-                <textarea
-                    className={option.error ? 'error' : option.validate ? 'validate' : ''}
-                    onChange={handleChange}
-                    name={option.name}
-                    value={value}
-                    placeholder={t(`placeholder.${option.name}`)}
-                ></textarea>
-            </div>
+            <textarea
+                className={option.error ? 'error' : option.validate ? 'validate' : ''}
+                onChange={handleChange}
+                name={option.name}
+                value={value}
+                placeholder={t(`placeholder.${option.name}`)}
+            ></textarea>
             <span className="error"> {option.error && <p>{t(option.error)}</p>}</span>
         </div>
     );

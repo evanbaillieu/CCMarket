@@ -156,6 +156,7 @@ export type TranslationFormat = {
         description: string;
         profileType: string;
         project: string;
+        edit: string;
     };
     project: {
         add: string;
@@ -163,6 +164,7 @@ export type TranslationFormat = {
         abstract: string;
         description: string;
         category: string;
+        edit: string;
     };
     github: string;
     contactLeader: string;

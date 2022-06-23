@@ -157,6 +157,7 @@ const data: TranslationFormat = {
         description: 'Description',
         profileType: 'Profile type',
         project: 'Project',
+        edit: 'Edit the job',
     },
     project: {
         add: 'Add a project',
@@ -164,6 +165,7 @@ const data: TranslationFormat = {
         abstract: 'Summary',
         description: 'Description',
         category: 'Category',
+        edit: 'Edit the project',
     },
     github: 'GitHub link',
     contactLeader: 'Contact leader',

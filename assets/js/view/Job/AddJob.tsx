@@ -55,10 +55,10 @@ const AddJob: FC = () => {
 
     const submit = async () => {
         if (checkIsNotEmpty(data) && checkIsEmpty(errors)) {
-            if (source) {
-                addJob(data, '/api/profil_types/' + selectedProfileType, '/api/projects/' + selectedProject).then(
-                    (result) => {
-                        if (result.id) {
+            addJob(data, '/api/profil_types/' + selectedProfileType, '/api/projects/' + selectedProject).then(
+                (result) => {
+                    if (result.id) {
+                        if (source) {
                             createGitHubSource({
                                 type: 'github',
                                 name: 'GitHub of ' + data.title,
@@ -66,17 +66,17 @@ const AddJob: FC = () => {
                                 job: result['@id'],
                             });
                             navigate('/job/' + result.id);
-                        }
-                    },
-                );
-            }
+                        } else navigate('/job/' + result.id);
+                    }
+                },
+            );
         }
     };
 
     return (
         <div className="form">
             <h1>{t('job.add')}</h1>
-            <div id="edit-inputs">
+            <div id="add-job-inputs">
                 <Inpute
                     option={{
                         type: 'text',

@@ -50,7 +50,7 @@ const EditAccount: FC = () => {
                 <span>Edit</span>
             </label>
             <input type="file" name="profileImg" id="profileImg" accept="image/*" />
-            <div id="edit-inputs">
+            <div id="edit-account-inputs">
                 <Inpute
                     option={{
                         type: 'text',

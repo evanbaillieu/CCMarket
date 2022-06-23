@@ -65,3 +65,20 @@ export const getProjectsSearch = async (category: string, description: string) =
     const json = data.json();
     return json;
 };
+
+export const updateProject = async (projectId: string, data: IProject, category: string) => {
+    const token = getTokken();
+    data.category = category;
+    const response = await fetch(`${config.baseUrl}/projects/${projectId}`, {
+        headers: {
+            'Content-type': 'application/merge-patch+json',
+            Authorization: `Bearer ${token}`,
+        },
+        method: 'PATCH',
+        body: JSON.stringify(data),
+    });
+
+    const json = await response.json();
+
+    return json;
+};

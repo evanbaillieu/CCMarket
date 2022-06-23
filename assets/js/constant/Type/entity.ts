@@ -31,7 +31,7 @@ export type IProject = {
 export type ISource = {
     id?: string;
     name: string;
-    type: string;
+    type?: string;
     link: string;
     projects?: string[] | IProject[];
     job?: string;

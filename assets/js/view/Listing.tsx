@@ -42,7 +42,7 @@ const Listing: FC = ({}) => {
                                 name="category"
                                 onChange={onChange}
                                 value={option?.category}
-                                custFetch={categoryService.getAll}
+                                custFetch={categoryService.getCategoryCollection}
                                 isTrad
                             />
                         </div>
