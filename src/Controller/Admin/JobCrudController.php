@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class JobCrudController extends AbstractCrudController
@@ -23,8 +24,8 @@ class JobCrudController extends AbstractCrudController
     {
         return [
             TextField::new('title'),
-            TextField::new('abstract'),
-            TextField::new('description'),
+            TextareaField::new('abstract'),
+            TextareaField::new('description'),
             BooleanField::new('isBanned'),
             AssociationField::new('profilType',),
             AssociationField::new('Project',),

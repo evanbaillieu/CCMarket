@@ -36,7 +36,7 @@ use Symfony\Component\Uid\Uuid;
             "security" => "is_granted('ROLE_USER')",
         ]
     ]
-), ApiFilter(SearchFilter::class, properties: ['id' => 'exact','description' => 'partial'])]
+), ApiFilter(SearchFilter::class, properties: ['id' => 'exact','description' => 'partial', 'profilType.name' => 'exact'])]
 
 class Job
 {
@@ -52,7 +52,7 @@ class Job
     private $title;
 
     #[Groups(['read:Project:item', 'read:Job:collection',"write:Job:collection"])]
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'text')]
     private $abstract;
 
     #[Groups(['read:Project:item', 'read:Job:collection',"write:Job:collection"])]
@@ -68,7 +68,7 @@ class Job
     #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'jobs')]
     private $Project;
 
-    #[Groups(['read:Job:item',"write:Job:collection"])]
+    #[Groups(['read:Job:collection',"write:Job:collection"])]
     #[ORM\ManyToOne(targetEntity: ProfilType::class, inversedBy: 'Job')]
     #[ORM\JoinColumn(nullable: false)]
     private $profilType;

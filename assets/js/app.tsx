@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Home from './view/Home';
-import SearchList from './view/SearchList';
+import Listing from './view/Listing';
 import Login from './view/Login';
 import Posts from './view/Posts';
 import Register from './view/Registeur';
@@ -16,12 +16,14 @@ import EditAccount from './view/Account/EditAccount';
 import ChangePassword from './view/Account/ChangePassword';
 import './scss/main.scss';
 import config from './config/default';
-import ListDemo from './components/ListDemo';
+import ListProject from './components/ListProject';
 import Messenger from './view/Messenger';
 import Message from './view/Message';
 import DefaultZoneMessage from './view/DefaultZoneMessage';
 import Job from './view/Job';
+
 import Project from './view/Project';
+import ForYou from './view/ForYou';
 
 const App: FC = () => {
     const { i18n } = useTranslation();
@@ -37,7 +39,8 @@ const App: FC = () => {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/searchList" element={<SearchList />} />
+                <Route path="/listing" element={<Listing />} />
+                <Route path="/foryou" element={<ForYou />} />
                 <Route path="/account" element={<Account />}>
                     <Route path="" element={<AccountInfos />} />
                     <Route path="settings" element={<AccountSettings />} />
@@ -46,7 +49,7 @@ const App: FC = () => {
                     <Route path="" element={<DefaultZoneMessage />} />
                     <Route path=":id" element={<Message />} />
                 </Route>
-                <Route path="/list" element={<ListDemo />} />
+                <Route path="/list" element={<ListProject />} />
                 <Route path="/posts" element={<Posts />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />

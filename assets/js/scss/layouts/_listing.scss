@@ -1,0 +1,39 @@
+.container_listing{
+  margin-top:80px ;
+  min-height: 35vh;
+  padding-inline: 2.5%;
+  display: grid;
+  column-gap: 12%;
+  row-gap: 50px;
+  margin-bottom:160px ;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  @media (max-width: 1246px){
+    gap: 6%;
+  }
+  @media (max-width: 860px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  &_not_found{
+    display: flex;
+    justify-content: center;
+    height: 30vh;
+    align-items: center;
+    margin-top:0px ;
+
+    h2{
+      @extend .title-section-40;
+      color: $black;
+      @extend .fontRedSemiBold;
+    }
+  }
+}
+
+.title_project_listing{
+  padding-inline: 2.5%;
+  margin-top: 50px;
+  h2{
+    @extend .title-section-50;
+    @extend .fontRedMedium;
+    color: $black;
+  }
+}

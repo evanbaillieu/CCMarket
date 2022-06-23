@@ -10,7 +10,7 @@ const Message: FC = ({}) => {
 
     return (
         <div className="messenger_content_message">
-            {currentData && currentData.map((item: any) => <p key={item.id}>{item.content}</p>)}
+            {data && data.message.map((item: any) => <p key={item.id}>{item.content}</p>)}
         </div>
     );
 };
