@@ -1,10 +1,31 @@
 .message{
-    padding: 1rem;
-    background-color: var(--primary-color);
-    border-radius: 25px;
-    text-align: center;
-    
-    &.you{
-        align-self: flex-start;
+    margin-bottom: 1rem;
+    margin-right: 5rem;
+    display: flex;
+    flex-direction: column;
+
+    &_content{
+        padding: 1.5rem 2rem;
+        font-size: 1.2rem;
+        background-color: var(--primary-color);
+        color: $white;
+        border-radius: 25px;
+        text-align: center;
+        padding: 1rem;
+        
     }
+    & span{
+        margin-top: 0.5rem;
+        font-size: 0.5rem;
+        color: var(--black-color);
+        align-self: flex-end;
+    }
+    &.you{
+        align-self: end;
+   }
+
+   &.autre{
+    align-self: start;
+
+   }
 }

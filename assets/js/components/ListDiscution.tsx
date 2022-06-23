@@ -4,13 +4,16 @@ import { useNavigate } from 'react-router-dom';
 
 export interface IListDiscutionProps {
     content: any[];
+    setSelect: (id: string) => void;
 }
-const ListDiscution: FC<IListDiscutionProps> = ({ content }) => {
+
+const ListDiscution: FC<IListDiscutionProps> = ({ content, setSelect }) => {
     const [selected, setSelected] = useState('');
     const navigate = useNavigate();
 
     const selectCard = (id: string) => {
         setSelected(id);
+        setSelect(id);
         navigate(`/messenger/${id}`);
     };
 

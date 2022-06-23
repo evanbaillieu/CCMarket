@@ -3,7 +3,7 @@ import { sendMessage } from '../service/messengerService';
 import Send from '../svg/send.svg';
 import { useParams } from 'react-router-dom';
 
-const ToolBar: FC = ({}) => {
+const ToolBar: FC<{ refetch: () => void }> = ({ refetch }) => {
     const [value, setValue] = useState('');
     const { id } = useParams();
     console.log(id);
@@ -12,6 +12,7 @@ const ToolBar: FC = ({}) => {
             const reponse = await sendMessage({ content: value, dicustionId: id });
             if (reponse.code === 201) {
                 setValue('');
+                refetch();
             }
         }
     };
