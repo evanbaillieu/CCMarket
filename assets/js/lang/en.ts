@@ -145,7 +145,7 @@ const data: TranslationFormat = {
         passwordNotIdentical: 'The confirmation of password is not identical',
         inputEmpty: 'Some fields are empty',
         incorrectPassword: 'Incorrect password',
-        experiences: 'Experience(s)',
+        experiences: 'Your experience(s)',
         today: 'Today',
     },
     job: {

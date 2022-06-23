@@ -1,9 +1,7 @@
-import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
-import { ICategory, ISource } from '../constant/Type/entity';
-import imgDefault from '../img/img-de-base.png';
-import moment from 'moment';
 import { t } from 'i18next';
+import moment from 'moment';
+import React, { FC } from 'react';
+
 export interface iCardExperienceProps {
     id: string;
     title: string;
@@ -13,9 +11,8 @@ export interface iCardExperienceProps {
 }
 
 const cardExperience: FC<iCardExperienceProps> = ({ id, title, abstract, startDate, endDate }) => {
-    const moment = require('moment');
-    console.log(moment().format());
-    const dateDebut = startDate;
+    const startDateFormated = moment(startDate).format('DD MMMM YYYY');
+    const endDateFormated = endDate ? moment(endDate).format('DD MMMM YYYY') : t('account.today');
 
     return (
         <div key={id}>
@@ -25,12 +22,9 @@ const cardExperience: FC<iCardExperienceProps> = ({ id, title, abstract, startDa
                 </div>
                 <div className="container_experience_description">
                     <p>{abstract}</p>
-                </div>{' '}
+                </div>
                 <div className="container_experience_date">
-                    <p>
-                        {moment(dateDebut).format('DD MMMM YYYY')} -{' '}
-                        {endDate ? moment(endDate).format('DD MMMM YYYY') : t('account.today')}
-                    </p>
+                    <p>{startDateFormated + ' - ' + endDateFormated}</p>
                 </div>
                 <div className="container_experience_source"></div>
             </div>
