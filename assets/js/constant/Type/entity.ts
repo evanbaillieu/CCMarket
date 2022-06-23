@@ -39,9 +39,9 @@ export type ISource = {
 export type IExperiance = {
     id: string;
     title: string;
-    resumer: string;
-    dateDeDebut: string;
-    dateDeFin: string;
+    abstract: string;
+    startDate: string;
+    endDate: string;
     sources: ISource[];
 };
 

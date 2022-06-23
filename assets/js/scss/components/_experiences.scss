@@ -1,0 +1,26 @@
+.container_experience{
+  margin-bottom: 80px;
+  &_title{
+    margin-bottom: 20px;
+    h2{
+      @extend .title-section-30;
+      color: $black;
+      @extend .fontRedMedium;
+      margin: 0 !important;
+
+    }
+  }
+  &_description{
+    margin-bottom: 20px;
+
+    p{
+      @extend .paragraph;
+      margin: 0 !important;
+    }
+  }
+  &_date{
+    p{
+
+    }
+  }
+}

@@ -49,9 +49,11 @@ const Account: FC = () => {
                         <Link to={'/account/settings'} className={getNavLinkClass('/account/settings')}>
                             {t('account.settings')}
                         </Link>
-                    </li>
+                    </li>{' '}
                     <li>
-                        <Link to={'/account/experiences'}>{t('account.experiences')}</Link>
+                        <Link to={'/account/experiences'} className={getNavLinkClass('/account/experiences')}>
+                            {t('account.experiences')}
+                        </Link>
                     </li>
                     <li>
                         <Link to={'/'} onClick={accountLogout}>

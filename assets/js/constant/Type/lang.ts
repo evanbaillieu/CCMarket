@@ -145,6 +145,7 @@ export type TranslationFormat = {
         inputEmpty: string;
         incorrectPassword: string;
         experiences: string;
+        today: string;
     };
     job: {
         leader: string;

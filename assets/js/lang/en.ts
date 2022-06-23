@@ -146,6 +146,7 @@ const data: TranslationFormat = {
         inputEmpty: 'Some fields are empty',
         incorrectPassword: 'Incorrect password',
         experiences: 'Experience(s)',
+        today: 'Today',
     },
     job: {
         leader: 'Project leader',

@@ -32,7 +32,14 @@ const AccountExperience: FC = () => {
         <div className="account-content">
             {experiences.map((exp) => (
                 <div>
-                    <CardExperience key={exp.id} id={exp.id} title={exp.title} abstract={exp.dateDeFin} />
+                    <CardExperience
+                        key={exp.id}
+                        id={exp.id}
+                        title={exp.title}
+                        abstract={exp.abstract}
+                        startDate={exp.startDate}
+                        endDate={exp.endDate}
+                    />
                 </div>
             ))}
         </div>

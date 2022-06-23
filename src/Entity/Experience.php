@@ -27,7 +27,7 @@ class Experience
     #[Groups([
         'read:User:item'
     ])]
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'text')]
     private $abstract;
 
     #[Groups([
