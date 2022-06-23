@@ -158,6 +158,19 @@ class ApiMessegerController extends AbstractController
     }
 
     /**
+     * @route("/blocked/{id}", methods="POST")
+     */
+    public function blocked(string $id,Request $request, ManagerRegistry $doctrine){
+        $entityManager = $doctrine->getManager();
+        $discution = $entityManager->getRepository(Discussion::class)->find($id);
+        $discution->setBlocked(json_encode(array_push($discution->getBlocked(), [ "id" => $this->getUser()->id])));
+        return $this->json([
+            "message" => "succes",
+            "code" => 201
+        ], 201);
+    }
+
+    /**
      * @route("/message/", methods="POST")
      */
     public function addMessage(Request $request, ManagerRegistry $doctrine){

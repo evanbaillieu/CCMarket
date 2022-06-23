@@ -26,6 +26,10 @@ const Job: FC = () => {
         });
     }, []);
 
+    //const createDisc = () => {
+    //
+    //};
+
     return (
         <div id="job-container">
             <div id="job-content">
@@ -61,9 +65,9 @@ const Job: FC = () => {
                         <img src={profile} width={50} height={50} alt={t('profileImage')} />
                         <p>{leader?.firstName + ' ' + leader?.lastName}</p>
                     </div>
-                    <Link to={'/messenger/'} className="btn btn-primary btn-with-arrow">
+                    <button onClick={() => console.log('fefe')} className="btn btn-primary btn-with-arrow">
                         {t('contactLeader')}
-                    </Link>
+                    </button>
                 </div>
             </div>
         </div>

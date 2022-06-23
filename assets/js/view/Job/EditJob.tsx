@@ -73,8 +73,8 @@ const EditJob: FC = () => {
     const submit = async () => {
         if (checkIsNotEmpty(data) && checkIsEmpty(errors)) {
             updateJob(idJob, data, '/api/profil_types/' + selectedProfileType, '/api/projects/' + selectedProject).then(
-                (result) => {
-                    if (result.id) {
+                (result: any) => {
+                    if (result?.id) {
                         if (source) {
                             if (sourceId) {
                                 updateGitHubSource(sourceId, {

@@ -52,7 +52,7 @@ const App: FC = () => {
                     <Route path="settings" element={<AccountSettings />} />
                     <Route path="experiences" element={<AccountExperience />} />
                 </Route>
-                <Route path="/messenger/:id" element={<Messenger />}>
+                <Route path="/messenger/" element={<Messenger />}>
                     <Route path="" element={<DefaultZoneMessage />} />
                     <Route path=":id" element={<Message />} />
                 </Route>
