@@ -5,10 +5,11 @@ import useForm from '../hook/useForm';
 import { register } from '../service/authService';
 import { checkIsEmpty, checkIsNotEmpty } from '../helper/utilHelper';
 import Inpute from '../components/input';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 const Registeur: FC = ({}) => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     const { data, errors, hangleChange } = useForm<IUser>({
         firstName: '',
@@ -33,7 +34,11 @@ const Registeur: FC = ({}) => {
             console.log('se son les meme');
         }
 
-        register(data);
+        register(data).then((data) => {
+            if (data) {
+                navigate('/login');
+            }
+        });
     };
 
     return (

@@ -13,6 +13,7 @@ const ListDiscution: FC<IListDiscutionProps> = ({ content }) => {
         setSelected(id);
         navigate(`/messenger/${id}`);
     };
+
     return (
         <div className="messenger_content_listUser">
             {content &&

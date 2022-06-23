@@ -11,12 +11,13 @@ const Messenger: FC = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const outlet = useOutlet();
-    const [content, setContent] = useState('');
 
     const { isError, isLoading, data } = useQuery('List-message', getAll, {
         refetchInterval: 10000,
         refetchIntervalInBackground: true,
     });
+
+    console.log(data);
 
     if (data?.code === 401) {
         navigate('/login');
@@ -37,7 +38,7 @@ const Messenger: FC = () => {
                     <h2>{t('messenger.discution')}</h2>
                 </div>
                 <ListDiscution content={data?.messaging?.discution} />
-                <div className="messenger_content_message">{outlet}</div>
+                {outlet}
                 <ToolBar />
             </div>
         </div>

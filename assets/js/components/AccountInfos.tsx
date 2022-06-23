@@ -15,19 +15,19 @@ const AccountInfos: FC = () => {
             <div id="account-infos">
                 <div className="grid-content">
                     <h6>{t('account.firstName')}</h6>
-                    <p>{user.firstName}</p>
+                    <p>{user?.firstName}</p>
                 </div>
                 <div className="grid-content">
                     <h6>{t('account.lastName')}</h6>
-                    <p>{user.lastName}</p>
+                    <p>{user?.lastName}</p>
                 </div>
                 <div className="grid-content">
                     <h6>{t('account.email')}</h6>
-                    <p>{user.email}</p>
+                    <p>{user?.email}</p>
                 </div>
                 <div className="grid-content">
                     <h6>{t('account.dateOfBirth')}</h6>
-                    <p>{new Date(user.dateOfBirth).toLocaleDateString()}</p>
+                    <p>{new Date(user?.dateOfBirth).toLocaleDateString()}</p>
                 </div>
             </div>
 

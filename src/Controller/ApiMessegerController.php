@@ -67,16 +67,24 @@ class ApiMessegerController extends AbstractController
     /**
      * @route("/{id}", methods="GET")
      */
-    public function getDiscustion(string $id, ManagerRegistry $doctrine){
+    public function getDiscustion(string $id, #[CurrentUser] ?User $tokenUser, ManagerRegistry $doctrine){
         
-        $user = $this->getUser();
         $entityManager = $doctrine->getManager();  
         $dicustion = $entityManager->getRepository(Discussion::class)->find($id);
-        $user = $entityManager->getRepository(User::class)->find($this->getUser()->id);
+
+            $user = $entityManager->getRepository(User::class)->find($tokenUser->getId());
 
         if($dicustion->checkParticipant($user->getMessaging())){
+            $message = array();
+
+            foreach($dicustion->getMessage() as $msg){
+                array_push($message, [ 'id' => $msg->getId(), 'content' => $msg->getContent(), "createAt" => $msg->getCreateAt(), "sender" => $msg->getSender()]);
+            }
+            
             return $this->json([
-                'dicustion' => $dicustion
+                'id' => $dicustion->getId(),
+                'message' => $dicustion->getMessage(),
+                'blocked' => $dicustion->getBlocked()
             ]);
         }
 
@@ -91,10 +99,9 @@ class ApiMessegerController extends AbstractController
             $entityManager = $doctrine->getManager(); 
             $data = json_decode($request->getContent());
             $tokenUser = $this->getUser();
-
             $userConnected = $entityManager->getRepository(User::class)->find($tokenUser->id);
-            
             $userInviter = $entityManager->getRepository(User::class)->find($data->userInvited);
+
             if(!$userInviter){
                 return $this->json([], 400);
             }
@@ -111,7 +118,7 @@ class ApiMessegerController extends AbstractController
             ], 202);
 
         }catch (Exception $e){
-            return $this->json(["message" => "error.serveur" ], 400);
+            return $this->json(["message" => "error.serveur", "error" => $e->getMessage() ], 400);
         }
     }
 
@@ -153,7 +160,8 @@ class ApiMessegerController extends AbstractController
         $entityManager->flush();
 
         return $this->json([
-            "discution" => $dicustion
-        ]);
+            "message" => "succes",
+            "code" => 201
+        ], 201);
     }
 }

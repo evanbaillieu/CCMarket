@@ -7,8 +7,13 @@ const ToolBar: FC = ({}) => {
     const [value, setValue] = useState('');
     const { id } = useParams();
     console.log(id);
-    const send = () => {
-        sendMessage({ content: value, dicustionId: id });
+    const send = async () => {
+        if (value.length != 0 && id) {
+            const reponse = await sendMessage({ content: value, dicustionId: id });
+            if (reponse.code === 201) {
+                setValue('');
+            }
+        }
     };
     return (
         <div className="messenger_content_toolbar toolbar">

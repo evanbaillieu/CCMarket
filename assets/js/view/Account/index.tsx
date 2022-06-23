@@ -14,7 +14,7 @@ const Account: FC = () => {
     const outlet = useOutlet(data?.user);
     const navigate = useNavigate();
     const AppDispatch = useAppDispatch();
-
+    console.log(data);
     if (data?.code === 401) {
         navigate('/login');
     }
