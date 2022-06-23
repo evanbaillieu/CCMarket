@@ -36,7 +36,12 @@
         }
         &_message{
             grid-area: message;
-            overflow:autos
+            width: 100%;
+            height: 100%;
+            overflow:scroll;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         &_toolbar{
             grid-area: toolbar;

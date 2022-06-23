@@ -78,12 +78,17 @@ class ApiMessegerController extends AbstractController
             $message = array();
 
             foreach($dicustion->getMessage() as $msg){
-                array_push($message, [ 'id' => $msg->getId(), 'content' => $msg->getContent(), "createAt" => $msg->getCreateAt(), "sender" => $msg->getSender()]);
+                $isYou = ($msg->getSender()->getId() == $tokenUser->getId());
+                array_push($message, [ 
+                    'id' => $msg->getId(),
+                    'content' => $msg->getContent(),
+                    "createAt" => $msg->getCreateAt(),
+                     "sender" => $msg->getSender(),
+                      "isYou" => $isYou]);
             }
-            
             return $this->json([
                 'id' => $dicustion->getId(),
-                'message' => $dicustion->getMessage(),
+                'message' => $message,
                 'blocked' => $dicustion->getBlocked()
             ]);
         }

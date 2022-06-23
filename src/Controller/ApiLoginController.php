@@ -89,11 +89,7 @@ class ApiLoginController extends AbstractController
 
             return $this->json([
                 'user' => $fullUser,
-<<<<<<< HEAD
                 'profilType' => $fullUser->getProfilType()
-=======
-                'profilType' => $fullUser->getProfilType(),
->>>>>>> dfff570c5a952909e583c6eee9486c5b7b69995d
             ]);
         }
 
