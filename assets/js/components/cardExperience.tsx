@@ -1,7 +1,4 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
-import { ICategory, ISource } from '../constant/Type/entity';
-import imgDefault from '../img/img-de-base.png';
 import moment from 'moment';
 import { t } from 'i18next';
 export interface iCardExperienceProps {

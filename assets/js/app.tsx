@@ -21,12 +21,9 @@ import Messenger from './view/Messenger';
 import Message from './view/Message';
 import DefaultZoneMessage from './view/DefaultZoneMessage';
 import Job from './view/Job';
-import AddProject from './view/Project/AddProject';
+
 import Project from './view/Project';
 import ForYou from './view/ForYou';
-import ListingCategory from './view/ListingCategory';
-import Experience from './view/Account/AccountExperience';
-import AccountExperience from './view/Account/AccountExperience';
 
 const App: FC = () => {
     const { i18n } = useTranslation();
@@ -43,17 +40,16 @@ const App: FC = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/listing" element={<Listing />} />
-                <Route path="/listingCategory/:name" element={<ListingCategory />} />
                 <Route path="/foryou" element={<ForYou />} />
                 <Route path="/account" element={<Account />}>
                     <Route path="" element={<AccountInfos />} />
                     <Route path="settings" element={<AccountSettings />} />
-                    <Route path="experiences" element={<AccountExperience />} />
                 </Route>
-                <Route path="/messenger" element={<Messenger />}>
+                <Route path="/messenger/:id" element={<Messenger />}>
                     <Route path="" element={<DefaultZoneMessage />} />
                     <Route path=":id" element={<Message />} />
                 </Route>
+                <Route path="/list" element={<ListProject />} />
                 <Route path="/posts" element={<Posts />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
@@ -64,7 +60,6 @@ const App: FC = () => {
                 </Route>
                 <Route path="/project">
                     <Route path=":idProject" element={<Project />} />
-                    <Route path="add" element={<AddProject />} />
                 </Route>
             </Routes>
             <Footer />
