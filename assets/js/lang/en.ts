@@ -2,8 +2,8 @@ import { TranslationFormat } from '../constant/Type/lang';
 const data: TranslationFormat = {
     nav: {
         home: 'Home',
-        projects: 'Projects',
-        jobs: 'Jobs',
+        foryou: 'For You',
+        about: 'About',
     },
     home: {
         title_part_1: 'The platform that',
@@ -151,5 +151,10 @@ const data: TranslationFormat = {
     },
     contactLeader: 'Contact leader',
     profileImage: 'Profile image',
+
+    listing: {
+        noJobs: 'No Jobs found',
+        noProjects: 'No Projects found',
+    },
 };
 export default data;

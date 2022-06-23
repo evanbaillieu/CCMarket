@@ -36,6 +36,8 @@ class ProjectCrudController extends AbstractCrudController
             BooleanField::new('isBanned'),
             AssociationField::new('leader',),
             AssociationField::new('category',),
+            AssociationField::new('source',),
+
         ];
     }
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void

@@ -1,4 +1,3 @@
-//import React, { FC } from 'react';
 import React, { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink, useLocation } from 'react-router-dom';
@@ -76,10 +75,10 @@ const Navbar: FC = () => {
                                     <NavLink to="/">{t('nav.home')}</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/projects">{t('nav.projects')}</NavLink>
+                                    <NavLink to="/foryou">{t('nav.foryou')}</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/jobs">{t('nav.jobs')}</NavLink>
+                                    <NavLink to="/about">{t('nav.about')}</NavLink>
                                 </li>
                             </ul>
                             <div onClick={MenuOpenClose} className="header_navbar_menu_burgeur_button">
@@ -132,10 +131,10 @@ const Navbar: FC = () => {
                                     <NavLink to="/">{t('nav.home')}</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/projects">{t('nav.projects')}</NavLink>
+                                    <NavLink to="/projects">{t('nav.foryou')}</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/jobs">{t('nav.jobs')}</NavLink>
+                                    <NavLink to="/jobs">{t('nav.about')}</NavLink>
                                 </li>
                             </ul>
                         </nav>

@@ -1,9 +1,6 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import Lang from '../components/lang';
-
-//Image on Home Page
 import HomeSectionPresentationImage from '../img/homeImg.png';
 import HomeSectionPresentationImageMobile from '../img/HomeResponsive.png';
 import CompleteSvg from '../svg/complete.svg';
