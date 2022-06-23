@@ -24,6 +24,17 @@ export const findDiscution = async (id: string) => {
     return data.json();
 };
 
+export const createDiscution = async (id: string) => {
+    const data = await fetch(`${config.baseUrl}/messenger/dicustion/`, {
+        headers: { 'content-type': 'application/json' },
+        method: 'POST',
+        body: JSON.stringify({
+            userInvited: id,
+        }),
+    });
+    return data.json();
+};
+
 export const sendMessage = async ({ content, dicustionId }: ISendMessage) => {
     const token = getTokken();
 

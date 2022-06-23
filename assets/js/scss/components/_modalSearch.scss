@@ -55,12 +55,14 @@
         flex-direction: column;
         align-items: center;
         margin-bottom: 40px;
-
       }
       .form_item:last-child{
         @media(max-width: 750px){
           margin-bottom: 0;
         }
+      }
+      .form_item_unique{
+        margin-left: 0 !important;
       }
       .form_item{
         display: flex;
@@ -95,7 +97,7 @@
           @extend .fontRedMedium;
           border-radius: 5px;
         }
-        input{
+        input[type=text], input[type=email],input[type=password],{
           border-bottom: 2px solid $white;
           font-size: 30px;
           margin: 0;

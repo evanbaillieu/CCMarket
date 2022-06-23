@@ -51,13 +51,10 @@ const Listing: FC = ({}) => {
 
     return (
         <div>
-            <section>
-                <aside>
-                    <h2>{t('modalSearch.titlePrincipleSearch')}</h2>
-                </aside>
-                <aside>
-                    <div>
-                        <div>
+            <section className="container_filter">
+                <aside className="container_filter_form">
+                    <div className="container_filter_form_select">
+                        <div className="form_item">
                             <label htmlFor="category">{t('modalSearch.catagory')}</label>
                             <Select
                                 name="category"
@@ -90,7 +87,7 @@ const Listing: FC = ({}) => {
                             <></>
                         )}
                     </div>
-                    <div>
+                    <div className="container_filter_form_search">
                         <div>
                             <input
                                 className="input"
@@ -101,11 +98,6 @@ const Listing: FC = ({}) => {
                                 onChange={onChange}
                             />
                         </div>
-                    </div>
-                    <div>
-                        <button onClick={send} className="btn btn-primary">
-                            {t('modalSearch.buttonSearch')}
-                        </button>
                     </div>
                 </aside>
             </section>

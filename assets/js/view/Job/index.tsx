@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { IJob, IUser, IProject, IProfilType } from '../../constant/Type/entity';
 import profile from '../../img/test.png';
 import { getJob, getLeader } from '../../service/jobService';
+import { createDiscution } from '../../service/messengerService';
 import Github from '../../svg/github.svg';
 
 const Job: FC = () => {
@@ -25,6 +26,11 @@ const Job: FC = () => {
             }
         });
     }, []);
+
+    const createDisc = async (id: string) => {
+        const data = await createDiscution(id);
+        navigate(`/messenger/${data?.id}`);
+    };
 
     return (
         <div id="job-container">
@@ -61,9 +67,9 @@ const Job: FC = () => {
                         <img src={profile} width={50} height={50} alt={t('profileImage')} />
                         <p>{leader?.firstName + ' ' + leader?.lastName}</p>
                     </div>
-                    <Link to={'/messenger/'} className="btn btn-primary btn-with-arrow">
+                    <button onClick={() => createDisc(leader?.id)} className="btn btn-primary btn-with-arrow">
                         {t('contactLeader')}
-                    </Link>
+                    </button>
                 </div>
             </div>
         </div>
