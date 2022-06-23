@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 const ToolBar: FC = ({}) => {
     const [value, setValue] = useState('');
     const { id } = useParams();
-<<<<<<< HEAD
     console.log(id);
     const send = async () => {
         if (value.length != 0 && id) {
@@ -15,10 +14,6 @@ const ToolBar: FC = ({}) => {
                 setValue('');
             }
         }
-=======
-    const send = () => {
-        sendMessage({ content: value, dicustionId: id });
->>>>>>> dfff570c5a952909e583c6eee9486c5b7b69995d
     };
     return (
         <div className="messenger_content_toolbar toolbar">
