@@ -24,7 +24,6 @@ import Listing from './view/Listing';
 import Login from './view/Login';
 import Message from './view/Message';
 import Messenger from './view/Messenger';
-import Posts from './view/Posts';
 import Project from './view/Project';
 import AddProject from './view/Project/AddProject';
 import EditProject from './view/Project/EditProject';
@@ -61,7 +60,6 @@ const App: FC = () => {
                     <Route path=":id" element={<Message />} />
                 </Route>
                 <Route path="/list" element={<ListProject />} />
-                <Route path="/posts" element={<Posts />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/account/edit" element={<EditAccount />} />

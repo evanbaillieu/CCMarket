@@ -112,7 +112,6 @@ const data: TranslationFormat = {
         veryfPassword: "Votre mot de passe de confirmation n'est pas identique au mot de passe",
         tropcourt: "Il n'y a pas assez de carractère",
     },
-    post: 'pas de nouveau post',
     account: {
         title: 'Votre compte',
         settings: 'Paramètres',
@@ -158,7 +157,7 @@ const data: TranslationFormat = {
         add: 'Ajouter un projet',
         title: 'Titre du projet',
         abstract: 'Résumé',
-        description: 'Description (markdown)',
+        description: 'Description',
         category: 'Categorie',
         edit: 'Modifier le projet',
         seeProject: 'Voir le projet',

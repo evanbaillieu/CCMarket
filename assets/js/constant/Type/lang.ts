@@ -111,7 +111,6 @@ export type TranslationFormat = {
         veryfPassword: string;
         tropcourt: string;
     };
-    post: string;
     account: {
         title: string;
         settings: string;

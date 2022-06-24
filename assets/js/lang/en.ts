@@ -113,7 +113,6 @@ const data: TranslationFormat = {
         veryfPassword: 'Your confirm password is not equals as password',
         tropcourt: 'There is not enough character',
     },
-    post: 'no new post',
     account: {
         title: 'Your account',
         settings: 'Settings',
@@ -159,7 +158,7 @@ const data: TranslationFormat = {
         add: 'Add a project',
         title: 'Title of project',
         abstract: 'Summary',
-        description: 'Description (markdown)',
+        description: 'Description',
         category: 'Category',
         edit: 'Edit the project',
         seeProject: 'See the project',

@@ -117,7 +117,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
 
 
     #[
-        Groups(['edit:User:item','read:User:item'])
+        Groups(['write:User:collection','edit:User:item','read:User:item'])
     ]
     #[ORM\ManyToOne(targetEntity: ProfilType::class, inversedBy: 'user')]
     private $profilType;
