@@ -66,7 +66,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, JWTUser
     #[ORM\Column(type: 'uuid')]
     #[ORM\GeneratedValue(strategy: "CUSTOM")]
     #[ORM\CustomIdGenerator("doctrine.uuid_generator")]
-    #[Groups(['read:User:collection'])]
+    #[Groups(['read:User:collection', 'read:Project:item'])]
     public $id;
 
 
