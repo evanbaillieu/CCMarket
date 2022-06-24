@@ -96,7 +96,8 @@ class ApiLoginController extends AbstractController
                     array_push($jobs, [
                         "id" => $job->getId(),
                         "title" => $job->getTitle(),
-                        "description" => $job->getAbstract(),
+                        "abstract" => $job->getAbstract(),
+                        "description" => $job->getDescription(),
                         "isBanned" => $job->isIsBanned(),
                         ]);
                 }
