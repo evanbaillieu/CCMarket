@@ -7,7 +7,6 @@ import { getProject } from '../../service/projectService';
 import Github from '../../svg/github.svg';
 import Star from '../../svg/star.svg';
 import { createDiscution } from '../../service/messengerService';
-import { logout } from '../../store/reducer/settingReducer';
 
 const Project: FC = () => {
     const { t } = useTranslation();
@@ -42,7 +41,9 @@ const Project: FC = () => {
 
     const addDicustion = async (id: string) => {
         const data = await createDiscution(id);
-         navigate('/messenger/' + data?.dicustion?.id;
+        if (data) {
+            navigate(`/`);
+        }
     };
     return (
         <div id="project-container">

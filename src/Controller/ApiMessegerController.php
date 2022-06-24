@@ -122,6 +122,13 @@ class ApiMessegerController extends AbstractController
             if(!$userInviter){
                 return $this->json([], 400);
             }
+
+            foreach($userConnected->getDiscustion() as $dicustion){
+                if($dicustion->checkParticipant($userInviter->getMessaging())){
+
+                }
+            }
+
             $dicustion = new Discussion();
             $dicustion->addParticipant($userInviter->getMessaging());
             $dicustion->addParticipant($userConnected->getMessaging());
