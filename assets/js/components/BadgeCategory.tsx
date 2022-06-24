@@ -9,7 +9,6 @@ const Badge: FC<IBadgeCategoryProps> = ({ name }) => {
     return (
         <div>
             <Link to={`/listingCategory/${name}`} className="badge_categories_container">
-                <div className="badge_categories_container_picto"></div>
                 <div className="badge_categories_container_title">
                     <h4>{name}</h4>
                 </div>

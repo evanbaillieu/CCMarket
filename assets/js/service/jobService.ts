@@ -80,7 +80,9 @@ export const updateJob = async (jobId: string, data: IJob, profilType: string, p
     });
 
     const json = await response.json();
+    return json;
 };
+
 export const getJobCollectionSearch = async (ProfilType: string, description: string, language: string) => {
     const data = await fetch(
         `${config.baseUrl}/jobs?page=1&${description ? `description=${description}&` : ''}${
@@ -91,7 +93,7 @@ export const getJobCollectionSearch = async (ProfilType: string, description: st
             method: 'GET',
         },
     );
-    console.log(data);
+
     const json = data.json();
     return json;
 };

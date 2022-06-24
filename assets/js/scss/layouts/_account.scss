@@ -206,3 +206,32 @@
         }
     }
 }
+
+
+#account-projects-jobs {
+    .project-box {
+        padding: 40px;
+        box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
+        border-radius: 27px;
+        margin-top: 40px;
+
+        a {
+            margin-right: 20px;
+        }
+
+        .job-box {
+            padding: 20px;
+            box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 27px;
+            margin: 20px 0;
+            margin-right: 20px;
+            display: inline-block;
+            width: 100%;
+
+            @include respond-to('sm') {
+                max-width: 500px;
+            }
+        }
+    }
+}
+

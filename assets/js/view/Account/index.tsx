@@ -51,6 +51,11 @@ const Account: FC = () => {
                         </Link>
                     </li>
                     <li>
+                        <Link to={'/account/projectsjobs'} className={getNavLinkClass('/account/projectsjobs')}>
+                            {t('account.projectsjobs')}
+                        </Link>
+                    </li>
+                    <li>
                         <Link to={'/account/settings'} className={getNavLinkClass('/account/settings')}>
                             {t('account.settings')}
                         </Link>

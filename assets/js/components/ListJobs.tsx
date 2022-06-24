@@ -39,7 +39,7 @@ const ListJobs: FC<IListJobsProps> = ({ getJobs }) => {
     return (
         <section>
             <aside className="title_project_listing">
-                <h2>Job(s)</h2>
+                <h2>{t('searchList.titlePrincipleJobs')}</h2>
             </aside>
             <div className="container_listing">
                 {data &&
@@ -47,6 +47,7 @@ const ListJobs: FC<IListJobsProps> = ({ getJobs }) => {
                         return (
                             <CardItemJobs
                                 key={item.id}
+                                id={item.id}
                                 title={item.title}
                                 abstract={item.abstract}
                                 isBanned={item.isBanned}

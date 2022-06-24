@@ -1,14 +1,14 @@
-import React, { ChangeEventHandler, FC, useState, ChangeEvent, useEffect } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ListProject from '../components/ListProject';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ListJobs from '../components/ListJobs';
-import { getJobCollection, getJobCollectionSearch } from '../service/jobService';
-import { getProjectsSearch } from '../service/projectService';
+import ListProject from '../components/ListProject';
 import Select from '../components/select';
 import * as categoryService from '../service/categoryService';
-import * as ProfilTypeService from '../service/profilTypeService';
+import { getJobCollectionSearch } from '../service/jobService';
 import * as langueService from '../service/langueService';
-import { useLocation, Navigate, useNavigate } from 'react-router-dom';
+import * as ProfilTypeService from '../service/profilTypeService';
+import { getProjectsSearch } from '../service/projectService';
 
 const Listing: FC = ({}) => {
     const { t } = useTranslation();
