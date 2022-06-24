@@ -66,7 +66,9 @@ const Navbar: FC = () => {
                                 </Link>
                             </div>{' '}
                             <div className="header_navbar_logo_mobile">
-                                <LogoMobile />
+                                <Link to={'/'}>
+                                    <LogoMobile />
+                                </Link>
                             </div>
                         </aside>
                         <aside className="header_navbar_menu">
@@ -131,7 +133,7 @@ const Navbar: FC = () => {
                                     <NavLink to="/">{t('nav.home')}</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/projects">{t('nav.foryou')}</NavLink>
+                                    <NavLink to="/foryou">{t('nav.foryou')}</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to="/project/add">{t('nav.addProject')}</NavLink>
