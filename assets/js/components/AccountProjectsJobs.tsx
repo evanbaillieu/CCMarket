@@ -13,6 +13,12 @@ const AccountProjectsJobs: FC = () => {
 
     return (
         <div className="account-content">
+            <Link className="btn btn-primary" to={'/project/add'}>
+                {t('project.add')}
+            </Link>
+            <Link className="btn btn-primary" to={'/job/add'}>
+                {t('job.add')}
+            </Link>
             <h1>{t('listing.titleProjectJob')}</h1>
             {me.projects?.map((project: IProject) => (
                 <div id="account-projects-jobs" key={project.id}>
