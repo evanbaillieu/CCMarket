@@ -38,8 +38,8 @@ const data: TranslationFormat = {
     },
 
     searchList: {
-        catagory: 'Catagory',
-        utilities: 'utilities',
+        catagory: 'Category',
+        utilities: 'Utilities',
         system: 'System',
         officeAutomation: 'Office Automation',
         multimedia: 'Multimedia',
@@ -73,18 +73,14 @@ const data: TranslationFormat = {
         listMissionsIlss: 'Lorem Ipsum is simply',
         listMissionsIlsss: 'Lorem Ipsum is simply',
     },
+
+    message: {
+        inputPlaceholder: 'Hello...',
+    },
+
     modalSearch: {
         titlePrincipleSearch: 'Search',
-        catagory: 'Catagory',
-        utilities: 'utilities',
-        system: 'System',
-        officeAutomation: 'Office Automation',
-        multimedia: 'Multimedia',
-        internet: 'Internet',
-        design: 'Design',
-        game: 'Game',
-        education: 'Education',
-        developement: 'Developement',
+        catagory: 'Category',
         profilType: 'Profille type',
         translator: 'Translator',
         language: 'Language',
@@ -181,6 +177,18 @@ const data: TranslationFormat = {
         title: 'For You',
         description:
             'You will find here, the job descriptions according to your typical profile, no need to search, we take care of it for you',
+    },
+
+    placeholder: {
+        email: 'Email',
+        password: 'Password',
+        firstName: 'First Name',
+        lastName: 'Last Name',
+        veryfPassword: 'Verify your Password',
+        title: 'Title',
+        abstract: 'Abstract',
+        github: 'Github',
+        description: 'Description',
     },
 };
 export default data;

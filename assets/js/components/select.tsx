@@ -19,7 +19,7 @@ const Select: FC<ISelectProps> = ({ name, custFetch, onChange, value, isTrad = f
             {data &&
                 data?.map((item: any) => (
                     <option key={item.id} value={item.name}>
-                        {isTrad ? t(`searchList.${item.name}`) : item.name}
+                        {item.name}
                     </option>
                 ))}
         </select>

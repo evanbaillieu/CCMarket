@@ -38,17 +38,21 @@ export type TranslationFormat = {
         myaccount: string;
         messaging: string;
     };
+    message: {
+        inputPlaceholder: string;
+    };
+
     searchList: {
-        catagory: string;
-        utilities: string;
-        system: string;
-        officeAutomation: string;
-        multimedia: string;
-        internet: string;
-        design: string;
-        game: string;
-        education: string;
-        developement: string;
+        category: string;
+        Utilities: string;
+        System: string;
+        OfficeAutomation: string;
+        Multimedia: string;
+        Internet: string;
+        Design: string;
+        Game: string;
+        Education: string;
+        Developpement: string;
         profilType: string;
         translator: string;
         language: string;
@@ -75,15 +79,6 @@ export type TranslationFormat = {
     modalSearch: {
         titlePrincipleSearch: string;
         catagory: string;
-        utilities: string;
-        system: string;
-        officeAutomation: string;
-        multimedia: string;
-        internet: string;
-        design: string;
-        game: string;
-        education: string;
-        developement: string;
         profilType: string;
         translator: string;
         language: string;
@@ -179,6 +174,18 @@ export type TranslationFormat = {
 
     forYou: {
         title: string;
+        description: string;
+    };
+
+    placeholder: {
+        email: string;
+        password: string;
+        firstName: string;
+        lastName: string;
+        veryfPassword: string;
+        title: string;
+        abstract: string;
+        github: string;
         description: string;
     };
 };

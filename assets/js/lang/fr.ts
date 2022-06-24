@@ -75,15 +75,6 @@ const data: TranslationFormat = {
     modalSearch: {
         titlePrincipleSearch: 'Chercher',
         catagory: 'Catégories',
-        utilities: 'Utilitaires',
-        system: 'Système',
-        officeAutomation: 'Bureautique',
-        multimedia: 'Multimédia',
-        internet: 'Internet',
-        design: 'Design',
-        game: 'Jeu',
-        education: 'Éducation',
-        developement: 'Développement',
         profilType: 'Type de profil',
         translator: 'Traducteur',
         language: 'Langue',
@@ -92,6 +83,11 @@ const data: TranslationFormat = {
         franch: 'Français',
         buttonSearch: 'Chercher',
     },
+
+    message: {
+        inputPlaceholder: 'Bonjour...',
+    },
+
     login: {
         title: 'Se connecter',
         email: 'Adresse email',
@@ -180,6 +176,18 @@ const data: TranslationFormat = {
         title: 'Pour vous',
         description:
             "Vous retrouverez ici, les fiches de postes selon votre profil type, plus besoins de rechercher, on s'en occupe pour vous",
+    },
+
+    placeholder: {
+        email: 'Adresse mail',
+        password: 'Mot de passe',
+        firstName: 'Prénom',
+        lastName: 'Nom',
+        veryfPassword: 'Vérifier votre mot de passe',
+        title: 'Titre',
+        abstract: 'Description courte',
+        github: 'Github',
+        description: 'Description',
     },
 };
 
