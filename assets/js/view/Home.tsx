@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import Lang from '../components/lang';
-import HomeSectionPresentationImage from '../img/homeImg.png';
-import HomeSectionPresentationImageMobile from '../img/HomeResponsive.png';
-import CompleteSvg from '../svg/complete.svg';
-import SecureSvg from '../svg/secure.svg';
-import CommunitySvg from '../svg/community.svg';
 import { Link } from 'react-router-dom';
 import Badge from '../components/badge';
 import ListCategories from '../components/ListCategories';
+import HomeSectionPresentationImage from '../img/homeImg.png';
+import HomeSectionPresentationImageMobile from '../img/HomeResponsive.png';
+import CommunitySvg from '../svg/community.svg';
+import CompleteSvg from '../svg/complete.svg';
+import SecureSvg from '../svg/secure.svg';
 
 const Home: FC = () => {
     const { t } = useTranslation();
@@ -23,7 +22,7 @@ const Home: FC = () => {
                             {' '}
                             {t('home.title_part_2')}{' '}
                         </span>
-                        {t('home.title_part_3')}
+                        {t('home.title_part_3')}{' '}
                         <span className="home_section_presentation_text_red_important_text">
                             {t('home.title_part_4')}
                         </span>

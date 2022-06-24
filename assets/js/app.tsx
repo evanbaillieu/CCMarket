@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Route, Routes } from 'react-router-dom';
 import AccountExperience from './components/AccountExperience';
 import AccountInfos from './components/AccountInfos';
+import AccountProjectsJobs from './components/AccountProjectsJobs';
 import AccountSettings from './components/AccountSettings';
 import Footer from './components/Footer';
 import ListProject from './components/ListProject';
@@ -51,6 +52,7 @@ const App: FC = () => {
                     <Route path="" element={<AccountInfos />} />
                     <Route path="settings" element={<AccountSettings />} />
                     <Route path="experiences" element={<AccountExperience />} />
+                    <Route path="projectsjobs" element={<AccountProjectsJobs />} />
                 </Route>
                 <Route path="/messenger/" element={<Messenger />}>
                     <Route path="" element={<DefaultZoneMessage />} />

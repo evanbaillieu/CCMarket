@@ -30,10 +30,6 @@ export type TranslationFormat = {
         developement: string;
         happiness: string;
         findYourOwn: string;
-        thePlatFormThat: string;
-        connectsContributors: string;
-        and: string;
-        openSourceProjectOwners: string;
     };
     footer: {
         home: string;
@@ -146,8 +142,10 @@ export type TranslationFormat = {
         incorrectPassword: string;
         experiences: string;
         today: string;
+        projectsjobs: string;
     };
     job: {
+        job: string;
         leader: string;
         seeProject: string;
         add: string;
@@ -157,14 +155,17 @@ export type TranslationFormat = {
         profileType: string;
         project: string;
         edit: string;
+        seeJob: string;
     };
     project: {
+        project: string;
         add: string;
         title: string;
         abstract: string;
         description: string;
         category: string;
         edit: string;
+        seeProject: string;
     };
     github: string;
     contactLeader: string;

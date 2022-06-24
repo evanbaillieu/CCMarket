@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ICategory, ISource } from '../constant/Type/entity';
 import imgDefault from '../img/img-de-base.png';
@@ -12,6 +13,8 @@ export interface iCardProps {
 }
 
 const cardItem: FC<iCardProps> = ({ id, title, abstract, category, isBanned, source }) => {
+    const { t } = useTranslation();
+
     if (isBanned == false) {
         const sourceImage = source?.filter((value) => value.type === 'Image');
 
@@ -26,14 +29,16 @@ const cardItem: FC<iCardProps> = ({ id, title, abstract, category, isBanned, sou
                     </div>
                     <div className="item_listing_all_infos">
                         <div className="item_listing_all_infos_title">
-                            <h3>Project - {title}</h3>
+                            <h3>
+                                {t('project.project')} - <span className="color-primary">{title}</span>
+                            </h3>
                         </div>
                         <div className="item_listing_all_infos_description">
                             <p>{abstract}</p>
                         </div>
                         <div className="item_listing_all_infos_see_more">
                             <Link className="btn btn-primary btn-with-arrow" to={'/project/' + id}>
-                                See more
+                                {t('project.seeProject')}
                             </Link>
                         </div>
                     </div>

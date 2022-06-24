@@ -17,11 +17,15 @@
   }
   &.jobs{
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
     padding: 1em;
     width: 70%;
     position: relative;
-    left:-1em
+    left:-1em;
+
+    @include respond-to('xl') {
+      width: 100%;
+    }
   }
   @media (max-width: 860px) {
     grid-template-columns: repeat(1, 1fr);
