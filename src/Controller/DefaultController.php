@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Project;
+use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -25,8 +26,8 @@ class DefaultController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $user = $entityManager->getRepository(User::class)->find($this->getUser()->id);
-        $data = json_encode($request->getContent, true);
-        if($data['projectId']){
+        $data = json_decode($request->getContent(), true);
+        if ($data['projectId']){
             $project = $entityManager->getRepository(Project::class)->find($data['projectId']);
             $user->addFavorite($project);
             $project->incrementStar();

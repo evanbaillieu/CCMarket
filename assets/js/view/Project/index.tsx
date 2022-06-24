@@ -1,9 +1,10 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ISource } from '../../constant/Type/entity';
 import profile from '../../img/test.png';
 import { getProject } from '../../service/projectService';
+import { addFavorite } from '../../service/accountService';
 import Github from '../../svg/github.svg';
 import Star from '../../svg/star.svg';
 import { createDiscution } from '../../service/messengerService';
@@ -45,6 +46,11 @@ const Project: FC = () => {
             navigate(`/`);
         }
     };
+
+    const addProjectFavorite = () => {
+        addFavorite(idProject);
+    };
+
     return (
         <div id="project-container">
             <div id="project-content">
@@ -66,7 +72,7 @@ const Project: FC = () => {
             </div>
 
             <div id="project-sidebar">
-                <button className="btn btn-primary">
+                <button className="btn btn-primary" onClick={addProjectFavorite}>
                     <Star />
                     <p>{project.nbStar}</p>
                 </button>

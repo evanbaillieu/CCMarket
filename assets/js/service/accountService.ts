@@ -39,3 +39,16 @@ export const updatePassword = async (currentPassword: string, newPassword: strin
     });
     return result.json();
 };
+
+export const addFavorite = async (projectId: string) => {
+    const token = getTokken();
+    const result = await fetch(`${config.baseUrl}/links`, {
+        headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+        method: 'POST',
+        body: JSON.stringify({ projectId }),
+    });
+    return result.json();
+};
