@@ -1,8 +1,9 @@
-import { IUser } from '../constant/Type/entity';
+import config from '../config/default';
 import { IAuth } from '../constant/Type/auth';
+import { IUser } from '../constant/Type/entity';
 import { setTokken } from '../helper/utilHelper';
 export const register = async (data: IUser) => {
-    const newData = await fetch(`http://localhost:8000/api/auth/register`, {
+    const newData = await fetch(`${config.baseUrl}/api/auth/register`, {
         headers: { 'Content-type': 'application/json' },
         method: 'POST',
         body: JSON.stringify(data),
@@ -15,7 +16,7 @@ export const register = async (data: IUser) => {
 };
 
 export const login = async (data: IAuth) => {
-    const newData = await fetch(`http://localhost:8000/api/auth/login`, {
+    const newData = await fetch(`${config.baseUrl}/api/auth/login`, {
         headers: { 'Content-type': 'application/json' },
         method: 'POST',
         body: JSON.stringify(data),
