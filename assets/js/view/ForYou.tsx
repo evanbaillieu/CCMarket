@@ -16,7 +16,13 @@ const ForYou: FC = ({}) => {
         getMe().then((response) => {
             if (response.user) {
                 setUser(response.user);
-                setProfilType(response.profilType);
+
+                if (response.profilType) {
+                    setProfilType(response.profilType);
+                } else {
+                    navigate('/account');
+                }
+
                 setProjects(response.projects);
             } else {
                 navigate('/login');
