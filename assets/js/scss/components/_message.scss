@@ -12,13 +12,16 @@
         border-radius: 25px;
         text-align: center;
         padding: 1rem;
+        @extend .paragraph;
         
     }
     & span{
-        margin-top: 0.5rem;
-        font-size: 0.5rem;
+        margin-top: 0.5em;
+        font-size: 10px;
         color: var(--black-color);
         align-self: flex-end;
+        @extend .paragraph;
+
     }
     &.you{
         align-self: end;

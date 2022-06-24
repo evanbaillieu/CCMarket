@@ -126,7 +126,7 @@ const AddProject: FC = () => {
             />
 
             <div className="form-buttons">
-                <Link to={'/account/projects'} className="btn btn-cancel">
+                <Link to={'/'} className="btn btn-cancel">
                     {t('account.cancel')}
                 </Link>
                 <button className="btn btn-primary" onClick={submit}>
