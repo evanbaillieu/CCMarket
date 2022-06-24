@@ -110,7 +110,7 @@ class ApiMessegerController extends AbstractController
     }
 
     /**
-     * @route("/dicustion/", methods="Post")
+     * @route("/dicustion/", methods="POST")
      */
     public function addDiscustion(Request $request, ManagerRegistry $doctrine){
         try{
@@ -119,11 +119,9 @@ class ApiMessegerController extends AbstractController
             $tokenUser = $this->getUser();
             $userConnected = $entityManager->getRepository(User::class)->find($tokenUser->id);
             $userInviter = $entityManager->getRepository(User::class)->find($data->userInvited);
-
             if(!$userInviter){
                 return $this->json([], 400);
             }
-
             $dicustion = new Discussion();
             $dicustion->addParticipant($userInviter->getMessaging());
             $dicustion->addParticipant($userConnected->getMessaging());

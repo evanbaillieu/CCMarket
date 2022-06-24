@@ -29,7 +29,10 @@ const Job: FC = () => {
 
     const createDisc = async (id: string) => {
         const data = await createDiscution(id);
-        navigate(`/messenger/${data?.id}`);
+        console.log(data);
+        if (data) {
+        }
+        //navigate(`/messenger/${data?.id}`);
     };
 
     return (

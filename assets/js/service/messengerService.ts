@@ -25,13 +25,16 @@ export const findDiscution = async (id: string) => {
 };
 
 export const createDiscution = async (id: string) => {
+    const token = getTokken();
+
     const data = await fetch(`${config.baseUrl}/messenger/dicustion/`, {
-        headers: { 'content-type': 'application/json' },
+        headers: { 'content-type': 'application/json', Authorization: `bearer ${token}` },
         method: 'POST',
         body: JSON.stringify({
             userInvited: id,
         }),
     });
+
     return data.json();
 };
 

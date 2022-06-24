@@ -6,12 +6,14 @@ import profile from '../../img/test.png';
 import { getProject } from '../../service/projectService';
 import Github from '../../svg/github.svg';
 import Star from '../../svg/star.svg';
+import { createDiscution } from '../../service/messengerService';
 
 const Project: FC = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const { idProject } = useParams();
     const [project, setProject] = useState({
+        id: '',
         title: '',
         category: {
             name: '',
@@ -20,6 +22,7 @@ const Project: FC = () => {
         source: [],
         nbStar: 0,
         leader: {
+            id: '',
             firstName: '',
             lastName: '',
         },
@@ -28,6 +31,7 @@ const Project: FC = () => {
     useEffect(() => {
         getProject(idProject).then((response) => {
             if (response.id) {
+                console.log(response);
                 setProject(response);
             } else {
                 navigate('/listing');
@@ -35,6 +39,9 @@ const Project: FC = () => {
         });
     }, []);
 
+    const addDicustion = async (id: string) => {
+        const data = await createDiscution(id);
+    };
     return (
         <div id="project-container">
             <div id="project-content">
@@ -66,9 +73,9 @@ const Project: FC = () => {
                         <img src={profile} width={50} height={50} alt={t('profileImage')} />
                         <p>{project.leader.firstName + ' ' + project.leader.lastName}</p>
                     </div>
-                    <Link to={'/messenger/'} className="btn btn-primary btn-with-arrow">
+                    <button onClick={() => addDicustion(project.leader?.id)} className="btn btn-primary btn-with-arrow">
                         {t('contactLeader')}
-                    </Link>
+                    </button>
                 </div>
             </div>
         </div>
