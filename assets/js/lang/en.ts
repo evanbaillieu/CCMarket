@@ -31,8 +31,6 @@ const data: TranslationFormat = {
     },
     footer: {
         home: 'Home',
-        projects: 'Projects',
-        jobs: 'Jobs',
         myaccount: 'Your account',
         messaging: 'Messaging',
     },
@@ -95,14 +93,19 @@ const data: TranslationFormat = {
         password: 'Password',
         btnlogin: 'Login',
         btnregister: 'Register',
+        forgot: 'Forgot password ?',
     },
     register: {
+        title: 'Register',
         firstName: 'First Name',
         lastName: 'Last Name',
         email: 'Email',
         dateOfBirth: 'Date of birth',
         password: 'Password',
         veryfPassword: 'Confirm your password',
+        btnlogin: 'Back to login',
+        btnregister: 'Register',
+        terms: 'Accept condition of use',
     },
     error: {
         firstName: 'Your firstname does not meet the conditions',
@@ -188,6 +191,9 @@ const data: TranslationFormat = {
         abstract: 'Abstract',
         github: 'Github',
         description: 'Description',
+        currentPassword: 'Current password',
+        newPassword: 'New password',
+        confirmNewPassword: 'Confirm new password',
     },
 
     experience: {
@@ -199,6 +205,10 @@ const data: TranslationFormat = {
         abstract: 'Summary',
         startDate: 'Start date',
         endDate: 'End date',
+    },
+
+    messenger: {
+        discution: 'Discussions',
     },
 };
 export default data;

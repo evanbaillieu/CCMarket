@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import LogoWhite from '../svg/logoWhite.svg';
+import Lang from './lang';
 const Footer: FC = () => {
     const { t } = useTranslation();
     return (
@@ -9,25 +10,28 @@ const Footer: FC = () => {
             <aside className="footer_menu">
                 <ul>
                     <li>
-                        <Link to="">{t('footer.home')}</Link>
+                        <Link to="/">{t('footer.home')}</Link>
                     </li>
                     <li>
-                        <Link to="">{t('footer.projects')}</Link>
+                        <Link to="/foryou">{t('nav.foryou')}</Link>
                     </li>
                     <li>
-                        <Link to="">{t('footer.jobs')}</Link>
+                        <Link to="/project/add">{t('project.add')}</Link>
                     </li>
                     <li>
-                        <Link to="">{t('footer.myaccount')}</Link>
+                        <Link to="/account">{t('footer.myaccount')}</Link>
                     </li>
                     <li>
-                        <Link to="">{t('footer.messaging')}</Link>
+                        <Link to="/messenger">{t('footer.messaging')}</Link>
                     </li>
                 </ul>
             </aside>
             <aside className="footer_logo">
-                <LogoWhite />
+                <Link to="/">
+                    <LogoWhite />
+                </Link>
             </aside>
+            <Lang />
         </footer>
     );
 };

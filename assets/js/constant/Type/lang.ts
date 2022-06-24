@@ -33,8 +33,6 @@ export type TranslationFormat = {
     };
     footer: {
         home: string;
-        projects: string;
-        jobs: string;
         myaccount: string;
         messaging: string;
     };
@@ -93,14 +91,19 @@ export type TranslationFormat = {
         password: string;
         btnlogin: string;
         btnregister: string;
+        forgot: string;
     };
     register: {
+        title: string;
         firstName: string;
         lastName: string;
         email: string;
         dateOfBirth: string;
         password: string;
         veryfPassword: string;
+        btnlogin: string;
+        btnregister: string;
+        terms: string;
     };
     error: {
         firstName: string;
@@ -186,6 +189,9 @@ export type TranslationFormat = {
         abstract: string;
         github: string;
         description: string;
+        currentPassword: string;
+        newPassword: string;
+        confirmNewPassword: string;
     };
 
     experience: {
@@ -197,5 +203,9 @@ export type TranslationFormat = {
         abstract: string;
         startDate: string;
         endDate: string;
+    };
+
+    messenger: {
+        discution: string;
     };
 };

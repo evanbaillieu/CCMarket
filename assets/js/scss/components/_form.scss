@@ -50,17 +50,6 @@
         padding: 0;
     }
 
-    .input_content {
-        position: relative;
-
-        div {
-            position:absolute;
-            right: 0;
-            top: 50%;
-            transform:translate(-0%, -50%)scale(0.8);
-        }
-    }
-
     .required::after{
         content: '*';
         margin-left: 4px;
@@ -91,5 +80,16 @@
 
     @include respond-to('md') {
         margin: 0 10%;
+    }
+}
+
+.input_content {
+    position: relative;
+
+    div {
+        position:absolute;
+        right: 0;
+        top: 50%;
+        transform:translate(-0%, -50%)scale(0.8);
     }
 }

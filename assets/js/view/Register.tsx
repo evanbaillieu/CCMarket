@@ -1,16 +1,19 @@
-import React, { FC, useState, ChangeEvent, useEffect } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link, useNavigate } from 'react-router-dom';
+import Inpute from '../components/input';
 import { IUser } from '../constant/Type/entity';
+import { checkIsEmpty, checkIsNotEmpty } from '../helper/utilHelper';
 import useForm from '../hook/useForm';
 import { register } from '../service/authService';
-import { checkIsEmpty, checkIsNotEmpty } from '../helper/utilHelper';
-import Inpute from '../components/input';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import Oeil from '../svg/oeil.svg';
+import OeilFermer from '../svg/oeilFermer.svg';
 
-const Registeur: FC = ({}) => {
+const Register: FC = ({}) => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-
+    const [isActivate, setIsActivate] = useState(false);
+    const [isActivateConf, setIsActivateConf] = useState(false);
     const { data, errors, hangleChange } = useForm<IUser>({
         firstName: '',
         lastName: '',
@@ -18,11 +21,18 @@ const Registeur: FC = ({}) => {
         dateOfBirth: '',
         password: '',
     });
-
     const [veryfPassword, setVeryfPassword] = useState<string>('');
 
     const handleChangePWD = (e: ChangeEvent<HTMLInputElement>) => {
         setVeryfPassword(e.target.value);
+    };
+
+    const changeVisble = () => {
+        setIsActivate((current) => !current);
+    };
+
+    const changeVisbleConf = () => {
+        setIsActivateConf((current) => !current);
     };
 
     const submit = () => {
@@ -31,21 +41,19 @@ const Registeur: FC = ({}) => {
         }
 
         if (veryfPassword === data.password) {
-            console.log('se son les meme');
+            register(data).then((data) => {
+                if (data) {
+                    navigate('/login');
+                }
+            });
         }
-
-        register(data).then((data) => {
-            if (data) {
-                navigate('/login');
-            }
-        });
     };
 
     return (
         <div>
             <section className="container_register">
                 <aside className="container_register_title">
-                    <h1 className="">Register</h1>
+                    <h1>{t('register.title')}</h1>
                 </aside>
                 <aside className="container_register_form">
                     <div className="container_register_form_row">
@@ -99,42 +107,46 @@ const Registeur: FC = ({}) => {
                     </div>
                     <div className="container_register_form_row">
                         <Inpute
+                            svg={isActivate ? <Oeil /> : <OeilFermer />}
                             option={{
-                                type: 'password',
                                 name: 'password',
-                                title: `register.password`,
+                                title: `login.password`,
                                 error: errors.password,
                                 validate: '',
+                                type: isActivate ? 'text' : 'password',
                             }}
                             handleChange={hangleChange}
                             value={data.password}
+                            onClick={changeVisble}
                         />
 
                         <Inpute
+                            svg={isActivateConf ? <Oeil /> : <OeilFermer />}
                             option={{
-                                type: 'password',
                                 name: 'veryfPassword',
-                                title: 'register.veryfPassword',
+                                title: `login.veryfPassword`,
                                 error: '',
                                 validate: '',
+                                type: isActivateConf ? 'text' : 'password',
                             }}
                             handleChange={handleChangePWD}
                             value={veryfPassword}
+                            onClick={changeVisbleConf}
                         />
                     </div>
 
                     <div className="container_register_form_accept_conditions">
                         <input required type="checkbox" />
                         <label htmlFor="conditions_of_use">
-                            <Link to="/">Accept condition of use</Link>
+                            <Link to="/">{t('register.terms')}</Link>
                         </label>
                     </div>
                     <div className="container_register_form_buttons">
                         <button className="btn btn-primary" onClick={submit}>
-                            Register
+                            {t('register.btnregister')}
                         </button>
                         <Link className="btn btn-grey" to={'/login'}>
-                            Back To Login
+                            {t('register.btnlogin')}
                         </Link>
                     </div>
                 </aside>
@@ -143,4 +155,4 @@ const Registeur: FC = ({}) => {
     );
 };
 
-export default Registeur;
+export default Register;

@@ -10,7 +10,7 @@ export type IUser = {
     sources?: string[] | ISource[];
     wishlist?: IWishlist;
     experiance?: IExperiance[];
-    profilType?: IProfilType[];
+    profilType?: string | IProfilType[];
     lang?: ILang[];
     contributeProject?: IProject[];
 };

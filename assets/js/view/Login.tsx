@@ -71,7 +71,7 @@ const Login: FC = ({}) => {
                     />
                 </div>
                 <div className="container_login_box_forgot_password">
-                    <a>Forgot password ?</a>
+                    <a>{t('login.forgot')}</a>
                 </div>
                 <div className="container_login_box_buttons">
                     <button className="btn btn-primary" onClick={submit}>

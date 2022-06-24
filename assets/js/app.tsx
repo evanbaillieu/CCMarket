@@ -27,7 +27,7 @@ import Messenger from './view/Messenger';
 import Project from './view/Project';
 import AddProject from './view/Project/AddProject';
 import EditProject from './view/Project/EditProject';
-import Register from './view/Registeur';
+import Register from './view/Register';
 import ListingCategory from './view/ListingCategory';
 import AddExperience from './view/Experience/AddExperience';
 import EditExperience from './view/Experience/EditExperience';

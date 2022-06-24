@@ -31,8 +31,6 @@ const data: TranslationFormat = {
     },
     footer: {
         home: 'Accueil',
-        projects: 'Projets',
-        jobs: 'Postes',
         myaccount: 'Votre compte',
         messaging: 'Messagerie',
     },
@@ -94,14 +92,19 @@ const data: TranslationFormat = {
         password: 'Mot de passe',
         btnlogin: 'Connexion',
         btnregister: "S'inscrire",
+        forgot: 'Mot de passe oublié ?',
     },
     register: {
+        title: "S'inscrire",
         firstName: 'Prénom',
         lastName: 'Nom de famille',
         email: 'Email',
         dateOfBirth: 'Date de naissance',
         password: 'Mot de passe',
         veryfPassword: 'Confirmer votre mode de passe',
+        btnlogin: 'Retour à la connexion',
+        btnregister: "S'inscrire",
+        terms: "Accepter les conditions d'utilisation",
     },
     error: {
         firstName: 'Votre prénom ne respecte pas les conditions',
@@ -187,6 +190,9 @@ const data: TranslationFormat = {
         abstract: 'Description courte',
         github: 'Github',
         description: 'Description',
+        currentPassword: 'Mot de passe actuel',
+        newPassword: 'Nouveau mot de passe',
+        confirmNewPassword: 'Confirmation du nouveau mot de passe',
     },
 
     experience: {
@@ -198,6 +204,10 @@ const data: TranslationFormat = {
         abstract: 'Résumé',
         startDate: 'Date de début',
         endDate: 'Date de fin',
+    },
+
+    messenger: {
+        discution: 'Discussions',
     },
 };
 
