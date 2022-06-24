@@ -38,12 +38,13 @@ export type ISource = {
 };
 
 export type IExperiance = {
-    id: string;
+    id?: string;
     title: string;
     abstract: string;
-    startDate: string;
-    endDate: string;
-    sources: ISource[];
+    startDate?: string;
+    endDate?: string;
+    user?: string;
+    sources?: ISource[];
 };
 
 export type IWishlist = {

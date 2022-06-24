@@ -190,5 +190,16 @@ const data: TranslationFormat = {
         github: 'Github',
         description: 'Description',
     },
+
+    experience: {
+        add: 'Add a experience',
+        edit: 'Edit a experience',
+        cancel: 'Cancel',
+        save: 'Save',
+        title: 'Title of  the experience',
+        abstract: 'Summary',
+        startDate: 'Start date',
+        endDate: 'End date',
+    },
 };
 export default data;

@@ -30,6 +30,8 @@ import AddProject from './view/Project/AddProject';
 import EditProject from './view/Project/EditProject';
 import Register from './view/Registeur';
 import ListingCategory from './view/ListingCategory';
+import AddExperience from './view/Experience/AddExperience';
+import EditExperience from './view/Experience/EditExperience';
 
 const App: FC = () => {
     const { i18n } = useTranslation();
@@ -73,6 +75,10 @@ const App: FC = () => {
                     <Route path=":idProject" element={<Project />} />
                     <Route path="add" element={<AddProject />} />
                     <Route path="edit/:idProject" element={<EditProject />} />
+                </Route>
+                <Route path="/experience">
+                    <Route path="add" element={<AddExperience />} />
+                    <Route path="edit/:idExperience" element={<EditExperience />} />
                 </Route>
             </Routes>
             <Footer />

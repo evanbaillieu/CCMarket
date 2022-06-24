@@ -188,4 +188,15 @@ export type TranslationFormat = {
         github: string;
         description: string;
     };
+
+    experience: {
+        add: string;
+        edit: string;
+        cancel: string;
+        save: string;
+        title: string;
+        abstract: string;
+        startDate: string;
+        endDate: string;
+    };
 };
